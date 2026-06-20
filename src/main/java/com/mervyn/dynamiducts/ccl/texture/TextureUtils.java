@@ -1,0 +1,123 @@
+package com.mervyn.dynamiducts.ccl.texture;
+
+import com.mervyn.dynamiducts.ccl.colour.Colour;
+import com.mervyn.dynamiducts.ccl.colour.ColourARGB;
+import com.mervyn.dynamiducts.ccl.util.ResourceUtils;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureAtlas;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.resources.Identifier;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
+
+public class TextureUtils {
+
+  private static final Logger LOGGER = LogManager.getLogger();
+
+  /**
+   * @return an array of ARGB pixel data
+   */
+  public static int[] loadTextureData(Identifier resource) {
+    BufferedImage img = loadBufferedImage(resource);
+    if (img == null) {
+      return new int[0];
+    }
+    int w = img.getWidth();
+    int h = img.getHeight();
+    int[] data = new int[w * h];
+    img.getRGB(0, 0, w, h, data, 0, w);
+    return data;
+  }
+
+  public static Colour[] loadTextureColours(Identifier resource) {
+    int[] idata = loadTextureData(resource);
+    Colour[] data = new Colour[idata.length];
+    for (int i = 0; i < data.length; i++) {
+      data[i] = new ColourARGB(idata[i]);
+    }
+    return data;
+  }
+
+  public static @Nullable BufferedImage loadBufferedImage(Identifier textureFile) {
+    try {
+      return loadBufferedImage(ResourceUtils.getResourceAsStream(textureFile));
+    } catch (Exception ex) {
+      LOGGER.error("failed to load texture {}", textureFile, ex);
+    }
+    return null;
+  }
+
+  public static BufferedImage loadBufferedImage(InputStream in) throws IOException {
+    BufferedImage img = ImageIO.read(in);
+    in.close();
+    return img;
+  }
+
+  public static void copySubImg(
+      int[] fromTex,
+      int fromWidth,
+      int fromX,
+      int fromY,
+      int width,
+      int height,
+      int[] toTex,
+      int toWidth,
+      int toX,
+      int toY) {
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        int fp = (y + fromY) * fromWidth + x + fromX;
+        int tp = (y + toX) * toWidth + x + toX;
+
+        toTex[tp] = fromTex[fp];
+      }
+    }
+  }
+
+  public static TextureManager getTextureManager() {
+    return Minecraft.getInstance().getTextureManager();
+  }
+
+  public static TextureAtlas getTextureMap() {
+    return Minecraft.getInstance()
+        .getAtlasManager()
+        .getAtlasOrThrow(net.minecraft.client.renderer.Sheets.BLOCKS_MAPPER.sheet());
+  }
+
+  public static TextureAtlasSprite getMissingSprite() {
+    return getTextureMap().getSprite(MissingTextureAtlasSprite.getLocation());
+  }
+
+  public static TextureAtlasSprite getTexture(String location) {
+    return getTextureMap().getSprite(Identifier.parse(location));
+  }
+
+  public static TextureAtlasSprite getTexture(Identifier location) {
+    return getTextureMap().getSprite(location);
+  }
+
+  public static TextureAtlasSprite getBlockTexture(String string) {
+    return getBlockTexture(Identifier.parse(string));
+  }
+
+  public static TextureAtlasSprite getBlockTexture(Identifier location) {
+    return getTexture(
+        Identifier.fromNamespaceAndPath(location.getNamespace(), "block/" + location.getPath()));
+  }
+
+  public static TextureAtlasSprite getItemTexture(String string) {
+    return getItemTexture(Identifier.parse(string));
+  }
+
+  public static TextureAtlasSprite getItemTexture(Identifier location) {
+    return getTexture(
+        Identifier.fromNamespaceAndPath(location.getNamespace(), "items/" + location.getPath()));
+  }
+}

@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
     id 'idea'
     id 'net.neoforged.moddev' version '2.0.141'
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 version = mod_version
@@ -25,16 +26,12 @@ base {
     archivesName = mod_id+"-1.21.1-NeoForge"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
     version = project.neo_version
 
-    parchment {
-        mappingsVersion = project.parchment_mappings_version
-        minecraftVersion = project.parchment_minecraft_version
-    }
 
     // This line is optional. Access Transformers are automatically detected
     // accessTransformers.add('src/main/resources/META-INF/accesstransformer.cfg')
@@ -64,7 +61,8 @@ neoForge {
         }
 
         data {
-            data()
+            clientData()
+
 
             // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
             // gameDirectory = project.file('run-data')
@@ -106,15 +104,23 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    //implementation "codechicken:CodeChickenLib:1.21.1-4.6.1.526:universal"
-    implementation "curse.maven:codechicken-lib-1-8-242818:7281427"
-    implementation "curse.maven:mekanism-268560:7621971"
-    implementation "curse.maven:jade-324717:7545219"
-    implementation "mezz.jei:jei-1.21.1-neoforge:19.21.0.247"
+    implementation "net.neoforged:neoforge:${project.neo_version}"
+    implementation 'net.covers1624:Quack:0.4.10.115'
+    implementation("curse.maven:mekanism-268560:7621971") {
+        transitive = false
+    }
+    implementation("curse.maven:jade-324717:7545219") {
+        transitive = false
+    }
+    implementation("mezz.jei:jei-26.1.2-neoforge:29.5.0.26") {
+        transitive = false
+    }
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
+
+
 
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
@@ -170,3 +176,38 @@ tasks.register('datagenThenClient') {
     dependsOn 'runData'
     finalizedBy 'runClient'
 }
+
+def cp = project.sourceSets.main.compileClasspath
+tasks.register('printClasspath') {
+    doLast {
+        cp.each { println it }
+    }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.addAll(['-Xlint:deprecation', '-Xlint:unchecked'])
+}
+tasks.register('runObjWriterTest', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.mervyn.dynamiducts.ccl.render.model.OBJWriterTest'
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+// compileJava {
+//     exclude 'com/mervyn/dynamiducts/datagen/**'
+// }
+
+spotless {
+    java {
+        target 'src/main/java/**/*.java'
+        googleJavaFormat()
+    }
+}
+
+
+
+
+
+
+

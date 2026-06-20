@@ -1,0 +1,46 @@
+package com.mervyn.dynamiducts.ccl.render.pipeline.attribute;
+
+import com.mervyn.dynamiducts.ccl.render.CCRenderState;
+import com.mervyn.dynamiducts.ccl.render.pipeline.VertexAttribute;
+import com.mervyn.dynamiducts.ccl.vec.Rotation;
+import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import org.jetbrains.annotations.Nullable;
+
+/** Apples normals to the render operation. If the model is a planar model it uses known normals. */
+public class NormalAttribute extends VertexAttribute<Vector3[]> {
+
+  public static final AttributeKey<Vector3[]> attributeKey =
+      AttributeKey.create("normal", Vector3[]::new);
+
+  private Vector3 @Nullable [] normalRef;
+
+  public NormalAttribute() {
+    super(attributeKey);
+  }
+
+  @Override
+  public boolean load(CCRenderState ccrs) {
+    assert ccrs.model != null;
+
+    normalRef = ccrs.model.getAttribute(attributeKey);
+    if (ccrs.model.hasAttribute(attributeKey)) {
+      return normalRef != null;
+    }
+
+    if (ccrs.model.hasAttribute(SideAttribute.attributeKey)) {
+      ccrs.pipeline.addDependency(ccrs.sideAttrib);
+      return true;
+    }
+    throw new IllegalStateException(
+        "Normals requested but neither normal or side attrutes are provided by the model");
+  }
+
+  @Override
+  public void operate(CCRenderState ccrs) {
+    if (normalRef != null) {
+      ccrs.normal.set(normalRef[ccrs.vertexIndex]);
+    } else {
+      ccrs.normal.set(Rotation.axes[ccrs.side]);
+    }
+  }
+}
