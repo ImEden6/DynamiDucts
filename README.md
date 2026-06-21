@@ -1,6 +1,6 @@
 # DynamiDucts
 
-A Minecraft NeoForge mod for 1.21.1 that brings back the Thermal Dynamics legacy duct system. Build pipe networks to transport items, fluids, energy, and even players.
+A Minecraft NeoForge mod for 26.1.2 (forked from the 1.21.1 version of [Leclowndu93150/DynamiDucts](https://github.com/Leclowndu93150/DynamiDucts)) that brings back the Thermal Dynamics legacy duct system. Build pipe networks to transport items, fluids, energy, and even players.
 
 ## Features
 
@@ -39,6 +39,7 @@ This mod is inspired by and based on the design of **Thermal Dynamics** by **Tea
 
 - Original mod: [Thermal Dynamics](https://github.com/CoFH/ThermalDynamics-1.12-Legacy)
 - Original textures: [Thermal Foundation](https://github.com/CoFH/ThermalFoundation-1.12-Legacy)
+- Fork origin: This repository is a fork of the 1.21.1 version of [DynamiDucts by Leclowndu93150](https://github.com/Leclowndu93150/DynamiDucts).
 
 Some textures (ingots, nuggets, duct textures, GUI elements) are derived from Thermal Foundation and Thermal Dynamics, released under **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**.
 
@@ -58,6 +59,6 @@ Art and texture assets derived from CoFH projects remain under **CC BY-NC-SA 4.0
 
 ## Dependencies
 
-- Minecraft 1.21.1
-- NeoForge 21.1+
+- Minecraft 26.1.2
+- NeoForge 26.1.2+
 - CodeChicken Lib
