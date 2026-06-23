@@ -4,9 +4,10 @@ import com.mervyn.dynamiducts.core.network.NetworkGrid;
 import java.util.List;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-@SuppressWarnings("removal")
 public class SuperConductorGrid extends EnergyGrid {
 
   public SuperConductorGrid(ServerLevel level) {
@@ -23,15 +24,20 @@ public class SuperConductorGrid extends EnergyGrid {
       for (EnergyDuctUnit node : snapshot) {
         if (node.getGrid() != this) continue;
         for (Direction dir : Direction.values()) {
-          IEnergyStorage source = node.getTileCache(dir);
-          if (source == null || !source.canExtract()) continue;
+          EnergyHandler source = node.getTileCache(dir);
+          if (source == null) continue;
 
-          int available = source.extractEnergy(Integer.MAX_VALUE, true);
-          if (available <= 0) continue;
+          try (var tx = Transaction.openRoot()) {
+            int available = source.extract(Integer.MAX_VALUE, tx);
+            if (available <= 0) continue;
 
-          int distributed = distributeToOthers(node, available, snapshot);
-          if (distributed > 0) {
-            source.extractEnergy(distributed, false);
+            int distributed = distributeToOthers(node, available, snapshot, tx);
+            if (distributed > 0) {
+              if (distributed < available) {
+                source.insert(available - distributed, tx);
+              }
+              tx.commit();
+            }
           }
         }
       }
@@ -41,16 +47,16 @@ public class SuperConductorGrid extends EnergyGrid {
   }
 
   private int distributeToOthers(
-      EnergyDuctUnit sourceNode, int available, List<EnergyDuctUnit> snapshot) {
+      EnergyDuctUnit sourceNode, int available, List<EnergyDuctUnit> snapshot, TransactionContext ctx) {
     int totalSent = 0;
     for (EnergyDuctUnit targetNode : snapshot) {
       if (targetNode == sourceNode) continue;
       if (targetNode.getGrid() != this) continue;
       for (Direction dir : Direction.values()) {
-        IEnergyStorage target = targetNode.getTileCache(dir);
-        if (target == null || !target.canReceive()) continue;
+        EnergyHandler target = targetNode.getTileCache(dir);
+        if (target == null) continue;
 
-        int sent = target.receiveEnergy(available - totalSent, false);
+        int sent = target.insert(available - totalSent, ctx);
         totalSent += sent;
         if (totalSent >= available) return totalSent;
       }
@@ -69,7 +75,7 @@ public class SuperConductorGrid extends EnergyGrid {
   }
 
   @Override
-  public int receiveEnergy(int maxReceive, boolean simulate) {
+  public int receiveEnergy(int maxReceive, TransactionContext ctx) {
     return 0;
   }
 }

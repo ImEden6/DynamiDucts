@@ -13,9 +13,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-@SuppressWarnings("removal")
 public class ServoItem extends ConnectionBase {
 
   public static final Identifier ID =
@@ -49,57 +50,73 @@ public class ServoItem extends ConnectionBase {
     if (!(unit instanceof ItemDuctUnit itemUnit)) return;
     if (!(itemUnit.getGrid() instanceof ItemGrid grid)) return;
 
-    IItemHandler source =
-        IItemHandler.of(
-            level.getCapability(
-                Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite()));
+    ResourceHandler<ItemResource> source = level.getCapability(
+        Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
     if (source == null) return;
 
     int maxSend = filter.getMaxStockOrDefault(tier.stackSize());
-    List<Route> routes = grid.getSortedRoutes(itemUnit, filter.getRouteType());
 
-    for (int slot = 0; slot < source.getSlots(); slot++) {
-      ItemStack peek = source.extractItem(slot, maxSend, true);
-      if (peek.isEmpty()) continue;
+    for (int slot = 0; slot < source.size(); slot++) {
+      ItemResource peekRes = source.getResource(slot);
+      if (peekRes.isEmpty()) continue;
+      int peekAmount = (int) source.getAmountAsLong(slot);
+      if (peekAmount <= 0) continue;
+
+      ItemStack peek = peekRes.toStack(peekAmount);
       if (!filter.matchesItem(peek)) continue;
 
+      List<Route> routes = grid.getSortedRoutes(itemUnit, filter.getRouteType());
       Route route = findRouteForItem(peek, routes, grid);
       if (route == null) continue;
 
-      ItemStack extracted = source.extractItem(slot, maxSend, false);
-      if (extracted.isEmpty()) continue;
+      try (var tx = Transaction.openRoot()) {
+        int extracted = source.extract(slot, peekRes, Math.min(maxSend, peekAmount), tx);
+        if (extracted <= 0) continue;
 
-      if (tier.multiStack() && extracted.getCount() < maxSend) {
-        for (int s = slot + 1; s < source.getSlots() && extracted.getCount() < maxSend; s++) {
-          ItemStack other = source.extractItem(s, maxSend - extracted.getCount(), true);
-          if (other.isEmpty() || !ItemStack.isSameItemSameComponents(extracted, other)) continue;
-          ItemStack extra = source.extractItem(s, maxSend - extracted.getCount(), false);
-          if (!extra.isEmpty()) {
-            extracted.grow(extra.getCount());
+        ItemStack extractedStack = peekRes.toStack(extracted);
+
+        if (tier.multiStack() && extracted < maxSend) {
+          for (int s = slot + 1; s < source.size() && extracted < maxSend; s++) {
+            ItemResource otherRes = source.getResource(s);
+            if (otherRes.isEmpty()) continue;
+            if (!otherRes.matches(peekRes.toStack(1))) continue;
+            int otherAmount = (int) Math.min(source.getAmountAsLong(s), maxSend - extracted);
+            if (otherAmount <= 0) continue;
+            int extra = source.extract(s, otherRes, otherAmount, tx);
+            if (extra > 0) {
+              extracted += extra;
+            }
           }
         }
-      }
 
-      itemUnit.insertItemWithRoute(extracted, side, route, tier.speedBoost());
-      return;
+        tx.commit();
+        itemUnit.insertItemWithRoute(extractedStack, side, route, tier.speedBoost());
+        return;
+      }
     }
   }
 
   private Route findRouteForItem(ItemStack stack, List<Route> routes, ItemGrid grid) {
+    ItemResource resource = ItemResource.of(stack);
+    int amount = stack.getCount();
     for (Route route : routes) {
       if (route.destination.equals(parent.getBlockPos()) && route.insertionSide == side) continue;
       for (ItemDuctUnit node : grid.getNodeSnapshot()) {
         if (!node.getPos().equals(route.destination)) continue;
         if (!grid.acceptsDestinationItem(node, route.insertionSide, stack)) continue;
 
-        IItemHandler target = node.getTileCache(route.insertionSide);
+        ResourceHandler<ItemResource> target = node.getTileCache(route.insertionSide);
         if (target == null) continue;
 
-        ItemStack simulated = stack.copy();
-        for (int i = 0; i < target.getSlots() && !simulated.isEmpty(); i++) {
-          simulated = target.insertItem(i, simulated, true);
+        int totalPossible = 0;
+        for (int i = 0; i < target.size(); i++) {
+          try (var tx = Transaction.openRoot()) {
+            int inserted = target.insert(i, resource, amount - totalPossible, tx);
+            totalPossible += inserted;
+            if (totalPossible >= amount) break;
+          }
         }
-        if (simulated.getCount() < stack.getCount()) return route;
+        if (totalPossible > 0) return route;
       }
     }
     return null;

@@ -9,9 +9,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-@SuppressWarnings("removal")
 public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
 
   protected final FluidGridTank tank;
@@ -36,7 +37,10 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
   private void collectFluidFrom(FluidDuctUnit unit) {
     FluidStack fluid = unit.getFluidForGrid();
     if (!fluid.isEmpty()) {
-      tank.fill(fluid, IFluidHandler.FluidAction.EXECUTE);
+      try (var tx = Transaction.openRoot()) {
+        tank.insert(0, FluidResource.of(fluid), fluid.getAmount(), tx);
+        tx.commit();
+      }
       unit.setFluidForGrid(FluidStack.EMPTY);
     }
   }
@@ -47,7 +51,10 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
       FluidStack share = getNodeShare(unit);
       if (!share.isEmpty()) {
         unit.setFluidForGrid(share);
-        tank.drain(share.getAmount(), IFluidHandler.FluidAction.EXECUTE);
+        try (var tx = Transaction.openRoot()) {
+          tank.extract(0, FluidResource.of(share), share.getAmount(), tx);
+          tx.commit();
+        }
       }
     }
     super.removeBlock(unit);
@@ -56,7 +63,14 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
   @Override
   public void onMergeFrom(NetworkGrid<?> source) {
     if (source instanceof FluidGrid fluidSource && !fluidSource.tank.isEmpty()) {
-      tank.fill(fluidSource.tank.getFluid().copy(), IFluidHandler.FluidAction.EXECUTE);
+      FluidResource res = fluidSource.tank.getResource(0);
+      if (!res.isEmpty()) {
+        int amount = (int) fluidSource.tank.getAmountAsLong(0);
+        try (var tx = Transaction.openRoot()) {
+          tank.insert(0, res, amount, tx);
+          tx.commit();
+        }
+      }
     }
   }
 
@@ -94,20 +108,28 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
       for (FluidDuctUnit node : getNodeSnapshot()) {
         if (node.getGrid() != this) continue;
         for (Direction dir : Direction.values()) {
-          IFluidHandler target = node.getTileCache(dir);
+          ResourceHandler<FluidResource> target = node.getTileCache(dir);
           if (target == null) continue;
           if (hasServoOnSide(node, dir)) continue;
 
-          FluidStack toSend = tank.drain(available, IFluidHandler.FluidAction.SIMULATE);
+          FluidResource toSend = tank.getResource(0);
           if (toSend.isEmpty()) break;
 
-          int filled = target.fill(toSend, IFluidHandler.FluidAction.EXECUTE);
-          if (filled > 0) {
-            tank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
-            available -= filled;
-            if (available <= 0) {
-              syncVisualIfChanged();
-              return;
+          try (var tx = Transaction.openRoot()) {
+            int drained = tank.extract(0, toSend, available, tx);
+            if (drained <= 0) continue;
+
+            int filled = target.insert(toSend, drained, tx);
+            if (filled > 0) {
+              if (filled < drained) {
+                tank.insert(0, toSend, drained - filled, tx);
+              }
+              tx.commit();
+              available -= filled;
+              if (available <= 0) {
+                syncVisualIfChanged();
+                return;
+              }
             }
           }
         }
@@ -136,8 +158,8 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
 
   private int getEffectiveThroughput() {
     if (tank.isEmpty()) return 0;
-    int capacity = tank.getTankCapacity(0);
-    int amount = tank.getFluid().getAmount();
+    int capacity = (int) tank.getCapacityAsLong(0, tank.getResource(0));
+    int amount = (int) tank.getAmountAsLong(0);
     int throughput = tank.getThroughput();
 
     if (amount >= capacity * 3 / 4) return throughput;
@@ -149,25 +171,32 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
     return tank;
   }
 
-  public int fill(FluidStack resource, IFluidHandler.FluidAction action) {
-    int filled = tank.fill(resource, action);
-    if (filled > 0 && action.execute()) {
-      syncVisualIfChanged();
+  public int fill(FluidStack resource, boolean simulate) {
+    try (var tx = Transaction.openRoot()) {
+      int filled = tank.insert(0, FluidResource.of(resource), resource.getAmount(), tx);
+      if (!simulate && filled > 0) {
+        tx.commit();
+        syncVisualIfChanged();
+      }
+      return filled;
     }
-    return filled;
   }
 
   public FluidStack getNodeShare(FluidDuctUnit unit) {
     if (tank.isEmpty()) return FluidStack.EMPTY;
     int totalDucts = nodeSet.size() + idleSet.size();
     if (totalDucts <= 0) return FluidStack.EMPTY;
-    int share = tank.getFluid().getAmount() / totalDucts;
+    FluidResource res = tank.getResource(0);
+    if (res.isEmpty()) return FluidStack.EMPTY;
+    int amount = (int) tank.getAmountAsLong(0);
+    int share = amount / totalDucts;
     if (share <= 0) return FluidStack.EMPTY;
-    return tank.getFluid().copyWithAmount(share);
+    return res.toStack(share);
   }
 
-  private void syncVisualIfChanged() {
-    FluidStack current = tank.getFluid();
+  public void syncVisualIfChanged() {
+    FluidResource res = tank.getResource(0);
+    FluidStack current = res.isEmpty() ? FluidStack.EMPTY : res.toStack((int) tank.getAmountAsLong(0));
     int renderLevel = getRenderLevel();
     if (isSameVisual(lastSyncedFluid, current) && lastSyncedRenderLevel == renderLevel) return;
 
@@ -194,11 +223,11 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
   }
 
   private int getRenderLevel() {
-    if (tank.isEmpty() || tank.getTankCapacity(0) <= 0) {
-      return 0;
-    }
+    if (tank.isEmpty()) return 0;
+    long cap = tank.getCapacityAsLong(0, tank.getResource(0));
+    if (cap <= 0) return 0;
 
-    long fullPercent = 10000L * tank.getFluid().getAmount() / tank.getTankCapacity(0);
+    long fullPercent = 10000L * tank.getAmountAsLong(0) / cap;
     if (fullPercent <= 700) {
       return 1;
     }

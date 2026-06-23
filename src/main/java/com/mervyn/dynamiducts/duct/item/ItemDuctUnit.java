@@ -15,10 +15,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-@SuppressWarnings("removal")
-public class ItemDuctUnit extends DuctUnit<ItemDuctUnit, ItemGrid, IItemHandler> {
+public class ItemDuctUnit extends DuctUnit<ItemDuctUnit, ItemGrid, ResourceHandler<ItemResource>> {
 
   private final int speed;
   private final boolean transparent;
@@ -39,8 +40,9 @@ public class ItemDuctUnit extends DuctUnit<ItemDuctUnit, ItemGrid, IItemHandler>
   }
 
   @Override
-  protected IItemHandler[] createTileCacheArray() {
-    return new IItemHandler[6];
+  @SuppressWarnings("unchecked")
+  protected ResourceHandler<ItemResource>[] createTileCacheArray() {
+    return new ResourceHandler[6];
   }
 
   @Override
@@ -64,13 +66,10 @@ public class ItemDuctUnit extends DuctUnit<ItemDuctUnit, ItemGrid, IItemHandler>
   }
 
   @Override
-  public IItemHandler cacheTile(Direction side) {
+  public ResourceHandler<ItemResource> cacheTile(Direction side) {
     if (parent.getLevel() == null) return null;
-    return IItemHandler.of(
-        parent
-            .getLevel()
-            .getCapability(
-                Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite()));
+    return parent.getLevel().getCapability(
+        Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
   }
 
   public boolean insertItem(ItemStack stack, Direction entrySide) {
@@ -137,41 +136,41 @@ public class ItemDuctUnit extends DuctUnit<ItemDuctUnit, ItemGrid, IItemHandler>
     }
   }
 
-  public IItemHandler createCapability(Direction side) {
-    return new IItemHandler() {
+  public ResourceHandler<ItemResource> createCapability(Direction side) {
+    return new ResourceHandler<>() {
       @Override
-      public int getSlots() {
+      public int size() {
         return 1;
       }
 
       @Override
-      public ItemStack getStackInSlot(int slot) {
-        return ItemStack.EMPTY;
+      public ItemResource getResource(int index) {
+        return ItemResource.EMPTY;
       }
 
       @Override
-      public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-        if (grid == null || stack.isEmpty()) return stack;
-        if (simulate) return ItemStack.EMPTY;
-        if (ItemDuctUnit.this.insertItem(stack.copy(), side)) {
-          return ItemStack.EMPTY;
-        }
-        return stack;
+      public long getAmountAsLong(int index) {
+        return 0;
       }
 
       @Override
-      public ItemStack extractItem(int slot, int amount, boolean simulate) {
-        return ItemStack.EMPTY;
-      }
-
-      @Override
-      public int getSlotLimit(int slot) {
+      public long getCapacityAsLong(int index, ItemResource resource) {
         return 64;
       }
 
       @Override
-      public boolean isItemValid(int slot, ItemStack stack) {
+      public boolean isValid(int index, ItemResource resource) {
         return true;
+      }
+
+      @Override
+      public int insert(int index, ItemResource resource, int amount, TransactionContext ctx) {
+        return 0;
+      }
+
+      @Override
+      public int extract(int index, ItemResource resource, int amount, TransactionContext ctx) {
+        return 0;
       }
     };
   }

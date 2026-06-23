@@ -1,9 +1,8 @@
 package com.mervyn.dynamiducts.duct.energy;
 
-import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler;
 
-@SuppressWarnings("removal")
-public class GridEnergyStorage extends EnergyStorage {
+public class GridEnergyStorage extends SimpleEnergyHandler {
 
   public GridEnergyStorage(int capacity, int maxTransfer) {
     super(capacity, maxTransfer, maxTransfer, 0);
@@ -25,6 +24,6 @@ public class GridEnergyStorage extends EnergyStorage {
   }
 
   public void setMaxReceive(int maxReceive) {
-    this.maxReceive = maxReceive;
+    this.maxInsert = maxReceive;
   }
 }

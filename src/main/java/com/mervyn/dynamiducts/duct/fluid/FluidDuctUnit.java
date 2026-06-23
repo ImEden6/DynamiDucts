@@ -12,10 +12,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-@SuppressWarnings("removal")
-public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, IFluidHandler> {
+public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, ResourceHandler<FluidResource>> {
 
   private final int capacityPerDuct;
   private final int throughputPerDuct;
@@ -32,8 +34,9 @@ public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, IFluidHand
   }
 
   @Override
-  protected IFluidHandler[] createTileCacheArray() {
-    return new IFluidHandler[6];
+  @SuppressWarnings("unchecked")
+  protected ResourceHandler<FluidResource>[] createTileCacheArray() {
+    return new ResourceHandler[6];
   }
 
   @Override
@@ -57,51 +60,71 @@ public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, IFluidHand
   }
 
   @Override
-  public IFluidHandler cacheTile(Direction side) {
+  public ResourceHandler<FluidResource> cacheTile(Direction side) {
     if (parent.getLevel() == null) return null;
-    return IFluidHandler.of(
-        parent
-            .getLevel()
-            .getCapability(
-                Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite()));
+    return parent.getLevel().getCapability(
+        Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
   }
 
-  public IFluidHandler createCapability(Direction side) {
-    return new IFluidHandler() {
+  public ResourceHandler<FluidResource> createCapability(Direction side) {
+    return new ResourceHandler<>() {
       @Override
-      public int getTanks() {
-        return grid != null ? grid.getTank().getTanks() : 0;
+      public int size() {
+        return grid != null ? grid.getTank().size() : 0;
       }
 
       @Override
-      public FluidStack getFluidInTank(int tank) {
-        return grid != null ? grid.getTank().getFluidInTank(tank) : FluidStack.EMPTY;
+      public FluidResource getResource(int index) {
+        return grid != null ? grid.getTank().getResource(index) : FluidResource.EMPTY;
       }
 
       @Override
-      public int getTankCapacity(int tank) {
-        return grid != null ? grid.getTank().getTankCapacity(tank) : 0;
+      public long getAmountAsLong(int index) {
+        return grid != null ? grid.getTank().getAmountAsLong(index) : 0;
       }
 
       @Override
-      public boolean isFluidValid(int tank, FluidStack stack) {
+      public long getCapacityAsLong(int index, FluidResource resource) {
+        return grid != null ? grid.getTank().getCapacityAsLong(index, resource) : 0;
+      }
+
+      @Override
+      public boolean isValid(int index, FluidResource resource) {
         return true;
       }
 
       @Override
-      public int fill(FluidStack resource, FluidAction action) {
+      public int insert(int index, FluidResource resource, int amount, TransactionContext ctx) {
         if (grid == null) return 0;
-        return grid.fill(resource, action);
+        int result = grid.getTank().insert(index, resource, amount, ctx);
+        if (result > 0) {
+          new SnapshotJournal<Void>() {
+            @Override
+            protected Void createSnapshot() { return null; }
+            @Override
+            protected void revertToSnapshot(Void snapshot) {}
+            @Override
+            protected void onRootCommit(Void snapshot) { grid.syncVisualIfChanged(); }
+          }.updateSnapshots(ctx);
+        }
+        return result;
       }
 
       @Override
-      public FluidStack drain(FluidStack resource, FluidAction action) {
-        return FluidStack.EMPTY;
-      }
-
-      @Override
-      public FluidStack drain(int maxDrain, FluidAction action) {
-        return FluidStack.EMPTY;
+      public int extract(int index, FluidResource resource, int amount, TransactionContext ctx) {
+        if (grid == null) return 0;
+        int result = grid.getTank().extract(index, resource, amount, ctx);
+        if (result > 0) {
+          new SnapshotJournal<Void>() {
+            @Override
+            protected Void createSnapshot() { return null; }
+            @Override
+            protected void revertToSnapshot(Void snapshot) {}
+            @Override
+            protected void onRootCommit(Void snapshot) { grid.syncVisualIfChanged(); }
+          }.updateSnapshots(ctx);
+        }
+        return result;
       }
     };
   }

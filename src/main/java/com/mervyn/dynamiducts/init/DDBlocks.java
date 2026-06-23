@@ -30,148 +30,182 @@ public class DDBlocks {
   }
 
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_BASIC =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_basic",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.BASIC));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.BASIC),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_HARDENED =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_hardened",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.HARDENED));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.HARDENED),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_REINFORCED =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_reinforced",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.REINFORCED));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.REINFORCED),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_SIGNALUM =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_signalum",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.SIGNALUM));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.SIGNALUM),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_RESONANT =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_resonant",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.RESONANT));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.RESONANT),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_SUPERCONDUCTOR =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_superconductor",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.SUPERCONDUCTOR));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.SUPERCONDUCTOR),
+          () -> ductProps());
 
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_REINFORCED_EMPTY =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_reinforced_empty",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.REINFORCED_EMPTY));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.REINFORCED_EMPTY),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_SIGNALUM_EMPTY =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_signalum_empty",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.SIGNALUM_EMPTY));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.SIGNALUM_EMPTY),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_RESONANT_EMPTY =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_resonant_empty",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.RESONANT_EMPTY));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.RESONANT_EMPTY),
+          () -> ductProps());
   public static final DeferredBlock<EnergyDuctBlock> ENERGY_DUCT_SUPERCONDUCTOR_EMPTY =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "energy_duct_superconductor_empty",
-          () -> new EnergyDuctBlock(ductProps(), EnergyDuctBlockEntity.Tier.SUPERCONDUCTOR_EMPTY));
+          props -> new EnergyDuctBlock(props, EnergyDuctBlockEntity.Tier.SUPERCONDUCTOR_EMPTY),
+          () -> ductProps());
 
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_BASIC =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_basic",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.BASIC, false));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.BASIC, false),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_BASIC_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_basic_opaque",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.BASIC, true));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.BASIC, true),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_HARDENED =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_hardened",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.HARDENED, false));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.HARDENED, false),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_HARDENED_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_hardened_opaque",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.HARDENED, true));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.HARDENED, true),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_ENERGY =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_energy",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.ENERGY, false));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.ENERGY, false),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_ENERGY_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_energy_opaque",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.ENERGY, true));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.ENERGY, true),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_SUPER =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_super",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.SUPER, false));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.SUPER, false),
+          () -> ductProps());
   public static final DeferredBlock<FluidDuctBlock> FLUID_DUCT_SUPER_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "fluid_duct_super_opaque",
-          () -> new FluidDuctBlock(ductProps(), FluidDuctBlockEntity.Tier.SUPER, true));
+          props -> new FluidDuctBlock(props, FluidDuctBlockEntity.Tier.SUPER, true),
+          () -> ductProps());
 
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_BASIC =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_basic",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.BASIC, false));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.BASIC, false),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_BASIC_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_basic_opaque",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.BASIC, true));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.BASIC, true),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_DENSE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_dense",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.DENSE, false));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.DENSE, false),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_DENSE_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_dense_opaque",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.DENSE, true));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.DENSE, true),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_VACUUM =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_vacuum",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.VACUUM, false));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.VACUUM, false),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_VACUUM_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_vacuum_opaque",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.VACUUM, true));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.VACUUM, true),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_FAST =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_fast",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.FAST, false));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.FAST, false),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_FAST_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_fast_opaque",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.FAST, true));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.FAST, true),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_ENERGY =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_energy",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.ENERGY, false));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.ENERGY, false),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_ENERGY_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_energy_opaque",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.ENERGY, true));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.ENERGY, true),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_ENERGY_FAST =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_energy_fast",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.ENERGY_FAST, false));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.ENERGY_FAST, false),
+          () -> ductProps());
   public static final DeferredBlock<ItemDuctBlock> ITEM_DUCT_ENERGY_FAST_OPAQUE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "item_duct_energy_fast_opaque",
-          () -> new ItemDuctBlock(ductProps(), ItemDuctBlockEntity.Tier.ENERGY_FAST, true));
+          props -> new ItemDuctBlock(props, ItemDuctBlockEntity.Tier.ENERGY_FAST, true),
+          () -> ductProps());
 
   public static final DeferredBlock<TransportDuctBlock> TRANSPORT_DUCT_BASIC =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "transport_duct_basic",
-          () -> new TransportDuctBlock(ductProps(), TransportDuctBlockEntity.Tier.BASIC));
+          props -> new TransportDuctBlock(props, TransportDuctBlockEntity.Tier.BASIC),
+          () -> ductProps());
   public static final DeferredBlock<TransportDuctBlock> TRANSPORT_DUCT_LONG_RANGE =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "transport_duct_long_range",
-          () -> new TransportDuctBlock(ductProps(), TransportDuctBlockEntity.Tier.LONG_RANGE));
+          props -> new TransportDuctBlock(props, TransportDuctBlockEntity.Tier.LONG_RANGE),
+          () -> ductProps());
   public static final DeferredBlock<TransportDuctBlock> TRANSPORT_DUCT_LINKING =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "transport_duct_linking",
-          () -> new TransportDuctBlock(ductProps(), TransportDuctBlockEntity.Tier.LINKING));
+          props -> new TransportDuctBlock(props, TransportDuctBlockEntity.Tier.LINKING),
+          () -> ductProps());
   public static final DeferredBlock<TransportDuctBlock> TRANSPORT_DUCT_FRAME =
-      BLOCKS.register(
+      BLOCKS.registerBlock(
           "transport_duct_frame",
-          () -> new TransportDuctBlock(ductProps(), TransportDuctBlockEntity.Tier.FRAME));
+          props -> new TransportDuctBlock(props, TransportDuctBlockEntity.Tier.FRAME),
+          () -> ductProps());
 
   public static final DeferredBlock<StructuralDuctBlock> STRUCTURAL_DUCT =
-      BLOCKS.register("structural_duct", () -> new StructuralDuctBlock(ductProps()));
+      BLOCKS.registerBlock("structural_duct", StructuralDuctBlock::new, () -> ductProps());
   public static final DeferredBlock<LuxDuctBlock> LUX_DUCT =
-      BLOCKS.register("lux_duct", () -> new LuxDuctBlock(ductProps()));
+      BLOCKS.registerBlock("lux_duct", LuxDuctBlock::new, () -> ductProps());
 }

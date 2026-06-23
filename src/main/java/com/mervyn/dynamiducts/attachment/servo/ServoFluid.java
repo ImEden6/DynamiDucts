@@ -9,10 +9,10 @@ import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnit;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-@SuppressWarnings("removal")
 public class ServoFluid extends ConnectionBase {
 
   public static final Identifier ID =
@@ -53,22 +53,30 @@ public class ServoFluid extends ConnectionBase {
     var grid = fluidUnit.getGrid();
     if (grid == null) return;
 
-    IFluidHandler source =
-        IFluidHandler.of(
-            level.getCapability(
-                Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite()));
+    ResourceHandler<FluidResource> source = level.getCapability(
+        Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
     if (source == null) return;
 
     int maxInput = tier.fluidDrainAmount();
     if (maxInput <= 0) return;
 
-    FluidStack drained = source.drain(maxInput, IFluidHandler.FluidAction.SIMULATE);
-    if (drained.isEmpty()) return;
-    if (!filter.matchesFluid(drained)) return;
+    FluidResource toDrain = source.getResource(0);
+    if (toDrain.isEmpty()) return;
+    if (!filter.matchesFluid(toDrain.toStack((int) source.getAmountAsLong(0)))) return;
 
-    int filled = grid.fill(drained, IFluidHandler.FluidAction.EXECUTE);
-    if (filled > 0) {
-      source.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+    try (var tx = Transaction.openRoot()) {
+      int drained = (int) Math.min(source.getAmountAsLong(0), maxInput);
+      int extracted = source.extract(0, toDrain, drained, tx);
+      if (extracted <= 0) return;
+
+      int filled = grid.getTank().insert(0, toDrain, extracted, tx);
+      if (filled > 0) {
+        if (filled < extracted) {
+          source.insert(0, toDrain, extracted - filled, tx);
+        }
+        tx.commit();
+        grid.syncVisualIfChanged();
+      }
     }
   }
 }

@@ -8,10 +8,11 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-@SuppressWarnings("removal")
-public class EnergyDuctUnit extends DuctUnit<EnergyDuctUnit, EnergyGrid, IEnergyStorage> {
+public class EnergyDuctUnit extends DuctUnit<EnergyDuctUnit, EnergyGrid, EnergyHandler> {
 
   private final int transferLimit;
   private final int capacityPerDuct;
@@ -24,8 +25,8 @@ public class EnergyDuctUnit extends DuctUnit<EnergyDuctUnit, EnergyGrid, IEnergy
   }
 
   @Override
-  protected IEnergyStorage[] createTileCacheArray() {
-    return new IEnergyStorage[6];
+  protected EnergyHandler[] createTileCacheArray() {
+    return new EnergyHandler[6];
   }
 
   @Override
@@ -49,15 +50,12 @@ public class EnergyDuctUnit extends DuctUnit<EnergyDuctUnit, EnergyGrid, IEnergy
   }
 
   @Override
-  public IEnergyStorage cacheTile(Direction side) {
+  public EnergyHandler cacheTile(Direction side) {
     if (parent.getLevel() == null) return null;
-    return IEnergyStorage.of(
-        parent
-            .getLevel()
-            .getCapability(
-                Capabilities.Energy.BLOCK,
-                parent.getBlockPos().relative(side),
-                side.getOpposite()));
+    return parent.getLevel().getCapability(
+        Capabilities.Energy.BLOCK,
+        parent.getBlockPos().relative(side),
+        side.getOpposite());
   }
 
   @Override
@@ -69,50 +67,43 @@ public class EnergyDuctUnit extends DuctUnit<EnergyDuctUnit, EnergyGrid, IEnergy
     if (sendable <= 0) return true;
 
     for (Direction dir : Direction.values()) {
-      IEnergyStorage target = tileCache[dir.ordinal()];
-      if (target == null || !target.canReceive()) continue;
+      EnergyHandler target = tileCache[dir.ordinal()];
+      if (target == null) continue;
 
-      int sent = target.receiveEnergy(sendable, false);
-      if (sent > 0) {
-        grid.useEnergy(sent);
-        sendable = grid.getSendableEnergy();
-        if (sendable <= 0) break;
+      try (var tx = Transaction.openRoot()) {
+        int sent = target.insert(sendable, tx);
+        if (sent > 0) {
+          tx.commit();
+          grid.useEnergy(sent);
+          sendable = grid.getSendableEnergy();
+          if (sendable <= 0) break;
+        }
       }
     }
     return true;
   }
 
-  public IEnergyStorage createCapability(Direction side) {
-    return new IEnergyStorage() {
+  public EnergyHandler createCapability(Direction side) {
+    return new EnergyHandler() {
       @Override
-      public int receiveEnergy(int maxReceive, boolean simulate) {
+      public int insert(int maxReceive, TransactionContext ctx) {
         if (grid == null) return 0;
-        return grid.receiveEnergy(maxReceive, simulate);
+        return grid.receiveEnergy(maxReceive, ctx);
       }
 
       @Override
-      public int extractEnergy(int maxExtract, boolean simulate) {
+      public int extract(int maxExtract, TransactionContext ctx) {
         return 0;
       }
 
       @Override
-      public int getEnergyStored() {
-        return grid != null ? grid.getStorage().getEnergyStored() : 0;
+      public long getAmountAsLong() {
+        return grid != null ? grid.getStorage().getAmountAsLong() : 0;
       }
 
       @Override
-      public int getMaxEnergyStored() {
-        return grid != null ? grid.getStorage().getMaxEnergyStored() : 0;
-      }
-
-      @Override
-      public boolean canExtract() {
-        return false;
-      }
-
-      @Override
-      public boolean canReceive() {
-        return grid != null;
+      public long getCapacityAsLong() {
+        return grid != null ? grid.getStorage().getCapacityAsLong() : 0;
       }
     };
   }

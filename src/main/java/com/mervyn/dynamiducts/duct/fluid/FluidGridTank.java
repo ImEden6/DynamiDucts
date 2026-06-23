@@ -1,10 +1,12 @@
 package com.mervyn.dynamiducts.duct.fluid;
 
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-@SuppressWarnings("removal")
-public class FluidGridTank implements IFluidHandler {
+public class FluidGridTank implements ResourceHandler<FluidResource> {
 
   private FluidStack fluid = FluidStack.EMPTY;
   private int capacity;
@@ -31,67 +33,77 @@ public class FluidGridTank implements IFluidHandler {
   }
 
   @Override
-  public int getTanks() {
+  public int size() {
     return 1;
   }
 
   @Override
-  public FluidStack getFluidInTank(int tank) {
-    return fluid;
+  public FluidResource getResource(int index) {
+    return FluidResource.of(fluid);
   }
 
   @Override
-  public int getTankCapacity(int tank) {
+  public long getAmountAsLong(int index) {
+    return fluid.getAmount();
+  }
+
+  @Override
+  public long getCapacityAsLong(int index, FluidResource resource) {
     return capacity;
   }
 
   @Override
-  public boolean isFluidValid(int tank, FluidStack stack) {
+  public boolean isValid(int index, FluidResource resource) {
     return true;
   }
 
   @Override
-  public int fill(FluidStack resource, FluidAction action) {
+  public int insert(int index, FluidResource resource, int amount, TransactionContext ctx) {
     if (resource.isEmpty()) return 0;
 
     int toFill;
+    FluidStack before = fluid.copy();
+
     if (fluid.isEmpty()) {
-      toFill = Math.min(capacity, resource.getAmount());
-      if (action.execute()) {
-        fluid = resource.copyWithAmount(toFill);
-      }
-    } else if (FluidStack.isSameFluidSameComponents(fluid, resource)) {
-      toFill = Math.min(capacity - fluid.getAmount(), resource.getAmount());
-      if (action.execute()) {
-        fluid.grow(toFill);
-      }
+      toFill = Math.min(capacity, amount);
+      fluid = resource.toStack(toFill);
+    } else if (resource.matches(fluid)) {
+      toFill = Math.min(capacity - fluid.getAmount(), amount);
+      fluid.grow(toFill);
     } else {
       return 0;
+    }
+
+    if (toFill > 0) {
+      new SnapshotJournal<FluidStack>() {
+        @Override
+        protected FluidStack createSnapshot() { return before; }
+        @Override
+        protected void revertToSnapshot(FluidStack snapshot) { fluid = snapshot; }
+      }.updateSnapshots(ctx);
     }
     return toFill;
   }
 
   @Override
-  public FluidStack drain(FluidStack resource, FluidAction action) {
-    if (resource.isEmpty() || !FluidStack.isSameFluidSameComponents(fluid, resource)) {
-      return FluidStack.EMPTY;
-    }
-    return drain(resource.getAmount(), action);
-  }
+  public int extract(int index, FluidResource resource, int amount, TransactionContext ctx) {
+    if (fluid.isEmpty() || resource.isEmpty() || !resource.matches(fluid)) return 0;
 
-  @Override
-  public FluidStack drain(int maxDrain, FluidAction action) {
-    if (fluid.isEmpty() || maxDrain <= 0) return FluidStack.EMPTY;
-
-    int drained = Math.min(fluid.getAmount(), maxDrain);
-    FluidStack result = fluid.copyWithAmount(drained);
-    if (action.execute()) {
+    int drained = Math.min(fluid.getAmount(), amount);
+    if (drained > 0) {
+      FluidStack before = fluid.copy();
       fluid.shrink(drained);
       if (fluid.getAmount() <= 0) {
         fluid = FluidStack.EMPTY;
       }
+      new SnapshotJournal<FluidStack>() {
+        @Override
+        protected FluidStack createSnapshot() { return before; }
+        @Override
+        protected void revertToSnapshot(FluidStack snapshot) { fluid = snapshot; }
+      }.updateSnapshots(ctx);
     }
-    return result;
+    return drained;
   }
 
   public FluidStack getFluid() {
@@ -100,5 +112,9 @@ public class FluidGridTank implements IFluidHandler {
 
   public boolean isEmpty() {
     return fluid.isEmpty();
+  }
+
+  public void setFluid(FluidStack fluid) {
+    this.fluid = fluid;
   }
 }

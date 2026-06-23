@@ -13,10 +13,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ChunkPos;
-import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-@SuppressWarnings("removal")
 public class ItemGrid extends NetworkGrid<ItemDuctUnit> {
 
   private static final int MAX_SYNCED_ITEMS_PER_DUCT = 16;
@@ -142,7 +143,7 @@ public class ItemGrid extends NetworkGrid<ItemDuctUnit> {
         bounceItem(tItem, currentUnit);
         return;
       }
-      IItemHandler target = destNode.getTileCache(tItem.route.insertionSide);
+      ResourceHandler<ItemResource> target = destNode.getTileCache(tItem.route.insertionSide);
       if (target != null) {
         ItemStack remainder = insertIntoHandler(target, tItem.stack, false);
         if (!remainder.isEmpty()) {
@@ -169,7 +170,7 @@ public class ItemGrid extends NetworkGrid<ItemDuctUnit> {
       if (node == null) continue;
       if (!acceptsDestinationItem(node, route.insertionSide, item.stack)) continue;
 
-      IItemHandler target = node.getTileCache(route.insertionSide);
+      ResourceHandler<ItemResource> target = node.getTileCache(route.insertionSide);
       if (target == null) continue;
 
       ItemStack simulated = insertIntoHandler(target, item.stack.copy(), true);
@@ -185,12 +186,19 @@ public class ItemGrid extends NetworkGrid<ItemDuctUnit> {
     currentUnit.addTravelingItem(item);
   }
 
-  private ItemStack insertIntoHandler(IItemHandler handler, ItemStack stack, boolean simulate) {
-    ItemStack remaining = stack.copy();
-    for (int i = 0; i < handler.getSlots() && !remaining.isEmpty(); i++) {
-      remaining = handler.insertItem(i, remaining, simulate);
+  private ItemStack insertIntoHandler(ResourceHandler<ItemResource> handler, ItemStack stack, boolean simulate) {
+    ItemResource resource = ItemResource.of(stack);
+    int amount = stack.getCount();
+    for (int i = 0; i < handler.size() && amount > 0; i++) {
+      try (var tx = Transaction.openRoot()) {
+        int inserted = handler.insert(i, resource, amount, tx);
+        if (inserted > 0) {
+          if (!simulate) tx.commit();
+          amount -= inserted;
+        }
+      }
     }
-    return remaining;
+    return resource.toStack(amount);
   }
 
   private void dropItem(ItemStack stack, BlockPos pos) {
@@ -211,7 +219,7 @@ public class ItemGrid extends NetworkGrid<ItemDuctUnit> {
       if (node == null) continue;
       if (!acceptsDestinationItem(node, route.insertionSide, stack)) continue;
 
-      IItemHandler target = node.getTileCache(route.insertionSide);
+      ResourceHandler<ItemResource> target = node.getTileCache(route.insertionSide);
       if (target == null) continue;
 
       ItemStack simulated = insertIntoHandler(target, stack.copy(), true);

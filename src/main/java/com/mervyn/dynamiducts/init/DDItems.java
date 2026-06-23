@@ -38,523 +38,487 @@ public class DDItems {
   private static final String TIP_ENERGY_SUPER = "info.dynamiducts.duct.energySuper";
 
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_basic",
-          () ->
-              new DuctBlockItem(
-                  DDBlocks.ENERGY_DUCT_BASIC.get(), new Item.Properties(), TIP_ENERGY));
+          props -> new DuctBlockItem(DDBlocks.ENERGY_DUCT_BASIC.get(), props, TIP_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_HARDENED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_hardened",
-          () ->
-              new DuctBlockItem(
-                  DDBlocks.ENERGY_DUCT_HARDENED.get(), new Item.Properties(), TIP_ENERGY));
+          props -> new DuctBlockItem(DDBlocks.ENERGY_DUCT_HARDENED.get(), props, TIP_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_REINFORCED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_reinforced",
-          () ->
+          props ->
               new DuctBlockItem(
-                  DDBlocks.ENERGY_DUCT_REINFORCED.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_ENERGY));
+                  DDBlocks.ENERGY_DUCT_REINFORCED.get(), props.rarity(Rarity.UNCOMMON), TIP_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_SIGNALUM =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_signalum",
-          () ->
+          props ->
               new DuctBlockItem(
-                  DDBlocks.ENERGY_DUCT_SIGNALUM.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_ENERGY));
+                  DDBlocks.ENERGY_DUCT_SIGNALUM.get(), props.rarity(Rarity.UNCOMMON), TIP_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_RESONANT =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_resonant",
-          () ->
+          props ->
               new DuctBlockItem(
-                  DDBlocks.ENERGY_DUCT_RESONANT.get(),
-                  new Item.Properties().rarity(Rarity.RARE),
-                  TIP_ENERGY));
+                  DDBlocks.ENERGY_DUCT_RESONANT.get(), props.rarity(Rarity.RARE), TIP_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_SUPERCONDUCTOR =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_superconductor",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ENERGY_DUCT_SUPERCONDUCTOR.get(),
-                  new Item.Properties().rarity(Rarity.RARE),
+                  props.rarity(Rarity.RARE),
                   TIP_ENERGY,
-                  TIP_ENERGY_SUPER));
+                  TIP_ENERGY_SUPER),
+          () -> new Item.Properties());
 
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_REINFORCED_EMPTY =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_reinforced_empty",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ENERGY_DUCT_REINFORCED_EMPTY.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_CRAFTING));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_CRAFTING),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_SIGNALUM_EMPTY =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_signalum_empty",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ENERGY_DUCT_SIGNALUM_EMPTY.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_CRAFTING));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_CRAFTING),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_RESONANT_EMPTY =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_resonant_empty",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ENERGY_DUCT_RESONANT_EMPTY.get(),
-                  new Item.Properties().rarity(Rarity.RARE),
-                  TIP_CRAFTING));
+                  props.rarity(Rarity.RARE),
+                  TIP_CRAFTING),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_SUPERCONDUCTOR_EMPTY =
-      ITEMS.register(
+      ITEMS.registerItem(
           "energy_duct_superconductor_empty",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ENERGY_DUCT_SUPERCONDUCTOR_EMPTY.get(),
-                  new Item.Properties().rarity(Rarity.RARE),
-                  TIP_CRAFTING));
+                  props.rarity(Rarity.RARE),
+                  TIP_CRAFTING),
+          () -> new Item.Properties());
 
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_basic",
-          () ->
+          props ->
               new DuctBlockItem(
-                  DDBlocks.FLUID_DUCT_BASIC.get(),
-                  new Item.Properties(),
-                  TIP_FLUID,
-                  TIP_FLUID_BASIC));
+                  DDBlocks.FLUID_DUCT_BASIC.get(), props, TIP_FLUID, TIP_FLUID_BASIC),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_BASIC_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_basic_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
-                  DDBlocks.FLUID_DUCT_BASIC_OPAQUE.get(),
-                  new Item.Properties(),
-                  TIP_FLUID,
-                  TIP_FLUID_BASIC));
+                  DDBlocks.FLUID_DUCT_BASIC_OPAQUE.get(), props, TIP_FLUID, TIP_FLUID_BASIC),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_HARDENED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_hardened",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.FLUID_DUCT_HARDENED.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
+                  props.rarity(Rarity.UNCOMMON),
                   TIP_FLUID,
-                  TIP_FLUID_HARDENED));
+                  TIP_FLUID_HARDENED),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_HARDENED_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_hardened_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.FLUID_DUCT_HARDENED_OPAQUE.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
+                  props.rarity(Rarity.UNCOMMON),
                   TIP_FLUID,
-                  TIP_FLUID_HARDENED));
+                  TIP_FLUID_HARDENED),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_ENERGY =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_energy",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.FLUID_DUCT_ENERGY.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_FLUID_ENERGY));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_FLUID_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_ENERGY_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_energy_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.FLUID_DUCT_ENERGY_OPAQUE.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_FLUID_ENERGY));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_FLUID_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_SUPER =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_super",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.FLUID_DUCT_SUPER.get(),
-                  new Item.Properties().rarity(Rarity.RARE),
+                  props.rarity(Rarity.RARE),
                   TIP_FLUID,
-                  TIP_FLUID_SUPER));
+                  TIP_FLUID_SUPER),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_SUPER_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "fluid_duct_super_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.FLUID_DUCT_SUPER_OPAQUE.get(),
-                  new Item.Properties().rarity(Rarity.RARE),
+                  props.rarity(Rarity.RARE),
                   TIP_FLUID,
-                  TIP_FLUID_SUPER));
+                  TIP_FLUID_SUPER),
+          () -> new Item.Properties());
 
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_basic",
-          () -> new DuctBlockItem(DDBlocks.ITEM_DUCT_BASIC.get(), new Item.Properties(), TIP_ITEM));
+          props -> new DuctBlockItem(DDBlocks.ITEM_DUCT_BASIC.get(), props, TIP_ITEM),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_BASIC_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_basic_opaque",
-          () ->
-              new DuctBlockItem(
-                  DDBlocks.ITEM_DUCT_BASIC_OPAQUE.get(), new Item.Properties(), TIP_ITEM));
+          props -> new DuctBlockItem(DDBlocks.ITEM_DUCT_BASIC_OPAQUE.get(), props, TIP_ITEM),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_DENSE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_dense",
-          () -> new DuctBlockItem(DDBlocks.ITEM_DUCT_DENSE.get(), new Item.Properties(), TIP_ITEM));
+          props -> new DuctBlockItem(DDBlocks.ITEM_DUCT_DENSE.get(), props, TIP_ITEM),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_DENSE_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_dense_opaque",
-          () ->
-              new DuctBlockItem(
-                  DDBlocks.ITEM_DUCT_DENSE_OPAQUE.get(), new Item.Properties(), TIP_ITEM));
+          props -> new DuctBlockItem(DDBlocks.ITEM_DUCT_DENSE_OPAQUE.get(), props, TIP_ITEM),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_VACUUM =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_vacuum",
-          () ->
-              new DuctBlockItem(DDBlocks.ITEM_DUCT_VACUUM.get(), new Item.Properties(), TIP_ITEM));
+          props -> new DuctBlockItem(DDBlocks.ITEM_DUCT_VACUUM.get(), props, TIP_ITEM),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_VACUUM_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_vacuum_opaque",
-          () ->
-              new DuctBlockItem(
-                  DDBlocks.ITEM_DUCT_VACUUM_OPAQUE.get(), new Item.Properties(), TIP_ITEM));
+          props -> new DuctBlockItem(DDBlocks.ITEM_DUCT_VACUUM_OPAQUE.get(), props, TIP_ITEM),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_FAST =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_fast",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ITEM_DUCT_FAST.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
+                  props.rarity(Rarity.UNCOMMON),
                   TIP_ITEM,
-                  TIP_ITEM_FAST));
+                  TIP_ITEM_FAST),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_FAST_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_fast_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ITEM_DUCT_FAST_OPAQUE.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
+                  props.rarity(Rarity.UNCOMMON),
                   TIP_ITEM,
-                  TIP_ITEM_FAST));
+                  TIP_ITEM_FAST),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_ENERGY =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_energy",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ITEM_DUCT_ENERGY.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_ITEM_ENERGY));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_ITEM_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_ENERGY_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_energy_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ITEM_DUCT_ENERGY_OPAQUE.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_ITEM_ENERGY));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_ITEM_ENERGY),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_ENERGY_FAST =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_energy_fast",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ITEM_DUCT_ENERGY_FAST.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
+                  props.rarity(Rarity.UNCOMMON),
                   TIP_ITEM_ENERGY,
-                  TIP_ITEM_FAST));
+                  TIP_ITEM_FAST),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_ENERGY_FAST_OPAQUE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "item_duct_energy_fast_opaque",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.ITEM_DUCT_ENERGY_FAST_OPAQUE.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
+                  props.rarity(Rarity.UNCOMMON),
                   TIP_ITEM_ENERGY,
-                  TIP_ITEM_FAST));
+                  TIP_ITEM_FAST),
+          () -> new Item.Properties());
 
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "transport_duct_basic",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_BASIC.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  "info.dynamiducts.duct.transport"));
+                  props.rarity(Rarity.UNCOMMON),
+                  "info.dynamiducts.duct.transport"),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_LONG_RANGE =
-      ITEMS.register(
+      ITEMS.registerItem(
           "transport_duct_long_range",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_LONG_RANGE.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  "info.dynamiducts.duct.transportLongRange"));
+                  props.rarity(Rarity.UNCOMMON),
+                  "info.dynamiducts.duct.transportLongRange"),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_LINKING =
-      ITEMS.register(
+      ITEMS.registerItem(
           "transport_duct_linking",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_LINKING.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  "info.dynamiducts.duct.transportCrossover"));
+                  props.rarity(Rarity.UNCOMMON),
+                  "info.dynamiducts.duct.transportCrossover"),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_FRAME =
-      ITEMS.register(
+      ITEMS.registerItem(
           "transport_duct_frame",
-          () ->
+          props ->
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_FRAME.get(),
-                  new Item.Properties().rarity(Rarity.UNCOMMON),
-                  TIP_CRAFTING));
+                  props.rarity(Rarity.UNCOMMON),
+                  TIP_CRAFTING),
+          () -> new Item.Properties());
 
   public static final DeferredItem<DuctBlockItem> STRUCTURAL_DUCT =
-      ITEMS.register(
+      ITEMS.registerItem(
           "structural_duct",
-          () ->
-              new DuctBlockItem(
-                  DDBlocks.STRUCTURAL_DUCT.get(), new Item.Properties(), TIP_STRUCTURE));
+          props -> new DuctBlockItem(DDBlocks.STRUCTURAL_DUCT.get(), props, TIP_STRUCTURE),
+          () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> LUX_DUCT =
-      ITEMS.register(
+      ITEMS.registerItem(
           "lux_duct",
-          () ->
+          props ->
               new DuctBlockItem(
-                  DDBlocks.LUX_DUCT.get(), new Item.Properties(), "info.dynamiducts.duct.light"));
+                  DDBlocks.LUX_DUCT.get(), props, "info.dynamiducts.duct.light"),
+          () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> SERVO_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "servo_basic",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.SERVO,
-                  AttachmentTier.BASIC,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.BASIC),
-                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.BASIC)),
-                  "info.dynamiducts.servo.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
+              AttachmentTier.BASIC,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.BASIC),
+                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.BASIC)),
+              "info.dynamiducts.servo.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_HARDENED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "servo_hardened",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.SERVO,
-                  AttachmentTier.HARDENED,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.HARDENED),
-                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.HARDENED)),
-                  "info.dynamiducts.servo.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
+              AttachmentTier.HARDENED,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.HARDENED),
+                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.HARDENED)),
+              "info.dynamiducts.servo.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_REINFORCED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "servo_reinforced",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.SERVO,
-                  AttachmentTier.REINFORCED,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.REINFORCED),
-                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.REINFORCED)),
-                  "info.dynamiducts.servo.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
+              AttachmentTier.REINFORCED,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.REINFORCED),
+                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.REINFORCED)),
+              "info.dynamiducts.servo.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_SIGNALUM =
-      ITEMS.register(
+      ITEMS.registerItem(
           "servo_signalum",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.SERVO,
-                  AttachmentTier.SIGNALUM,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.SIGNALUM),
-                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.SIGNALUM)),
-                  "info.dynamiducts.servo.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
+              AttachmentTier.SIGNALUM,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.SIGNALUM),
+                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.SIGNALUM)),
+              "info.dynamiducts.servo.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_RESONANT =
-      ITEMS.register(
+      ITEMS.registerItem(
           "servo_resonant",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.SERVO,
-                  AttachmentTier.RESONANT,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.RESONANT),
-                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.RESONANT)),
-                  "info.dynamiducts.servo.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
+              AttachmentTier.RESONANT,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.RESONANT),
+                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.RESONANT)),
+              "info.dynamiducts.servo.info"),
+          () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> FILTER_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "filter_basic",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.FILTER,
-                  AttachmentTier.BASIC,
-                  false,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.BASIC),
-                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.BASIC)),
-                  "info.dynamiducts.filter.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
+              AttachmentTier.BASIC, false,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.BASIC),
+                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.BASIC)),
+              "info.dynamiducts.filter.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_HARDENED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "filter_hardened",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.FILTER,
-                  AttachmentTier.HARDENED,
-                  false,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.HARDENED),
-                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.HARDENED)),
-                  "info.dynamiducts.filter.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
+              AttachmentTier.HARDENED, false,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.HARDENED),
+                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.HARDENED)),
+              "info.dynamiducts.filter.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_REINFORCED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "filter_reinforced",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.FILTER,
-                  AttachmentTier.REINFORCED,
-                  false,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.REINFORCED),
-                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.REINFORCED)),
-                  "info.dynamiducts.filter.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
+              AttachmentTier.REINFORCED, false,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.REINFORCED),
+                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.REINFORCED)),
+              "info.dynamiducts.filter.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_SIGNALUM =
-      ITEMS.register(
+      ITEMS.registerItem(
           "filter_signalum",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.FILTER,
-                  AttachmentTier.SIGNALUM,
-                  false,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.SIGNALUM),
-                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.SIGNALUM)),
-                  "info.dynamiducts.filter.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
+              AttachmentTier.SIGNALUM, false,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.SIGNALUM),
+                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.SIGNALUM)),
+              "info.dynamiducts.filter.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_RESONANT =
-      ITEMS.register(
+      ITEMS.registerItem(
           "filter_resonant",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.FILTER,
-                  AttachmentTier.RESONANT,
-                  false,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.RESONANT),
-                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.RESONANT)),
-                  "info.dynamiducts.filter.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
+              AttachmentTier.RESONANT, false,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.RESONANT),
+                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.RESONANT)),
+              "info.dynamiducts.filter.info"),
+          () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> RETRIEVER_BASIC =
-      ITEMS.register(
+      ITEMS.registerItem(
           "retriever_basic",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-                  AttachmentTier.BASIC,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.BASIC),
-                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.BASIC)),
-                  "info.dynamiducts.retriever.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+              AttachmentTier.BASIC,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.BASIC),
+                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.BASIC)),
+              "info.dynamiducts.retriever.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_HARDENED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "retriever_hardened",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-                  AttachmentTier.HARDENED,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.HARDENED),
-                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.HARDENED)),
-                  "info.dynamiducts.retriever.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+              AttachmentTier.HARDENED,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.HARDENED),
+                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.HARDENED)),
+              "info.dynamiducts.retriever.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_REINFORCED =
-      ITEMS.register(
+      ITEMS.registerItem(
           "retriever_reinforced",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-                  AttachmentTier.REINFORCED,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.REINFORCED),
-                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.REINFORCED)),
-                  "info.dynamiducts.retriever.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+              AttachmentTier.REINFORCED,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.REINFORCED),
+                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.REINFORCED)),
+              "info.dynamiducts.retriever.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_SIGNALUM =
-      ITEMS.register(
+      ITEMS.registerItem(
           "retriever_signalum",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-                  AttachmentTier.SIGNALUM,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.SIGNALUM),
-                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.SIGNALUM)),
-                  "info.dynamiducts.retriever.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+              AttachmentTier.SIGNALUM,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.SIGNALUM),
+                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.SIGNALUM)),
+              "info.dynamiducts.retriever.info"),
+          () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_RESONANT =
-      ITEMS.register(
+      ITEMS.registerItem(
           "retriever_resonant",
-          () ->
-              new AttachmentItem(
-                  new Item.Properties(),
-                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-                  AttachmentTier.RESONANT,
-                  (be, side) ->
-                      AttachmentPlacementHelper.createTransferAttachment(
-                          be,
-                          side,
-                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.RESONANT),
-                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.RESONANT)),
-                  "info.dynamiducts.retriever.info"));
+          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+              AttachmentTier.RESONANT,
+              (be, side) ->
+                  AttachmentPlacementHelper.createTransferAttachment(
+                      be, side,
+                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.RESONANT),
+                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.RESONANT)),
+              "info.dynamiducts.retriever.info"),
+          () -> new Item.Properties());
 
   public static final DeferredItem<RelayItem> RELAY =
-      ITEMS.register("relay", () -> new RelayItem(new Item.Properties()));
+      ITEMS.registerItem("relay", RelayItem::new, () -> new Item.Properties());
 
   public static final DeferredItem<WrenchItem> WRENCH =
-      ITEMS.register("wrench", () -> new WrenchItem(new Item.Properties().stacksTo(1)));
+      ITEMS.registerItem(
+          "wrench",
+          props -> new WrenchItem(props.stacksTo(1)),
+          () -> new Item.Properties());
 
   public static final DeferredItem<Item> LEAD_INGOT = ITEMS.registerSimpleItem("lead_ingot");
   public static final DeferredItem<Item> LEAD_NUGGET = ITEMS.registerSimpleItem("lead_nugget");

@@ -8,10 +8,10 @@ import com.mervyn.dynamiducts.core.duct.DuctToken;
 import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnit;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.capability.IFluidHandler;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-@SuppressWarnings("removal")
 public class RetrieverFluid extends ConnectionBase {
 
   public static final Identifier ID =
@@ -52,17 +52,29 @@ public class RetrieverFluid extends ConnectionBase {
 
     for (FluidDuctUnit node : grid.getNodeSnapshot()) {
       for (Direction dir : Direction.values()) {
-        IFluidHandler source = node.getTileCache(dir);
+        ResourceHandler<FluidResource> source = node.getTileCache(dir);
         if (source == null) continue;
 
-        FluidStack drained = source.drain(maxInput, IFluidHandler.FluidAction.SIMULATE);
-        if (drained.isEmpty()) continue;
-        if (!filter.matchesFluid(drained)) continue;
+        FluidResource toDrain = source.getResource(0);
+        if (toDrain.isEmpty()) continue;
+        if (!filter.matchesFluid(toDrain.toStack((int) source.getAmountAsLong(0)))) continue;
 
-        int filled = grid.fill(drained, IFluidHandler.FluidAction.EXECUTE);
-        if (filled > 0) {
-          source.drain(filled, IFluidHandler.FluidAction.EXECUTE);
-          return;
+        try (var tx = Transaction.openRoot()) {
+          int drained = (int) Math.min(source.getAmountAsLong(0), maxInput);
+          if (drained <= 0) continue;
+
+          int extracted = source.extract(0, toDrain, drained, tx);
+          if (extracted <= 0) continue;
+
+          int filled = grid.getTank().insert(0, toDrain, extracted, tx);
+          if (filled > 0) {
+            if (filled < extracted) {
+              source.insert(0, toDrain, extracted - filled, tx);
+            }
+            tx.commit();
+            grid.syncVisualIfChanged();
+            return;
+          }
         }
       }
     }

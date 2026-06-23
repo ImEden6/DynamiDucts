@@ -9,9 +9,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 
-@SuppressWarnings("removal")
 public class EnergyDuctBlockEntity extends DuctBlockEntity {
 
   private final Tier tier;
@@ -36,7 +35,7 @@ public class EnergyDuctBlockEntity extends DuctBlockEntity {
     }
   }
 
-  public IEnergyStorage getEnergyCapability(Direction side) {
+  public EnergyHandler getEnergyCapability(Direction side) {
     var unit = getDuctUnit(DuctToken.ENERGY);
     if (unit instanceof EnergyDuctUnit energyUnit) {
       return energyUnit.createCapability(side);

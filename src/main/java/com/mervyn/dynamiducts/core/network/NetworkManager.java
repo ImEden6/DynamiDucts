@@ -91,9 +91,10 @@ public class NetworkManager {
     }
   }
 
-  @SuppressWarnings({"unchecked", "rawtypes"})
-  private void formGridForUnit(DuctUnit unit) {
-    NetworkFormer.formGrid(unit, level);
+  @SuppressWarnings("unchecked")
+  private <T extends DuctUnit<T, G, ?>, G extends NetworkGrid<T>> void formGridForUnit(
+      DuctUnit<?, ?, ?> unit) {
+    NetworkFormer.formGrid((T) unit, level);
   }
 
   @SuppressWarnings("unchecked")

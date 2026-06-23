@@ -2,6 +2,8 @@ package com.mervyn.dynamiducts.duct.energy;
 
 import com.mervyn.dynamiducts.core.network.NetworkGrid;
 import net.minecraft.server.level.ServerLevel;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
 public class EnergyGrid extends NetworkGrid<EnergyDuctUnit> {
 
@@ -44,10 +46,11 @@ public class EnergyGrid extends NetworkGrid<EnergyDuctUnit> {
   @Override
   public void tickGrid() {
     super.tickGrid();
-    if (nodeSet.isEmpty() || storage.getEnergyStored() <= 0) return;
+    if (nodeSet.isEmpty() || storage.getAmountAsLong() <= 0) return;
 
-    currentEnergyShare = storage.getEnergyStored() / nodeSet.size();
-    extraEnergy = storage.getEnergyStored() % nodeSet.size();
+    int stored = (int) storage.getAmountAsLong();
+    currentEnergyShare = stored / nodeSet.size();
+    extraEnergy = stored % nodeSet.size();
 
     beginTick();
     try {
@@ -75,28 +78,31 @@ public class EnergyGrid extends NetworkGrid<EnergyDuctUnit> {
   }
 
   public void useEnergy(int amount) {
-    storage.extractEnergy(amount, false);
+    try (var tx = Transaction.openRoot()) {
+      storage.extract(amount, tx);
+      tx.commit();
+    }
     if (amount > currentEnergyShare) {
       extraEnergy -= (amount - currentEnergyShare);
       extraEnergy = Math.max(0, extraEnergy);
     }
   }
 
-  public int receiveEnergy(int maxReceive, boolean simulate) {
-    return storage.receiveEnergy(maxReceive, simulate);
+  public int receiveEnergy(int maxReceive, TransactionContext ctx) {
+    return storage.insert(maxReceive, ctx);
   }
 
   public boolean isPowered() {
-    return storage.getEnergyStored() > 0;
+    return storage.getAmountAsLong() > 0;
   }
 
   public int getNodeShare(EnergyDuctUnit unit) {
-    if (nodeSet.size() <= 1) return storage.getEnergyStored();
+    int stored = (int) storage.getAmountAsLong();
+    if (nodeSet.size() <= 1) return stored;
     if (isFirstBlock(unit)) {
-      return storage.getEnergyStored() / nodeSet.size()
-          + storage.getEnergyStored() % nodeSet.size();
+      return stored / nodeSet.size() + stored % nodeSet.size();
     }
-    return storage.getEnergyStored() / nodeSet.size();
+    return stored / nodeSet.size();
   }
 
   public GridEnergyStorage getStorage() {
