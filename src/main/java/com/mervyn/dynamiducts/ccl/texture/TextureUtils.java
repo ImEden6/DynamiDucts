@@ -88,7 +88,7 @@ public class TextureUtils {
   public static TextureAtlas getTextureMap() {
     return Minecraft.getInstance()
         .getAtlasManager()
-        .getAtlasOrThrow(net.minecraft.client.renderer.Sheets.BLOCKS_MAPPER.sheet());
+        .getAtlasOrThrow(net.minecraft.data.AtlasIds.BLOCKS);
   }
 
   public static TextureAtlasSprite getMissingSprite() {

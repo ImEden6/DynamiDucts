@@ -173,7 +173,7 @@ public class TransportSectionRenderer {
         p ->
             Minecraft.getInstance()
                 .getAtlasManager()
-                .getAtlasOrThrow(net.minecraft.client.renderer.Sheets.BLOCKS_MAPPER.sheet())
+                .getAtlasOrThrow(net.minecraft.data.AtlasIds.BLOCKS)
                 .getSprite(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, p)));
   }
 

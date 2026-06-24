@@ -297,17 +297,14 @@ public class DDModelProvider extends ModelProvider {
 
     blockModels.blockStateOutput.accept(multipart);
 
-    // Register block item model
+    // Register block item model - references the center block model
     Item item = block.asItem();
     Identifier itemModelLoc = ModelLocationUtils.getModelLocation(item);
     itemModels.modelOutput.accept(
         itemModelLoc,
         () -> {
           JsonObject json = new JsonObject();
-          json.addProperty("parent", "minecraft:builtin/entity");
-          JsonObject textures = new JsonObject();
-          textures.addProperty("particle", texture.toString());
-          json.add("textures", textures);
+          json.addProperty("parent", centerModelLoc.toString());
           return json;
         });
     itemModels.itemModelOutput.accept(item, ItemModelUtils.plainModel(itemModelLoc));

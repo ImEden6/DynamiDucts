@@ -19,6 +19,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.data.AtlasIds;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Direction;
@@ -885,7 +886,7 @@ public class DuctBlockEntityRenderer
         p ->
             Minecraft.getInstance()
                 .getAtlasManager()
-                .getAtlasOrThrow(Sheets.BLOCKS_MAPPER.sheet())
+                .getAtlasOrThrow(AtlasIds.BLOCKS)
                 .getSprite(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, p)));
   }
 
