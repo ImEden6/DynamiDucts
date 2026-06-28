@@ -207,7 +207,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 tasks.register('runObjWriterTest', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'com.mervyn.dynamiducts.ccl.render.model.OBJWriterTest'
+    mainClass = 'com.mervyn.thermaducts.ccl.render.model.OBJWriterTest'
     javaLauncher = javaToolchains.launcherFor {
         languageVersion = JavaLanguageVersion.of(25)
     }
