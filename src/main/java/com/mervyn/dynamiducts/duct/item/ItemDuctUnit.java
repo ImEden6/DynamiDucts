@@ -68,8 +68,10 @@ public class ItemDuctUnit extends DuctUnit<ItemDuctUnit, ItemGrid, ResourceHandl
   @Override
   public ResourceHandler<ItemResource> cacheTile(Direction side) {
     if (parent.getLevel() == null) return null;
-    return parent.getLevel().getCapability(
-        Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
+    return parent
+        .getLevel()
+        .getCapability(
+            Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
   }
 
   public boolean insertItem(ItemStack stack, Direction entrySide) {

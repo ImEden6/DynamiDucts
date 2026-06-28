@@ -1,13 +1,18 @@
 package com.mervyn.dynamiducts.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.serialization.MapCodec;
 import java.util.function.Consumer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
+import net.minecraft.client.renderer.special.SpecialModelRenderer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.block.Block;
 
-public class DuctBlockItemRenderer implements NoDataSpecialModelRenderer {
+public class DuctBlockItemRenderer implements SpecialModelRenderer<DuctBlockEntityRenderer.DuctRenderState> {
 
   private static DuctBlockItemRenderer instance;
+  private static DuctBlockEntityRenderer delegateRenderer;
 
   private DuctBlockItemRenderer() {}
 
@@ -18,24 +23,54 @@ public class DuctBlockItemRenderer implements NoDataSpecialModelRenderer {
     return instance;
   }
 
+  private static DuctBlockEntityRenderer getDelegate() {
+    if (delegateRenderer == null) {
+      delegateRenderer = new DuctBlockEntityRenderer(null);
+    }
+    return delegateRenderer;
+  }
+
+  public static class Unbaked implements SpecialModelRenderer.Unbaked<DuctBlockEntityRenderer.DuctRenderState> {
+    public static final MapCodec<Unbaked> MAP_CODEC = MapCodec.unit(new Unbaked());
+
+    @Override
+    public MapCodec<Unbaked> type() {
+      return MAP_CODEC;
+    }
+
+    @Override
+    public SpecialModelRenderer<DuctBlockEntityRenderer.DuctRenderState> bake(
+        net.minecraft.client.renderer.special.SpecialModelRenderer.BakingContext context) {
+      return DuctBlockItemRenderer.get();
+    }
+  }
+
+  @Override
+  public DuctBlockEntityRenderer.DuctRenderState extractArgument(ItemStack stack) {
+    DuctBlockEntityRenderer.DuctRenderState state = new DuctBlockEntityRenderer.DuctRenderState();
+    state.itemRender = true;
+    state.connectionMask = 0; // Center block only
+    state.partialTick = 0.0f;
+    if (stack.getItem() instanceof BlockItem blockItem) {
+      Block block = blockItem.getBlock();
+      state.blockState = block.defaultBlockState();
+      state.tex = DuctBlockEntityRenderer.getDuctTextures(block);
+    }
+    return state;
+  }
+
   @Override
   public void submit(
+      DuctBlockEntityRenderer.DuctRenderState state,
       PoseStack poseStack,
       SubmitNodeCollector collector,
       int packedLight,
       int packedOverlay,
       boolean hasFoil,
       int color) {
-    // We do not have direct access to ItemStack here since this is NoDataSpecialModelRenderer.
-    // Wait, how do we get the item stack or blockItem?
-    // Ah! NoDataSpecialModelRenderer is registered per-item, but wait!
-    // We need to know which block item we are rendering!
-    // If we implement SpecialModelRenderer<DuctBlockEntityRenderer.DuctRenderState> instead, we can
-    // extract it from the item stack!
-    // Yes! Implementing SpecialModelRenderer allows us to use extractArgument(ItemStack stack) to
-    // get/prepare the state!
-    // Let's implement SpecialModelRenderer<DuctBlockEntityRenderer.DuctRenderState> instead of
-    // NoDataSpecialModelRenderer!
+    // Set lightCoords on the state since it is passed into DuctBlockEntityRenderer methods
+    state.lightCoords = packedLight;
+    getDelegate().submit(state, poseStack, collector, null);
   }
 
   @Override

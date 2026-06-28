@@ -2,10 +2,10 @@ package com.mervyn.dynamiducts;
 
 import com.mervyn.dynamiducts.block.DuctBlock;
 import com.mervyn.dynamiducts.block.DuctHitHelper;
-import com.mervyn.dynamiducts.gametest.DDGameTestFunctions;
 import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
 import com.mervyn.dynamiducts.client.renderer.DuctBlockEntityRenderer;
 import com.mervyn.dynamiducts.client.renderer.ItemDuctRenderer;
+import com.mervyn.dynamiducts.gametest.DDGameTestFunctions;
 import com.mervyn.dynamiducts.init.DDAttachments;
 import com.mervyn.dynamiducts.init.DDBlockEntities;
 import com.mervyn.dynamiducts.init.DDBlocks;
@@ -154,10 +154,14 @@ public class DynamiDucts {
 
     @SubscribeEvent
     public static void registerItemExtensions(RegisterClientExtensionsEvent event) {
-      // TODO Item rendering uses the block center model via data gen (DDModelProvider).
-      // The generated item model at models/item/<id>.json references the block's _center model,
-      // and the item definition at items/<id>.json uses "type": "minecraft:model".
-      // Future enhancement: implement a SpecialModelRenderer for more detailed item rendering.
+      // Custom item extensions if needed.
+    }
+
+    @SubscribeEvent
+    public static void registerSpecialModelRenderers(net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent event) {
+      event.register(
+          net.minecraft.resources.Identifier.fromNamespaceAndPath(MODID, "duct_block_item_renderer"),
+          com.mervyn.dynamiducts.client.renderer.DuctBlockItemRenderer.Unbaked.MAP_CODEC);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

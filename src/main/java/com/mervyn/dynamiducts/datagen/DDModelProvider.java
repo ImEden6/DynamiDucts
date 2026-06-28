@@ -307,7 +307,11 @@ public class DDModelProvider extends ModelProvider {
           json.addProperty("parent", centerModelLoc.toString());
           return json;
         });
-    itemModels.itemModelOutput.accept(item, ItemModelUtils.plainModel(itemModelLoc));
+    itemModels.itemModelOutput.accept(
+        item,
+        ItemModelUtils.specialModel(
+            centerModelLoc,
+            new com.mervyn.dynamiducts.client.renderer.DuctBlockItemRenderer.Unbaked()));
   }
 
   private Identifier armModel(

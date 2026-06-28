@@ -77,9 +77,14 @@ public class FluidGridTank implements ResourceHandler<FluidResource> {
     if (toFill > 0) {
       new SnapshotJournal<FluidStack>() {
         @Override
-        protected FluidStack createSnapshot() { return before; }
+        protected FluidStack createSnapshot() {
+          return before;
+        }
+
         @Override
-        protected void revertToSnapshot(FluidStack snapshot) { fluid = snapshot; }
+        protected void revertToSnapshot(FluidStack snapshot) {
+          fluid = snapshot;
+        }
       }.updateSnapshots(ctx);
     }
     return toFill;
@@ -98,9 +103,14 @@ public class FluidGridTank implements ResourceHandler<FluidResource> {
       }
       new SnapshotJournal<FluidStack>() {
         @Override
-        protected FluidStack createSnapshot() { return before; }
+        protected FluidStack createSnapshot() {
+          return before;
+        }
+
         @Override
-        protected void revertToSnapshot(FluidStack snapshot) { fluid = snapshot; }
+        protected void revertToSnapshot(FluidStack snapshot) {
+          fluid = snapshot;
+        }
       }.updateSnapshots(ctx);
     }
     return drained;

@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.redstone.Orientation;
 
 public class LuxDuctBlock extends StructuralDuctBlock {
 
@@ -26,14 +27,15 @@ public class LuxDuctBlock extends StructuralDuctBlock {
     builder.add(LIT);
   }
 
+  @Override
   protected void neighborChanged(
       BlockState state,
       Level level,
       BlockPos pos,
       Block neighborBlock,
-      BlockPos neighborPos,
+      Orientation orientation,
       boolean movedByPiston) {
-    super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
+    super.neighborChanged(state, level, pos, neighborBlock, orientation, movedByPiston);
     if (!level.isClientSide()) {
       boolean powered = level.hasNeighborSignal(pos);
       if (state.getValue(LIT) != powered) {

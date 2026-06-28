@@ -20,7 +20,6 @@ public class DDEntityTypes {
               EntityType.Builder.<TransportEntity>of(TransportEntity::new, MobCategory.MISC)
                   .sized(0.25F, 0.25F)
                   .noSummon()
-                  .noSave()
                   .fireImmune()
                   .build(
                       net.minecraft.resources.ResourceKey.create(

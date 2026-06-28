@@ -53,8 +53,9 @@ public class ServoFluid extends ConnectionBase {
     var grid = fluidUnit.getGrid();
     if (grid == null) return;
 
-    ResourceHandler<FluidResource> source = level.getCapability(
-        Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
+    ResourceHandler<FluidResource> source =
+        level.getCapability(
+            Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
     if (source == null) return;
 
     int maxInput = tier.fluidDrainAmount();

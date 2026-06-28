@@ -31,9 +31,9 @@ public class TransportMenu extends AbstractContainerMenu {
 
   @SuppressWarnings("this-escape")
   public TransportMenu(
-      int containerId, Inventory playerInv, DuctBlockEntity blockEntity, TransportDuctUnit unit) {
+      int containerId, Inventory playerInv, DuctBlockEntity blockEntity, TransportDuctUnit unit, BlockPos pos) {
     super(DDMenuTypes.TRANSPORT_MENU.get(), containerId);
-    this.ductPos = blockEntity != null ? blockEntity.getBlockPos() : BlockPos.ZERO;
+    this.ductPos = pos;
     this.blockEntity = blockEntity;
     this.transportUnit = unit;
     if (transportUnit != null) {
@@ -61,7 +61,7 @@ public class TransportMenu extends AbstractContainerMenu {
       }
     }
 
-    TransportMenu menu = new TransportMenu(containerId, playerInv, ductBE, unit);
+    TransportMenu menu = new TransportMenu(containerId, playerInv, ductBE, unit, pos);
     menu.currentEntry = currentEntry;
     menu.destinations = dests;
     return menu;
@@ -108,7 +108,7 @@ public class TransportMenu extends AbstractContainerMenu {
 
     serverPlayer.openMenu(
         new SimpleMenuProvider(
-            (id, inv, p) -> new TransportConfigMenu(id, inv, blockEntity, transportUnit),
+            (id, inv, p) -> new TransportConfigMenu(id, inv, blockEntity, transportUnit, ductPos),
             Component.translatable("gui.dynamiducts.transport.config")),
         buf -> buf.writeBlockPos(ductPos));
     return true;

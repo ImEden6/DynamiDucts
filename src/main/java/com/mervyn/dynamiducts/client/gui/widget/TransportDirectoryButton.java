@@ -9,6 +9,7 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
@@ -49,6 +50,7 @@ public class TransportDirectoryButton extends AbstractWidget {
     }
 
     graphics.blit(
+        RenderPipelines.GUI_TEXTURED,
         texture,
         getX(),
         getY(),
@@ -92,7 +94,7 @@ public class TransportDirectoryButton extends AbstractWidget {
   @Override
   public boolean mouseClicked(
       net.minecraft.client.input.MouseButtonEvent event, boolean isClickInside) {
-    if (entry == null || event.button() != 0 || !isClickInside) {
+    if (entry == null || event.button() != 0 || !isMouseOver(event.x(), event.y())) {
       return false;
     }
     playDownSound(Minecraft.getInstance().getSoundManager());

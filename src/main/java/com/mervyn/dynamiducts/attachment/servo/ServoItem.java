@@ -50,8 +50,9 @@ public class ServoItem extends ConnectionBase {
     if (!(unit instanceof ItemDuctUnit itemUnit)) return;
     if (!(itemUnit.getGrid() instanceof ItemGrid grid)) return;
 
-    ResourceHandler<ItemResource> source = level.getCapability(
-        Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
+    ResourceHandler<ItemResource> source =
+        level.getCapability(
+            Capabilities.Item.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
     if (source == null) return;
 
     int maxSend = filter.getMaxStockOrDefault(tier.stackSize());

@@ -5,7 +5,6 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 public class DDDataGenerators {
 
   public static void gatherDataClient(GatherDataEvent.Client event) {
-    event.createProvider(DDLanguageProvider::new);
     event.createProvider(DDModelProvider::new);
   }
 

@@ -7,6 +7,7 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarratedElementType;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.input.MouseButtonEvent;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.Identifier;
@@ -46,7 +47,16 @@ public class SheetButton extends AbstractWidget {
       GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
     Frame frame = frameSupplier.get();
     graphics.blit(
-        texture, getX(), getY(), frame.u(), frame.v(), width, height, textureWidth, textureHeight);
+        RenderPipelines.GUI_TEXTURED,
+        texture,
+        getX(),
+        getY(),
+        frame.u(),
+        frame.v(),
+        width,
+        height,
+        textureWidth,
+        textureHeight);
 
     Component tooltip = tooltipSupplier.get();
     if (tooltip != null && isMouseOver(mouseX, mouseY)) {

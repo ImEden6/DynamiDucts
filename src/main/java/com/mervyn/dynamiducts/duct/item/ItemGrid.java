@@ -186,7 +186,8 @@ public class ItemGrid extends NetworkGrid<ItemDuctUnit> {
     currentUnit.addTravelingItem(item);
   }
 
-  private ItemStack insertIntoHandler(ResourceHandler<ItemResource> handler, ItemStack stack, boolean simulate) {
+  private ItemStack insertIntoHandler(
+      ResourceHandler<ItemResource> handler, ItemStack stack, boolean simulate) {
     ItemResource resource = ItemResource.of(stack);
     int amount = stack.getCount();
     for (int i = 0; i < handler.size() && amount > 0; i++) {

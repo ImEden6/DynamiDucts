@@ -61,7 +61,7 @@ public class TransportDuctBlock extends DuctBlock {
 
   @Override
   protected boolean canRenderConnection(
-      net.minecraft.world.level.LevelAccessor level,
+      net.minecraft.world.level.LevelReader level,
       BlockPos pos,
       net.minecraft.core.Direction direction) {
     if (level.getBlockEntity(pos) instanceof DuctBlockEntity ductBE) {
@@ -82,7 +82,7 @@ public class TransportDuctBlock extends DuctBlock {
         if (player instanceof ServerPlayer serverPlayer) {
           serverPlayer.openMenu(
               new SimpleMenuProvider(
-                  (id, inv, p) -> new TransportMenu(id, inv, ductBE, unit),
+                  (id, inv, p) -> new TransportMenu(id, inv, ductBE, unit, pos),
                   Component.translatable("gui.dynamiducts.transport.title")),
               buf -> TransportMenu.writeScreenData(buf, unit, pos));
           return InteractionResult.SUCCESS;

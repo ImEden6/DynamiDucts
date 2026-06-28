@@ -47,7 +47,10 @@ public class SuperConductorGrid extends EnergyGrid {
   }
 
   private int distributeToOthers(
-      EnergyDuctUnit sourceNode, int available, List<EnergyDuctUnit> snapshot, TransactionContext ctx) {
+      EnergyDuctUnit sourceNode,
+      int available,
+      List<EnergyDuctUnit> snapshot,
+      TransactionContext ctx) {
     int totalSent = 0;
     for (EnergyDuctUnit targetNode : snapshot) {
       if (targetNode == sourceNode) continue;

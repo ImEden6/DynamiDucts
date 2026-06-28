@@ -26,9 +26,10 @@ public class TransportConfigMenu extends AbstractContainerMenu {
       int containerId,
       Inventory playerInv,
       DuctBlockEntity blockEntity,
-      TransportDuctUnit transportUnit) {
+      TransportDuctUnit transportUnit,
+      BlockPos pos) {
     super(DDMenuTypes.TRANSPORT_CONFIG_MENU.get(), containerId);
-    this.ductPos = blockEntity != null ? blockEntity.getBlockPos() : BlockPos.ZERO;
+    this.ductPos = pos;
     this.blockEntity = blockEntity;
     this.transportUnit = transportUnit;
 
@@ -41,7 +42,7 @@ public class TransportConfigMenu extends AbstractContainerMenu {
     BlockPos pos = buf.readBlockPos();
     if (playerInv.player.level().getBlockEntity(pos) instanceof DuctBlockEntity ductBE
         && ductBE.getDuctUnit(DuctToken.TRANSPORT) instanceof TransportDuctUnit transportUnit) {
-      return new TransportConfigMenu(containerId, playerInv, ductBE, transportUnit);
+      return new TransportConfigMenu(containerId, playerInv, ductBE, transportUnit, pos);
     }
     return null;
   }

@@ -17,7 +17,8 @@ import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
-public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, ResourceHandler<FluidResource>> {
+public class FluidDuctUnit
+    extends DuctUnit<FluidDuctUnit, FluidGrid, ResourceHandler<FluidResource>> {
 
   private final int capacityPerDuct;
   private final int throughputPerDuct;
@@ -62,8 +63,10 @@ public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, ResourceHa
   @Override
   public ResourceHandler<FluidResource> cacheTile(Direction side) {
     if (parent.getLevel() == null) return null;
-    return parent.getLevel().getCapability(
-        Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
+    return parent
+        .getLevel()
+        .getCapability(
+            Capabilities.Fluid.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
   }
 
   public ResourceHandler<FluidResource> createCapability(Direction side) {
@@ -100,11 +103,17 @@ public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, ResourceHa
         if (result > 0) {
           new SnapshotJournal<Void>() {
             @Override
-            protected Void createSnapshot() { return null; }
+            protected Void createSnapshot() {
+              return null;
+            }
+
             @Override
             protected void revertToSnapshot(Void snapshot) {}
+
             @Override
-            protected void onRootCommit(Void snapshot) { grid.syncVisualIfChanged(); }
+            protected void onRootCommit(Void snapshot) {
+              grid.syncVisualIfChanged();
+            }
           }.updateSnapshots(ctx);
         }
         return result;
@@ -117,11 +126,17 @@ public class FluidDuctUnit extends DuctUnit<FluidDuctUnit, FluidGrid, ResourceHa
         if (result > 0) {
           new SnapshotJournal<Void>() {
             @Override
-            protected Void createSnapshot() { return null; }
+            protected Void createSnapshot() {
+              return null;
+            }
+
             @Override
             protected void revertToSnapshot(Void snapshot) {}
+
             @Override
-            protected void onRootCommit(Void snapshot) { grid.syncVisualIfChanged(); }
+            protected void onRootCommit(Void snapshot) {
+              grid.syncVisualIfChanged();
+            }
           }.updateSnapshots(ctx);
         }
         return result;

@@ -13,13 +13,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -33,6 +35,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -186,21 +189,24 @@ public abstract class DuctBlock extends Block implements EntityBlock, SimpleWate
         .setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
   }
 
+  @Override
   protected BlockState updateShape(
       BlockState state,
-      Direction direction,
-      BlockState neighborState,
-      LevelAccessor level,
+      LevelReader level,
+      ScheduledTickAccess tickAccess,
       BlockPos pos,
-      BlockPos neighborPos) {
+      Direction direction,
+      BlockPos neighborPos,
+      BlockState neighborState,
+      RandomSource random) {
     if (state.getValue(WATERLOGGED)) {
-      level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+      tickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
     }
     return state.setValue(
         PROPERTY_BY_DIRECTION.get(direction), canRenderConnection(level, pos, direction));
   }
 
-  protected boolean canConnectTo(LevelAccessor level, BlockPos pos, Direction direction) {
+  protected boolean canConnectTo(LevelReader level, BlockPos pos, Direction direction) {
     BlockPos neighborPos = pos.relative(direction);
     BlockState neighborState = level.getBlockState(neighborPos);
 
@@ -216,7 +222,7 @@ public abstract class DuctBlock extends Block implements EntityBlock, SimpleWate
     return canConnectToExternal(level, pos, direction, neighborPos);
   }
 
-  protected boolean canRenderConnection(LevelAccessor level, BlockPos pos, Direction direction) {
+  protected boolean canRenderConnection(LevelReader level, BlockPos pos, Direction direction) {
     if (level.getBlockEntity(pos) instanceof DuctBlockEntity ductBE
         && !ductBE.getConnectionType(direction).allowsTransfer()) {
       return false;
@@ -224,7 +230,7 @@ public abstract class DuctBlock extends Block implements EntityBlock, SimpleWate
     return canConnectTo(level, pos, direction);
   }
 
-  public BlockState updateVisualConnections(LevelAccessor level, BlockPos pos, BlockState state) {
+  public BlockState updateVisualConnections(LevelReader level, BlockPos pos, BlockState state) {
     for (Direction dir : Direction.values()) {
       state = state.setValue(PROPERTY_BY_DIRECTION.get(dir), canRenderConnection(level, pos, dir));
     }
@@ -249,16 +255,17 @@ public abstract class DuctBlock extends Block implements EntityBlock, SimpleWate
   }
 
   protected boolean canConnectToExternal(
-      LevelAccessor level, BlockPos pos, Direction direction, BlockPos neighborPos) {
+      LevelReader level, BlockPos pos, Direction direction, BlockPos neighborPos) {
     return false;
   }
 
+  @Override
   protected void neighborChanged(
       BlockState state,
       Level level,
       BlockPos pos,
       Block neighborBlock,
-      BlockPos neighborPos,
+      Orientation orientation,
       boolean movedByPiston) {
     if (!level.isClientSide()) {
       BlockState updatedState = updateVisualConnections(level, pos, state);
@@ -339,7 +346,7 @@ public abstract class DuctBlock extends Block implements EntityBlock, SimpleWate
 
   @Override
   protected RenderShape getRenderShape(BlockState state) {
-    return RenderShape.MODEL;
+    return RenderShape.INVISIBLE;
   }
 
   @Override

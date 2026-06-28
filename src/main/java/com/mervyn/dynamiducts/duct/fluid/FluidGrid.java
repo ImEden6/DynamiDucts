@@ -196,7 +196,8 @@ public class FluidGrid extends NetworkGrid<FluidDuctUnit> {
 
   public void syncVisualIfChanged() {
     FluidResource res = tank.getResource(0);
-    FluidStack current = res.isEmpty() ? FluidStack.EMPTY : res.toStack((int) tank.getAmountAsLong(0));
+    FluidStack current =
+        res.isEmpty() ? FluidStack.EMPTY : res.toStack((int) tank.getAmountAsLong(0));
     int renderLevel = getRenderLevel();
     if (isSameVisual(lastSyncedFluid, current) && lastSyncedRenderLevel == renderLevel) return;
 

@@ -176,7 +176,6 @@ public class TransportScreen extends AbstractContainerScreen<TransportMenu> {
   @Override
   public void extractRenderState(
       GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
-    extractBackground(graphics, mouseX, mouseY, partialTick);
     super.extractRenderState(graphics, mouseX, mouseY, partialTick);
     extractTooltip(graphics, mouseX, mouseY);
   }

@@ -120,8 +120,7 @@ public class DDItems {
       ITEMS.registerItem(
           "fluid_duct_basic",
           props ->
-              new DuctBlockItem(
-                  DDBlocks.FLUID_DUCT_BASIC.get(), props, TIP_FLUID, TIP_FLUID_BASIC),
+              new DuctBlockItem(DDBlocks.FLUID_DUCT_BASIC.get(), props, TIP_FLUID, TIP_FLUID_BASIC),
           () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> FLUID_DUCT_BASIC_OPAQUE =
       ITEMS.registerItem(
@@ -244,9 +243,7 @@ public class DDItems {
           "item_duct_energy",
           props ->
               new DuctBlockItem(
-                  DDBlocks.ITEM_DUCT_ENERGY.get(),
-                  props.rarity(Rarity.UNCOMMON),
-                  TIP_ITEM_ENERGY),
+                  DDBlocks.ITEM_DUCT_ENERGY.get(), props.rarity(Rarity.UNCOMMON), TIP_ITEM_ENERGY),
           () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> ITEM_DUCT_ENERGY_OPAQUE =
       ITEMS.registerItem(
@@ -310,9 +307,7 @@ public class DDItems {
           "transport_duct_frame",
           props ->
               new DuctBlockItem(
-                  DDBlocks.TRANSPORT_DUCT_FRAME.get(),
-                  props.rarity(Rarity.UNCOMMON),
-                  TIP_CRAFTING),
+                  DDBlocks.TRANSPORT_DUCT_FRAME.get(), props.rarity(Rarity.UNCOMMON), TIP_CRAFTING),
           () -> new Item.Properties());
 
   public static final DeferredItem<DuctBlockItem> STRUCTURAL_DUCT =
@@ -323,192 +318,255 @@ public class DDItems {
   public static final DeferredItem<DuctBlockItem> LUX_DUCT =
       ITEMS.registerItem(
           "lux_duct",
-          props ->
-              new DuctBlockItem(
-                  DDBlocks.LUX_DUCT.get(), props, "info.dynamiducts.duct.light"),
+          props -> new DuctBlockItem(DDBlocks.LUX_DUCT.get(), props, "info.dynamiducts.duct.light"),
           () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> SERVO_BASIC =
       ITEMS.registerItem(
           "servo_basic",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
-              AttachmentTier.BASIC,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.BASIC),
-                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.BASIC)),
-              "info.dynamiducts.servo.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.SERVO,
+                  AttachmentTier.BASIC,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.BASIC),
+                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.BASIC)),
+                  "info.dynamiducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_HARDENED =
       ITEMS.registerItem(
           "servo_hardened",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
-              AttachmentTier.HARDENED,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.HARDENED),
-                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.HARDENED)),
-              "info.dynamiducts.servo.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.SERVO,
+                  AttachmentTier.HARDENED,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.HARDENED),
+                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.HARDENED)),
+                  "info.dynamiducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_REINFORCED =
       ITEMS.registerItem(
           "servo_reinforced",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
-              AttachmentTier.REINFORCED,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.REINFORCED),
-                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.REINFORCED)),
-              "info.dynamiducts.servo.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.SERVO,
+                  AttachmentTier.REINFORCED,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.REINFORCED),
+                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.REINFORCED)),
+                  "info.dynamiducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_SIGNALUM =
       ITEMS.registerItem(
           "servo_signalum",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
-              AttachmentTier.SIGNALUM,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.SIGNALUM),
-                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.SIGNALUM)),
-              "info.dynamiducts.servo.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.SERVO,
+                  AttachmentTier.SIGNALUM,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.SIGNALUM),
+                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.SIGNALUM)),
+                  "info.dynamiducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_RESONANT =
       ITEMS.registerItem(
           "servo_resonant",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.SERVO,
-              AttachmentTier.RESONANT,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.RESONANT),
-                      (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.RESONANT)),
-              "info.dynamiducts.servo.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.SERVO,
+                  AttachmentTier.RESONANT,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.RESONANT),
+                          (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.RESONANT)),
+                  "info.dynamiducts.servo.info"),
           () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> FILTER_BASIC =
       ITEMS.registerItem(
           "filter_basic",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
-              AttachmentTier.BASIC, false,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.BASIC),
-                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.BASIC)),
-              "info.dynamiducts.filter.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.FILTER,
+                  AttachmentTier.BASIC,
+                  false,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.BASIC),
+                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.BASIC)),
+                  "info.dynamiducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_HARDENED =
       ITEMS.registerItem(
           "filter_hardened",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
-              AttachmentTier.HARDENED, false,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.HARDENED),
-                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.HARDENED)),
-              "info.dynamiducts.filter.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.FILTER,
+                  AttachmentTier.HARDENED,
+                  false,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.HARDENED),
+                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.HARDENED)),
+                  "info.dynamiducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_REINFORCED =
       ITEMS.registerItem(
           "filter_reinforced",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
-              AttachmentTier.REINFORCED, false,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.REINFORCED),
-                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.REINFORCED)),
-              "info.dynamiducts.filter.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.FILTER,
+                  AttachmentTier.REINFORCED,
+                  false,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.REINFORCED),
+                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.REINFORCED)),
+                  "info.dynamiducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_SIGNALUM =
       ITEMS.registerItem(
           "filter_signalum",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
-              AttachmentTier.SIGNALUM, false,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.SIGNALUM),
-                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.SIGNALUM)),
-              "info.dynamiducts.filter.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.FILTER,
+                  AttachmentTier.SIGNALUM,
+                  false,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.SIGNALUM),
+                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.SIGNALUM)),
+                  "info.dynamiducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_RESONANT =
       ITEMS.registerItem(
           "filter_resonant",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.FILTER,
-              AttachmentTier.RESONANT, false,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.RESONANT),
-                      (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.RESONANT)),
-              "info.dynamiducts.filter.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.FILTER,
+                  AttachmentTier.RESONANT,
+                  false,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.RESONANT),
+                          (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.RESONANT)),
+                  "info.dynamiducts.filter.info"),
           () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> RETRIEVER_BASIC =
       ITEMS.registerItem(
           "retriever_basic",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-              AttachmentTier.BASIC,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.BASIC),
-                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.BASIC)),
-              "info.dynamiducts.retriever.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+                  AttachmentTier.BASIC,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.BASIC),
+                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.BASIC)),
+                  "info.dynamiducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_HARDENED =
       ITEMS.registerItem(
           "retriever_hardened",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-              AttachmentTier.HARDENED,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.HARDENED),
-                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.HARDENED)),
-              "info.dynamiducts.retriever.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+                  AttachmentTier.HARDENED,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.HARDENED),
+                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.HARDENED)),
+                  "info.dynamiducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_REINFORCED =
       ITEMS.registerItem(
           "retriever_reinforced",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-              AttachmentTier.REINFORCED,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.REINFORCED),
-                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.REINFORCED)),
-              "info.dynamiducts.retriever.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+                  AttachmentTier.REINFORCED,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.REINFORCED),
+                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.REINFORCED)),
+                  "info.dynamiducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_SIGNALUM =
       ITEMS.registerItem(
           "retriever_signalum",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-              AttachmentTier.SIGNALUM,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.SIGNALUM),
-                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.SIGNALUM)),
-              "info.dynamiducts.retriever.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+                  AttachmentTier.SIGNALUM,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.SIGNALUM),
+                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.SIGNALUM)),
+                  "info.dynamiducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_RESONANT =
       ITEMS.registerItem(
           "retriever_resonant",
-          props -> new AttachmentItem(props, DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
-              AttachmentTier.RESONANT,
-              (be, side) ->
-                  AttachmentPlacementHelper.createTransferAttachment(
-                      be, side,
-                      (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.RESONANT),
-                      (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.RESONANT)),
-              "info.dynamiducts.retriever.info"),
+          props ->
+              new AttachmentItem(
+                  props,
+                  DDTooltipHelper.AttachmentTooltipType.RETRIEVER,
+                  AttachmentTier.RESONANT,
+                  (be, side) ->
+                      AttachmentPlacementHelper.createTransferAttachment(
+                          be,
+                          side,
+                          (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.RESONANT),
+                          (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.RESONANT)),
+                  "info.dynamiducts.retriever.info"),
           () -> new Item.Properties());
 
   public static final DeferredItem<RelayItem> RELAY =
@@ -516,9 +574,7 @@ public class DDItems {
 
   public static final DeferredItem<WrenchItem> WRENCH =
       ITEMS.registerItem(
-          "wrench",
-          props -> new WrenchItem(props.stacksTo(1)),
-          () -> new Item.Properties());
+          "wrench", props -> new WrenchItem(props.stacksTo(1)), () -> new Item.Properties());
 
   public static final DeferredItem<Item> LEAD_INGOT = ITEMS.registerSimpleItem("lead_ingot");
   public static final DeferredItem<Item> LEAD_NUGGET = ITEMS.registerSimpleItem("lead_nugget");

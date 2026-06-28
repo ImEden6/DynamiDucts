@@ -52,10 +52,10 @@ public class EnergyDuctUnit extends DuctUnit<EnergyDuctUnit, EnergyGrid, EnergyH
   @Override
   public EnergyHandler cacheTile(Direction side) {
     if (parent.getLevel() == null) return null;
-    return parent.getLevel().getCapability(
-        Capabilities.Energy.BLOCK,
-        parent.getBlockPos().relative(side),
-        side.getOpposite());
+    return parent
+        .getLevel()
+        .getCapability(
+            Capabilities.Energy.BLOCK, parent.getBlockPos().relative(side), side.getOpposite());
   }
 
   @Override

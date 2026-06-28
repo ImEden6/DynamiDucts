@@ -19,10 +19,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.data.AtlasIds;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Direction;
+import net.minecraft.data.AtlasIds;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -309,7 +309,10 @@ public class DuctBlockEntityRenderer
         renderType,
         (pose, consumer) -> {
           ccrs.reset();
-          ccrs.bind(consumer, renderType.format());
+          ccrs.bind(
+              new com.mervyn.dynamiducts.ccl.render.buffer.TransformingVertexConsumer(
+                  consumer, new com.mervyn.dynamiducts.ccl.vec.Matrix4(pose.pose())),
+              renderType.format());
           ccrs.brightness = brightness;
           ccrs.overlay = overlay;
           ccrs.baseColour = baseColour;
@@ -625,8 +628,9 @@ public class DuctBlockEntityRenderer
             rgba(255, 255, 255, tex.frameFluidAlpha),
             () -> {
               for (Direction dir : Direction.values()) {
-                if (isConnected(be, be.getBlockState(), dir)
-                    && shouldRenderConnectionDetail(be, be.getBlockState(), dir)) {
+                BlockState blockState = be != null ? be.getBlockState() : null;
+                if (isConnected(be, blockState, dir)
+                    && shouldRenderConnectionDetail(be, blockState, dir)) {
                   DuctModels.modelFrame[70 + dir.ordinal()].render(ccrs, trans, frameFluidIcon);
                 }
               }
@@ -668,6 +672,7 @@ public class DuctBlockEntityRenderer
       int connectionMask,
       boolean itemRender,
       int packedLight) {
+    if (be == null) return;
     var fluidUnit = be.getDuctUnit(DuctToken.FLUID);
     if (fluidUnit instanceof FluidDuctUnit fdu && fdu.isTransparent()) {
       FluidStack fluid = fdu.getVisualFluid();
@@ -799,6 +804,7 @@ public class DuctBlockEntityRenderer
       PoseStack poseStack,
       Translation trans,
       int packedLight) {
+    if (be == null) return;
     Attachment[] attachments = be.getAttachments();
     if (attachments == null) return;
 
@@ -847,6 +853,11 @@ public class DuctBlockEntityRenderer
     }
   }
 
+  public static DuctTextures getDuctTextures(Block block) {
+    String path = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block).getPath();
+    return DUCT_TEX.getOrDefault(path, DUCT_TEX.get("structural_duct"));
+  }
+
   protected int getConnectionMask(DuctBlockEntity be, BlockState state) {
     int mask = 0;
     for (Direction dir : Direction.values()) {
@@ -858,8 +869,9 @@ public class DuctBlockEntityRenderer
   }
 
   private boolean isConnected(DuctBlockEntity be, BlockState state, Direction dir) {
+    if (state == null) return false;
     return state.getValue(DuctBlock.PROPERTY_BY_DIRECTION.get(dir))
-        || be.getAttachment(dir) != null;
+        || (be != null && be.getAttachment(dir) != null);
   }
 
   private boolean shouldRenderConnectionDetail(
@@ -867,7 +879,7 @@ public class DuctBlockEntityRenderer
     if (!isConnected(be, state, dir)) {
       return false;
     }
-    if (be.getLevel() == null) {
+    if (be == null || be.getLevel() == null) {
       return true;
     }
 
