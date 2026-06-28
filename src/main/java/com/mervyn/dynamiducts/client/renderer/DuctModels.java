@@ -35,7 +35,6 @@ public class DuctModels {
 
   public static void init() {
     if (initialized) return;
-    initialized = true;
 
     try {
       generateCenter();
@@ -43,6 +42,7 @@ public class DuctModels {
       generateTubes();
       generateFluidModels();
       generateFrames();
+      initialized = true;
     } catch (Exception e) {
       throw new IllegalStateException("Failed to generate duct models.", e);
     }

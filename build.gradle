@@ -62,14 +62,12 @@ neoForge {
         data {
             clientData()
 
-
             // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
             // gameDirectory = project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
-
 
         // applies to all the run configs above
         configureEach {
@@ -114,7 +112,12 @@ processResources {
 
 dependencies {
     implementation "net.neoforged:neoforge:${project.neo_version}"
-    implementation 'net.covers1624:Quack:0.4.10.115'
+    jarJar(implementation('net.covers1624:Quack:0.4.10.115')) {
+        version {
+            strictly '[0.4.10,0.5)'
+            prefer '0.4.10.115'
+        }
+    }
     implementation("curse.maven:jade-324717:8251883") {
         transitive = false
     }
@@ -123,12 +126,16 @@ dependencies {
     }
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.mockito:mockito-core:5.12.0'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.12.0'
+    testImplementation 'org.mockito:mockito-core:5.20.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.20.0'
 }
 
 tasks.withType(Test).configureEach {
     useJUnitPlatform()
+}
+
+configurations.testRuntimeClasspath {
+    exclude group: 'net.covers1624', module: 'Quack'
 }
 
 

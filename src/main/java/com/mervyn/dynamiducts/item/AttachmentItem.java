@@ -5,7 +5,7 @@ import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
 import com.mervyn.dynamiducts.core.attachment.Attachment;
 import com.mervyn.dynamiducts.core.attachment.AttachmentPlacementHelper;
 import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.mixin.UseOnContextAccessor;
+import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
 import java.util.function.BiFunction;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;

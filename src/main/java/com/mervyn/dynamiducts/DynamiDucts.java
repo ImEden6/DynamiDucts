@@ -68,7 +68,6 @@ public class DynamiDucts {
     modEventBus.addListener(this::registerPayloads);
 
     modEventBus.addListener(com.mervyn.dynamiducts.datagen.DDDataGenerators::gatherDataClient);
-    modEventBus.addListener(com.mervyn.dynamiducts.datagen.DDDataGenerators::gatherDataServer);
 
     modContainer.registerConfig(ModConfig.Type.COMMON, MNConfig.SPEC);
   }

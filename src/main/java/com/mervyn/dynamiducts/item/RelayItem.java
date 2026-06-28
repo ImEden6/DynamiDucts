@@ -3,7 +3,7 @@ package com.mervyn.dynamiducts.item;
 import com.mervyn.dynamiducts.attachment.relay.Relay;
 import com.mervyn.dynamiducts.block.DuctHitHelper;
 import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.mixin.UseOnContextAccessor;
+import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;

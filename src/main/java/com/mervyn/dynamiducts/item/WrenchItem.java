@@ -10,7 +10,7 @@ import com.mervyn.dynamiducts.core.duct.DuctToken;
 import com.mervyn.dynamiducts.core.network.ConnectionType;
 import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
 import com.mervyn.dynamiducts.init.DDItems;
-import com.mervyn.dynamiducts.mixin.UseOnContextAccessor;
+import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;

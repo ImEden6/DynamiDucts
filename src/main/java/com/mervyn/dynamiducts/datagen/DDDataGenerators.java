@@ -6,9 +6,9 @@ public class DDDataGenerators {
 
   public static void gatherDataClient(GatherDataEvent.Client event) {
     event.createProvider(DDModelProvider::new);
-  }
-
-  public static void gatherDataServer(GatherDataEvent.Server event) {
+    // Server-side providers registered here too — in data gen context, both client
+    // and server registries are available in a single JVM. Using a single run config
+    // avoids HashCache cross-run stale-file deletion.
     event.createBlockAndItemTags(DDBlockTagProvider::new, DDItemTagProvider::new);
     event.createProvider(DDLootTableProvider::new);
     event.createProvider(DDRecipeProvider.Runner::new);
