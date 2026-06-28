@@ -69,9 +69,11 @@ public class TransportMenu extends AbstractContainerMenu {
 
   public void refreshDestinations() {
     destinations.clear();
-    if (transportUnit == null) return;
+    if (transportUnit == null)
+      return;
     for (TransportRoute route : transportUnit.getAvailableDestinations()) {
-      if (route.destination.equals(ductPos)) continue;
+      if (route.destination.equals(ductPos))
+        continue;
       if (transportUnit.getGrid() instanceof TransportGrid tg) {
         for (TransportDuctUnit endpoint : tg.getEndpoints()) {
           if (endpoint.getPos().equals(route.destination)) {
@@ -123,8 +125,7 @@ public class TransportMenu extends AbstractContainerMenu {
   public boolean stillValid(Player player) {
     return blockEntity != null
         && !blockEntity.isRemoved()
-        && player.distanceToSqr(ductPos.getX() + 0.5, ductPos.getY() + 0.5, ductPos.getZ() + 0.5)
-            <= 64.0;
+        && player.distanceToSqr(ductPos.getX() + 0.5, ductPos.getY() + 0.5, ductPos.getZ() + 0.5) <= 64.0;
   }
 
   public static void writeScreenData(FriendlyByteBuf buf, TransportDuctUnit unit, BlockPos origin) {
@@ -177,11 +178,10 @@ public class TransportMenu extends AbstractContainerMenu {
     ItemStack icon = ItemStack.EMPTY;
     if (buf.readBoolean()) {
       String idStr = buf.readUtf();
-      icon =
-          BuiltInRegistries.ITEM
-              .get(net.minecraft.resources.Identifier.parse(idStr))
-              .map(holder -> new ItemStack(holder.value()))
-              .orElse(ItemStack.EMPTY);
+      icon = BuiltInRegistries.ITEM
+          .get(net.minecraft.resources.Identifier.parse(idStr))
+          .map(holder -> new ItemStack(holder.value()))
+          .orElse(ItemStack.EMPTY);
     }
     return new TransportDirectoryEntry(pos, name, icon);
   }

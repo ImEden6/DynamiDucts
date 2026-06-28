@@ -3,7 +3,6 @@ plugins {
     id 'maven-publish'
     id 'idea'
     id 'net.neoforged.moddev' version '2.0.141'
-    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 version = mod_version
@@ -206,21 +205,3 @@ tasks.register('runObjWriterTest', JavaExec) {
         languageVersion = JavaLanguageVersion.of(25)
     }
 }
-
-// compileJava {
-//     exclude 'com/mervyn/dynamiducts/datagen/**'
-// }
-
-spotless {
-    java {
-        target 'src/main/java/**/*.java'
-        googleJavaFormat()
-    }
-}
-
-
-
-
-
-
-

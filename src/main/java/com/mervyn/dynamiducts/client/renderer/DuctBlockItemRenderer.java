@@ -14,7 +14,8 @@ public class DuctBlockItemRenderer implements SpecialModelRenderer<DuctBlockEnti
   private static DuctBlockItemRenderer instance;
   private static DuctBlockEntityRenderer delegateRenderer;
 
-  private DuctBlockItemRenderer() {}
+  private DuctBlockItemRenderer() {
+  }
 
   public static DuctBlockItemRenderer get() {
     if (instance == null) {
@@ -68,7 +69,8 @@ public class DuctBlockItemRenderer implements SpecialModelRenderer<DuctBlockEnti
       int packedOverlay,
       boolean hasFoil,
       int color) {
-    // Set lightCoords on the state since it is passed into DuctBlockEntityRenderer methods
+    // Set lightCoords on the state since it is passed into DuctBlockEntityRenderer
+    // methods
     state.lightCoords = packedLight;
     getDelegate().submit(state, poseStack, collector, null);
   }
