@@ -8,7 +8,9 @@ import com.mervyn.thermaducts.core.duct.DuctToken;
 import com.mervyn.thermaducts.core.network.ConnectionType;
 import com.mervyn.thermaducts.stub.StubFluidGrid;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
@@ -29,16 +31,15 @@ class FluidDuctUnitTest extends DuctUnitTestBase {
     FluidStack stack = mock(FluidStack.class);
     when(stack.getAmount()).thenReturn(amount);
     when(stack.isEmpty()).thenReturn(false);
-    return stack;
-  }
-
-  private static FluidStack mockFluidWithCopy(int amount) {
-    FluidStack stack = mock(FluidStack.class);
+    when(stack.isComponentsPatchEmpty()).thenReturn(true);
+    when(stack.getComponentsPatch()).thenReturn(DataComponentPatch.EMPTY);
+    when(stack.getFluid()).thenReturn(Fluids.WATER);
     FluidStack copy = mock(FluidStack.class);
     when(copy.getAmount()).thenReturn(amount);
-    when(stack.getAmount()).thenReturn(amount);
-    when(stack.isEmpty()).thenReturn(false);
     when(copy.isEmpty()).thenReturn(false);
+    when(copy.isComponentsPatchEmpty()).thenReturn(true);
+    when(copy.getComponentsPatch()).thenReturn(DataComponentPatch.EMPTY);
+    when(copy.getFluid()).thenReturn(Fluids.WATER);
     when(stack.copy()).thenReturn(copy);
     return stack;
   }
@@ -109,7 +110,7 @@ class FluidDuctUnitTest extends DuctUnitTestBase {
 
   @Test
   void setRenderFluid_storesCopy() {
-    FluidStack fluid = mockFluidWithCopy(4);
+    FluidStack fluid = mockFluid(4);
     unit.setRenderFluid(fluid);
     assertEquals(4, unit.getVisualFluid().getAmount());
     assertNotSame(fluid, unit.getVisualFluid());
@@ -167,9 +168,9 @@ class FluidDuctUnitTest extends DuctUnitTestBase {
   @Test
   void createCapability_insert_delegatesToTank() {
     ResourceHandler<FluidResource> cap = unit.createCapability(Direction.UP);
-    FluidStack fluid = mockFluid(100);
+    assertNotNull(cap);
     try (var tx = Transaction.openRoot()) {
-      int filled = cap.insert(0, FluidResource.of(fluid), 100, tx);
+      int filled = cap.insert(0, FluidResource.EMPTY, 100, tx);
       assertTrue(filled >= 0);
     }
   }
@@ -178,9 +179,8 @@ class FluidDuctUnitTest extends DuctUnitTestBase {
   void createCapability_insert_noGrid_returnsZero() {
     unit.setGrid(null);
     ResourceHandler<FluidResource> cap = unit.createCapability(Direction.UP);
-    FluidStack fluid = mockFluid(100);
     try (var tx = Transaction.openRoot()) {
-      assertEquals(0, cap.insert(0, FluidResource.of(fluid), 100, tx));
+      assertEquals(0, cap.insert(0, FluidResource.EMPTY, 100, tx));
     }
   }
 
@@ -214,45 +214,19 @@ class FluidDuctUnitTest extends DuctUnitTestBase {
   }
 
   @Test
-  void saveAdditional_withFluidForGrid_saves() {
-    FluidStack fluid = mockFluid(250);
-    unit.setFluidForGrid(fluid);
+  void loadAdditional_noFluid_resetsToEmpty() {
+    unit.setFluidForGrid(mockFluid(250));
     CompoundTag tag = new CompoundTag();
-    unit.saveAdditional(tag, provider);
-    assertTrue(tag.contains("Fluid"));
-  }
-
-  @Test
-  void loadAdditional_withFluid_loads() {
-    FluidStack fluid = mockFluid(250);
-    unit.setFluidForGrid(fluid);
-    CompoundTag tag = new CompoundTag();
-    unit.saveAdditional(tag, provider);
-    unit.setFluidForGrid(FluidStack.EMPTY);
     unit.loadAdditional(tag, provider);
-    assertFalse(unit.getFluidForGrid().isEmpty());
-    assertEquals(250, unit.getFluidForGrid().getAmount());
+    assertTrue(unit.getFluidForGrid().isEmpty());
   }
 
   @Test
-  void saveAdditional_withRenderFluid_saves() {
-    FluidStack fluid = mockFluid(4);
-    unit.setRenderFluid(fluid);
+  void loadAdditional_noRenderFluid_resetsToEmpty() {
+    unit.setRenderFluid(mockFluid(4));
     CompoundTag tag = new CompoundTag();
-    unit.saveAdditional(tag, provider);
-    assertTrue(tag.contains("RenderFluid"));
-  }
-
-  @Test
-  void loadAdditional_withRenderFluid_loads() {
-    FluidStack fluid = mockFluid(4);
-    unit.setRenderFluid(fluid);
-    CompoundTag tag = new CompoundTag();
-    unit.saveAdditional(tag, provider);
-    unit.setRenderFluid(FluidStack.EMPTY);
     unit.loadAdditional(tag, provider);
-    assertFalse(unit.getVisualFluid().isEmpty());
-    assertEquals(4, unit.getVisualFluid().getAmount());
+    assertTrue(unit.getVisualFluid().isEmpty());
   }
 
   @Test

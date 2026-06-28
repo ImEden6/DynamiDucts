@@ -63,4 +63,3 @@ Art and texture assets derived from CoFH projects remain under **CC BY-NC-SA 4.0
 
 - Minecraft 26.1.2
 - NeoForge 26.1.2+
-- CodeChicken Lib

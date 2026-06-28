@@ -121,7 +121,7 @@ public abstract class SideTabWidget extends AbstractWidget {
 
   @Override
   public boolean mouseClicked(MouseButtonEvent event, boolean isClickInside) {
-    if (!active || !visible || !isClickInside || !isValidClickButton(event.buttonInfo())) {
+    if (!active || !visible || !isMouseOver(event.x(), event.y()) || !isValidClickButton(event.buttonInfo())) {
       return false;
     }
     playDownSound(net.minecraft.client.Minecraft.getInstance().getSoundManager());

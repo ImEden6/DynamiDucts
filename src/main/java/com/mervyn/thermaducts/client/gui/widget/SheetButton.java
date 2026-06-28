@@ -66,7 +66,7 @@ public class SheetButton extends AbstractWidget {
 
   @Override
   public boolean mouseClicked(MouseButtonEvent event, boolean isClickInside) {
-    if (!active || !visible || !isClickInside || (event.button() != 0 && event.button() != 1)) {
+    if (!active || !visible || !isMouseOver(event.x(), event.y()) || (event.button() != 0 && event.button() != 1)) {
       return false;
     }
     playDownSound(Minecraft.getInstance().getSoundManager());

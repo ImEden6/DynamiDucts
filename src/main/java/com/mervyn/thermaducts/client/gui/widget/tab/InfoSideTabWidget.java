@@ -84,12 +84,12 @@ public class InfoSideTabWidget extends SideTabWidget {
     }
 
     for (int i = 0; i < visibleLines && firstLine + i < lines.size(); i++) {
-      graphics.text(
-          Minecraft.getInstance().font,
-          lines.get(firstLine + i),
-          getX() + 2,
-          getY() + 20 + i * Minecraft.getInstance().font.lineHeight,
-          textColor());
+      graphics
+          .textRenderer()
+          .accept(
+              getX() + 2,
+              getY() + 20 + i * Minecraft.getInstance().font.lineHeight,
+              lines.get(firstLine + i));
     }
   }
 
@@ -145,7 +145,9 @@ public class InfoSideTabWidget extends SideTabWidget {
   private List<FormattedCharSequence> buildWrappedLines() {
     List<FormattedCharSequence> wrapped = new ArrayList<>();
     for (Component line : linesSupplier.get()) {
-      wrapped.addAll(Minecraft.getInstance().font.split(line, 108));
+      wrapped.addAll(
+          Minecraft.getInstance()
+              .font.split(line.copy().withStyle(style -> style.withColor(textColor())), 108));
     }
     return wrapped;
   }

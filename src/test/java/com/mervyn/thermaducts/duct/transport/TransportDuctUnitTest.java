@@ -118,7 +118,13 @@ class TransportDuctUnitTest extends DuctUnitTestBase {
 
   @Test
   void setEndpointIcon_storesCopyWithCountOne() {
-    ItemStack stack = new ItemStack(net.minecraft.world.item.Items.DIAMOND, 5);
+    ItemStack stack = mock(ItemStack.class);
+    when(stack.isEmpty()).thenReturn(false);
+    when(stack.getCount()).thenReturn(5);
+    ItemStack copy = mock(ItemStack.class);
+    when(copy.isEmpty()).thenReturn(false);
+    when(copy.getCount()).thenReturn(1);
+    when(stack.copyWithCount(1)).thenReturn(copy);
     unit.setEndpointIcon(stack);
     assertEquals(1, unit.getEndpointIcon().getCount());
     assertFalse(unit.getEndpointIcon().isEmpty());

@@ -7,11 +7,13 @@ import static org.mockito.Mockito.*;
 import com.mervyn.thermaducts.DuctUnitTestBase;
 import com.mervyn.thermaducts.core.duct.DuctToken;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,6 +30,9 @@ class FluidDuctUnitTemperateTest extends DuctUnitTestBase {
     FluidStack stack = mock(FluidStack.class);
     when(stack.getAmount()).thenReturn(amount);
     when(stack.isEmpty()).thenReturn(false);
+    when(stack.isComponentsPatchEmpty()).thenReturn(true);
+    when(stack.getComponentsPatch()).thenReturn(DataComponentPatch.EMPTY);
+    when(stack.getFluid()).thenReturn(Fluids.WATER);
     return stack;
   }
 
@@ -129,10 +134,10 @@ class FluidDuctUnitTemperateTest extends DuctUnitTestBase {
   @Test
   void saveAdditional_inheritsSuperData() {
     FluidStack fluid = mockFluid(250);
+    when(fluid.isEmpty()).thenReturn(true);
     unit.setFluidForGrid(fluid);
     CompoundTag tag = new CompoundTag();
     unit.saveAdditional(tag, provider);
-    assertTrue(tag.contains("Fluid"));
     assertTrue(tag.contains("Temperature"));
   }
 

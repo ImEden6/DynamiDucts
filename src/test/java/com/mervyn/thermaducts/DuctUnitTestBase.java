@@ -8,11 +8,22 @@ import com.mervyn.thermaducts.core.network.ConnectionType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 public abstract class DuctUnitTestBase {
+
+  private static RegistryAccess.Frozen registryAccess;
+
+  @BeforeAll
+  static void bootstrap() {
+    net.minecraft.server.Bootstrap.bootStrap();
+    registryAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
+  }
 
   protected DuctBlockEntity parent;
   protected ServerLevel level;
@@ -23,7 +34,7 @@ public abstract class DuctUnitTestBase {
   void setUpBase() {
     parent = mock(DuctBlockEntity.class);
     level = mock(ServerLevel.class);
-    provider = mock(HolderLookup.Provider.class);
+    provider = registryAccess;
 
     when(parent.getLevel()).thenReturn(level);
     when(parent.getBlockPos()).thenReturn(pos);

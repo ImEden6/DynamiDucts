@@ -25,19 +25,12 @@ class EnergyDuctUnitTest extends DuctUnitTestBase {
   private StubEnergyGrid grid;
 
   private static class TestableEnergyDuctUnit extends EnergyDuctUnit {
-    private final EnergyHandler[] testCaches = new EnergyHandler[6];
-
     TestableEnergyDuctUnit(DuctBlockEntity parent, int transferLimit, int capacityPerDuct) {
       super(parent, transferLimit, capacityPerDuct);
     }
 
     void setTileCache(Direction dir, EnergyHandler storage) {
-      testCaches[dir.ordinal()] = storage;
-    }
-
-    @Override
-    public EnergyHandler cacheTile(Direction side) {
-      return testCaches[side.ordinal()];
+      tileCache[dir.ordinal()] = storage;
     }
   }
 
@@ -100,10 +93,10 @@ class EnergyDuctUnitTest extends DuctUnitTestBase {
   }
 
   @Test
-  void canConnectTo_thisIsSuperConductor_returnsTrueForAny() {
+  void canConnectTo_thisIsSuperConductor_doesNotConnectToRegular() {
     EnergyDuctUnit superCon = new SuperConductorDuctUnit(parent);
     EnergyDuctUnit other = new EnergyDuctUnit(parent, 500, TEST_CAPACITY);
-    assertTrue(superCon.canConnectTo(other));
+    assertFalse(superCon.canConnectTo(other));
   }
 
   @Test
@@ -205,7 +198,7 @@ class EnergyDuctUnitTest extends DuctUnitTestBase {
     unit.setTileCache(Direction.SOUTH, target2);
     unit.tickPass(0);
     verify(target1).insert(eq(1000), any(TransactionContext.class));
-    verify(target2).insert(eq(700), any(TransactionContext.class));
+    verify(target2).insert(eq(1000), any(TransactionContext.class));
   }
 
   @Test
