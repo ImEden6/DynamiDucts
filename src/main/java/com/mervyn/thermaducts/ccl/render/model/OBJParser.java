@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.ccl.render.model;
+package com.mervyn.thermaducts.ccl.render.model;
 
-import com.mervyn.dynamiducts.ccl.render.CCModel;
-import com.mervyn.dynamiducts.ccl.util.ResourceUtils;
-import com.mervyn.dynamiducts.ccl.vec.SwapYZ;
-import com.mervyn.dynamiducts.ccl.vec.Transformation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.render.CCModel;
+import com.mervyn.thermaducts.ccl.util.ResourceUtils;
+import com.mervyn.thermaducts.ccl.vec.SwapYZ;
+import com.mervyn.thermaducts.ccl.vec.Transformation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import java.util.*;
 import net.minecraft.client.Minecraft;

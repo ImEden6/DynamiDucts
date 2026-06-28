@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.duct.energy;
+package com.mervyn.thermaducts.duct.energy;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
 import net.minecraft.server.level.ServerLevel;
 
 public class SuperConductorDuctUnit extends EnergyDuctUnit {

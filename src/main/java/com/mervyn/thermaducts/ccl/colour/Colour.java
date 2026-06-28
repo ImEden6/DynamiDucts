@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.ccl.colour;
+package com.mervyn.thermaducts.ccl.colour;
 
 import static java.lang.Math.max;
 
-import com.mervyn.dynamiducts.ccl.math.MathHelper;
-import com.mervyn.dynamiducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.math.MathHelper;
+import com.mervyn.thermaducts.ccl.util.Copyable;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class Colour implements Copyable<Colour> {

@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.ccl.render.lighting;
+package com.mervyn.thermaducts.ccl.render.lighting;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
-import com.mervyn.dynamiducts.ccl.vec.Rotation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.vec.Rotation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
 
 public class LightModel implements IVertexOperation {
 

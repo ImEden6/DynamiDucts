@@ -16,7 +16,7 @@
  * along with CodeChickenLib. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package com.mervyn.dynamiducts.ccl.math;
+package com.mervyn.thermaducts.ccl.math;
 
 /**
  * @author covers1624

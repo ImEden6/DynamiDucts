@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.gametest;
+package com.mervyn.thermaducts.gametest;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.FunctionGameTestInstance;
@@ -12,11 +12,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterGameTestsEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID)
+@EventBusSubscriber(modid = ThermaDucts.MODID)
 public class DuctGameTests {
 
   private static final Identifier STRUCTURE =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "platform");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "platform");
   private static final Holder<TestEnvironmentDefinition<?>> ENV =
       Holder.direct(new TestEnvironmentDefinition.AllOf());
 
@@ -40,10 +40,10 @@ public class DuctGameTests {
   private static void test(RegisterGameTestsEvent event, String name) {
     var key =
         ResourceKey.create(
-            Registries.TEST_FUNCTION, Identifier.fromNamespaceAndPath(DynamiDucts.MODID, name));
+            Registries.TEST_FUNCTION, Identifier.fromNamespaceAndPath(ThermaDucts.MODID, name));
     var testData = new TestData<>(ENV, STRUCTURE, 100, 0, true);
     event.registerTest(
-        Identifier.fromNamespaceAndPath(DynamiDucts.MODID, name),
+        Identifier.fromNamespaceAndPath(ThermaDucts.MODID, name),
         new FunctionGameTestInstance(key, testData));
   }
 }

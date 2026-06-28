@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.duct.transport;
+package com.mervyn.thermaducts.duct.transport;
 
-import com.mervyn.dynamiducts.core.network.NetworkGrid;
+import com.mervyn.thermaducts.core.network.NetworkGrid;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.util.List;
 import java.util.Set;

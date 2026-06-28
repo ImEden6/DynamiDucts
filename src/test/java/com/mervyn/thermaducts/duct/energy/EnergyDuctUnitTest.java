@@ -1,13 +1,13 @@
-package com.mervyn.dynamiducts.duct.energy;
+package com.mervyn.thermaducts.duct.energy;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-import com.mervyn.dynamiducts.DuctUnitTestBase;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.stub.StubEnergyGrid;
+import com.mervyn.thermaducts.DuctUnitTestBase;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.stub.StubEnergyGrid;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.transfer.energy.EnergyHandler;

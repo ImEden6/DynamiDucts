@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.menu;
+package com.mervyn.thermaducts.menu;
 
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;

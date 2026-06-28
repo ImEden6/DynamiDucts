@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.datagen;
+package com.mervyn.thermaducts.datagen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.init.DDBlocks;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.init.DDBlocks;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -12,7 +12,7 @@ public class DDBlockTagProvider extends BlockTagsProvider {
 
   public DDBlockTagProvider(
       PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-    super(output, lookupProvider, DynamiDucts.MODID);
+    super(output, lookupProvider, ThermaDucts.MODID);
   }
 
   @Override

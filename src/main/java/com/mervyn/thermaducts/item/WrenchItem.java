@@ -1,16 +1,16 @@
-package com.mervyn.dynamiducts.item;
+package com.mervyn.thermaducts.item;
 
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.block.DuctHitHelper;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.network.ConnectionType;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
-import com.mervyn.dynamiducts.init.DDItems;
-import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.block.DuctHitHelper;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.network.ConnectionType;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.init.DDItems;
+import com.mervyn.thermaducts.accessor.UseOnContextAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -33,7 +33,7 @@ public class WrenchItem extends Item {
   public InteractionResult useOn(UseOnContext context) {
     Level level = context.getLevel();
     BlockPos pos = context.getClickedPos();
-    var hitResult = ((UseOnContextAccessor) context).dynamiducts$getHitResult();
+    var hitResult = ((UseOnContextAccessor) context).thermaducts$getHitResult();
 
     if (level.isClientSide()) return InteractionResult.SUCCESS;
 

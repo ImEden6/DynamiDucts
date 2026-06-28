@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.compat.jade;
+package com.mervyn.thermaducts.compat.jade;
 
 public enum DuctComponentProvider {
   INSTANCE;

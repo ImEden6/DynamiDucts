@@ -1,15 +1,15 @@
-package com.mervyn.dynamiducts.blockentity;
+package com.mervyn.thermaducts.blockentity;
 
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.AttachmentRegistry;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.duct.DuctUnit;
-import com.mervyn.dynamiducts.core.network.ConnectionType;
-import com.mervyn.dynamiducts.core.network.NetworkManager;
-import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnit;
-import com.mervyn.dynamiducts.duct.item.ItemDuctUnit;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.AttachmentRegistry;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.duct.DuctUnit;
+import com.mervyn.thermaducts.core.network.ConnectionType;
+import com.mervyn.thermaducts.core.network.NetworkManager;
+import com.mervyn.thermaducts.duct.fluid.FluidDuctUnit;
+import com.mervyn.thermaducts.duct.item.ItemDuctUnit;
 import java.util.EnumMap;
 import java.util.Map;
 import net.minecraft.core.BlockPos;
@@ -268,7 +268,7 @@ public abstract class DuctBlockEntity extends BlockEntity {
     attachmentsWrapper.put("list", attachmentList);
     tag.put("AttachmentsWrapper", attachmentsWrapper);
 
-    output.store("DynamiDuctsData", CompoundTag.CODEC, tag);
+    output.store("thermaductsData", CompoundTag.CODEC, tag);
   }
 
   @Override
@@ -276,7 +276,7 @@ public abstract class DuctBlockEntity extends BlockEntity {
   protected void loadAdditional(net.minecraft.world.level.storage.ValueInput input) {
     super.loadAdditional(input);
 
-    CompoundTag tag = input.read("DynamiDuctsData", CompoundTag.CODEC).orElse(new CompoundTag());
+    CompoundTag tag = input.read("thermaductsData", CompoundTag.CODEC).orElse(new CompoundTag());
 
     if (tag.contains("Connections")) {
       byte[] connections = tag.getByteArray("Connections").orElse(new byte[0]);

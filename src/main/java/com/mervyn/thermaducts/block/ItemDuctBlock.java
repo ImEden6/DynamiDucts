@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.block;
+package com.mervyn.thermaducts.block;
 
-import com.mervyn.dynamiducts.blockentity.ItemDuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.blockentity.ItemDuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

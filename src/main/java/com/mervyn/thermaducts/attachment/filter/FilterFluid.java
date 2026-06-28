@@ -1,16 +1,16 @@
-package com.mervyn.dynamiducts.attachment.filter;
+package com.mervyn.thermaducts.attachment.filter;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 
 public class FilterFluid extends ConnectionBase {
 
   public static final Identifier ID =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "filter_fluid");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "filter_fluid");
 
   public FilterFluid(DuctBlockEntity parent, Direction side, AttachmentTier tier) {
     super(parent, side, tier);

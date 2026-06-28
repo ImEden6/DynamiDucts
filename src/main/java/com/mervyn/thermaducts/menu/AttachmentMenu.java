@@ -1,15 +1,15 @@
-package com.mervyn.dynamiducts.menu;
+package com.mervyn.thermaducts.menu;
 
-import com.mervyn.dynamiducts.attachment.filter.FilterItem;
-import com.mervyn.dynamiducts.attachment.retriever.RetrieverItem;
-import com.mervyn.dynamiducts.attachment.servo.ServoItem;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.attachment.FilterLogic;
-import com.mervyn.dynamiducts.core.attachment.RedstoneMode;
-import com.mervyn.dynamiducts.init.DDMenuTypes;
+import com.mervyn.thermaducts.attachment.filter.FilterItem;
+import com.mervyn.thermaducts.attachment.retriever.RetrieverItem;
+import com.mervyn.thermaducts.attachment.servo.ServoItem;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.attachment.FilterLogic;
+import com.mervyn.thermaducts.core.attachment.RedstoneMode;
+import com.mervyn.thermaducts.init.DDMenuTypes;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;

@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
 public abstract class VariableTransformation extends Transformation {
 

@@ -1,21 +1,21 @@
-package com.mervyn.dynamiducts.ccl.render;
+package com.mervyn.thermaducts.ccl.render;
 
-import static com.mervyn.dynamiducts.ccl.vec.Rotation.sideRotations;
+import static com.mervyn.thermaducts.ccl.vec.Rotation.sideRotations;
 import static net.covers1624.quack.util.SneakyUtils.unsafeCast;
 
-import com.mervyn.dynamiducts.ccl.render.lighting.LC;
-import com.mervyn.dynamiducts.ccl.render.lighting.LightModel;
-import com.mervyn.dynamiducts.ccl.render.model.ModelMaterial;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexSource;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.*;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.AttributeKey.AttributeKeyRegistry;
-import com.mervyn.dynamiducts.ccl.util.Copyable;
-import com.mervyn.dynamiducts.ccl.util.VectorUtils;
-import com.mervyn.dynamiducts.ccl.vec.*;
-import com.mervyn.dynamiducts.ccl.vec.uv.UV;
-import com.mervyn.dynamiducts.ccl.vec.uv.UVTransformation;
-import com.mervyn.dynamiducts.ccl.vec.uv.UVTranslation;
+import com.mervyn.thermaducts.ccl.render.lighting.LC;
+import com.mervyn.thermaducts.ccl.render.lighting.LightModel;
+import com.mervyn.thermaducts.ccl.render.model.ModelMaterial;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexSource;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.*;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.AttributeKey.AttributeKeyRegistry;
+import com.mervyn.thermaducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.util.VectorUtils;
+import com.mervyn.thermaducts.ccl.vec.*;
+import com.mervyn.thermaducts.ccl.vec.uv.UV;
+import com.mervyn.thermaducts.ccl.vec.uv.UVTransformation;
+import com.mervyn.thermaducts.ccl.vec.uv.UVTranslation;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import java.util.*;
 import org.jetbrains.annotations.Nullable;

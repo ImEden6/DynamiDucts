@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.client;
+package com.mervyn.thermaducts.client;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.item.AttachmentItem;
-import com.mervyn.dynamiducts.item.DDTooltipHelper;
-import com.mervyn.dynamiducts.item.DuctBlockItem;
-import com.mervyn.dynamiducts.item.RelayItem;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.item.AttachmentItem;
+import com.mervyn.thermaducts.item.DDTooltipHelper;
+import com.mervyn.thermaducts.item.DuctBlockItem;
+import com.mervyn.thermaducts.item.RelayItem;
 import java.util.List;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -14,7 +14,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ThermaDucts.MODID, value = Dist.CLIENT)
 public class ClientTooltipHandler {
 
   @SubscribeEvent

@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.client.gui.widget;
+package com.mervyn.thermaducts.client.gui.widget;
 
-import com.mervyn.dynamiducts.duct.transport.TransportDirectoryEntry;
+import com.mervyn.thermaducts.duct.transport.TransportDirectoryEntry;
 import java.util.List;
 import java.util.function.Consumer;
 import net.minecraft.client.Minecraft;
@@ -68,7 +68,7 @@ public class TransportDirectoryButton extends AbstractWidget {
 
     String displayName =
         entry.name().isEmpty()
-            ? Component.translatable("gui.dynamiducts.transport.unnamed").getString()
+            ? Component.translatable("gui.thermaducts.transport.unnamed").getString()
             : entry.name();
     String text = font.plainSubstrByWidth(displayName, width - height - 4);
     graphics

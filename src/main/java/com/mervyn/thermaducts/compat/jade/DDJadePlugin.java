@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.compat.jade;
+package com.mervyn.thermaducts.compat.jade;
 
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;

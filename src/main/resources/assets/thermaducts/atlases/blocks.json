@@ -3,37 +3,37 @@
     {
       "type": "directory",
       "source": "block/duct/attachment/servo",
-      "prefix": "dynamiducts:block/duct/attachment/servo/"
+      "prefix": "thermaducts:block/duct/attachment/servo/"
     },
     {
       "type": "directory",
       "source": "block/duct/attachment/filter",
-      "prefix": "dynamiducts:block/duct/attachment/filter/"
+      "prefix": "thermaducts:block/duct/attachment/filter/"
     },
     {
       "type": "directory",
       "source": "block/duct/attachment/retriever",
-      "prefix": "dynamiducts:block/duct/attachment/retriever/"
+      "prefix": "thermaducts:block/duct/attachment/retriever/"
     },
     {
       "type": "directory",
       "source": "block/duct/attachment/cover",
-      "prefix": "dynamiducts:block/duct/attachment/cover/"
+      "prefix": "thermaducts:block/duct/attachment/cover/"
     },
     {
       "type": "directory",
       "source": "block/duct/base",
-      "prefix": "dynamiducts:block/duct/base/"
+      "prefix": "thermaducts:block/duct/base/"
     },
     {
       "type": "directory",
       "source": "block/duct/connection",
-      "prefix": "dynamiducts:block/duct/connection/"
+      "prefix": "thermaducts:block/duct/connection/"
     },
     {
       "type": "directory",
       "source": "block/fluid",
-      "prefix": "dynamiducts:block/fluid/"
+      "prefix": "thermaducts:block/fluid/"
     }
   ]
 }

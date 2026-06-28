@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.blockentity;
+package com.mervyn.thermaducts.blockentity;
 
-import com.mervyn.dynamiducts.MNConfig;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.energy.EnergyDuctUnit;
-import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnit;
-import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnitTemperate;
-import com.mervyn.dynamiducts.init.DDBlockEntities;
+import com.mervyn.thermaducts.MNConfig;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.energy.EnergyDuctUnit;
+import com.mervyn.thermaducts.duct.fluid.FluidDuctUnit;
+import com.mervyn.thermaducts.duct.fluid.FluidDuctUnitTemperate;
+import com.mervyn.thermaducts.init.DDBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntityType;

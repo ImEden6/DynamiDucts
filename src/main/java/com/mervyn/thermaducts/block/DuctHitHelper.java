@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.block;
+package com.mervyn.thermaducts.block;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;

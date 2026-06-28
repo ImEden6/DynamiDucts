@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.client.renderer;
+package com.mervyn.thermaducts.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.serialization.MapCodec;

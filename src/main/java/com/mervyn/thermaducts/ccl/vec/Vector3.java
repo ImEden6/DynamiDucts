@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
-import com.mervyn.dynamiducts.ccl.math.MathHelper;
-import com.mervyn.dynamiducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.math.MathHelper;
+import com.mervyn.thermaducts.ccl.util.Copyable;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

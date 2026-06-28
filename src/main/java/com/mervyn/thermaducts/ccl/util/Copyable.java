@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.util;
+package com.mervyn.thermaducts.ccl.util;
 
 public interface Copyable<T> {
 

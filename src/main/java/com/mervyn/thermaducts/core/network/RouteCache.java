@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.core.network;
+package com.mervyn.thermaducts.core.network;
 
-import com.mervyn.dynamiducts.core.attachment.FilterLogic;
-import com.mervyn.dynamiducts.duct.item.ItemDuctUnit;
+import com.mervyn.thermaducts.core.attachment.FilterLogic;
+import com.mervyn.thermaducts.duct.item.ItemDuctUnit;
 import java.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

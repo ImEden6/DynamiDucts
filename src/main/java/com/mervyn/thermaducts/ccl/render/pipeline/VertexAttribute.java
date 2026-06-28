@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline;
+package com.mervyn.thermaducts.ccl.render.pipeline;
 
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.AttributeKey;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.AttributeKey;
 
 /**
  * Management class for a vertex attribute such as colour, normal etc This class should handle the

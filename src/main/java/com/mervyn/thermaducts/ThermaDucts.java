@@ -1,30 +1,30 @@
-package com.mervyn.dynamiducts;
+package com.mervyn.thermaducts;
 
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.block.DuctHitHelper;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.client.renderer.DuctBlockEntityRenderer;
-import com.mervyn.dynamiducts.client.renderer.ItemDuctRenderer;
-import com.mervyn.dynamiducts.gametest.DDGameTestFunctions;
-import com.mervyn.dynamiducts.init.DDAttachments;
-import com.mervyn.dynamiducts.init.DDBlockEntities;
-import com.mervyn.dynamiducts.init.DDBlocks;
-import com.mervyn.dynamiducts.init.DDCreativeTab;
-import com.mervyn.dynamiducts.init.DDDataAttachments;
-import com.mervyn.dynamiducts.init.DDDataComponents;
-import com.mervyn.dynamiducts.init.DDEntityTypes;
-import com.mervyn.dynamiducts.init.DDItems;
-import com.mervyn.dynamiducts.init.DDMenuTypes;
-import com.mervyn.dynamiducts.init.DDRecipeSerializers;
-import com.mervyn.dynamiducts.network.payload.AttachmentConfigPayload;
-import com.mervyn.dynamiducts.network.payload.ItemTravelSyncPayload;
-import com.mervyn.dynamiducts.network.payload.RelayConfigPayload;
-import com.mervyn.dynamiducts.network.payload.TransportRenamePayload;
-import com.mervyn.dynamiducts.network.payload.TransportRequestPayload;
-import com.mervyn.dynamiducts.screen.AttachmentScreen;
-import com.mervyn.dynamiducts.screen.RelayScreen;
-import com.mervyn.dynamiducts.screen.TransportConfigScreen;
-import com.mervyn.dynamiducts.screen.TransportScreen;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.block.DuctHitHelper;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.client.renderer.DuctBlockEntityRenderer;
+import com.mervyn.thermaducts.client.renderer.ItemDuctRenderer;
+import com.mervyn.thermaducts.gametest.DDGameTestFunctions;
+import com.mervyn.thermaducts.init.DDAttachments;
+import com.mervyn.thermaducts.init.DDBlockEntities;
+import com.mervyn.thermaducts.init.DDBlocks;
+import com.mervyn.thermaducts.init.DDCreativeTab;
+import com.mervyn.thermaducts.init.DDDataAttachments;
+import com.mervyn.thermaducts.init.DDDataComponents;
+import com.mervyn.thermaducts.init.DDEntityTypes;
+import com.mervyn.thermaducts.init.DDItems;
+import com.mervyn.thermaducts.init.DDMenuTypes;
+import com.mervyn.thermaducts.init.DDRecipeSerializers;
+import com.mervyn.thermaducts.network.payload.AttachmentConfigPayload;
+import com.mervyn.thermaducts.network.payload.ItemTravelSyncPayload;
+import com.mervyn.thermaducts.network.payload.RelayConfigPayload;
+import com.mervyn.thermaducts.network.payload.TransportRenamePayload;
+import com.mervyn.thermaducts.network.payload.TransportRequestPayload;
+import com.mervyn.thermaducts.screen.AttachmentScreen;
+import com.mervyn.thermaducts.screen.RelayScreen;
+import com.mervyn.thermaducts.screen.TransportConfigScreen;
+import com.mervyn.thermaducts.screen.TransportScreen;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -45,13 +45,13 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.slf4j.Logger;
 
-@Mod(DynamiDucts.MODID)
-public class DynamiDucts {
+@Mod(ThermaDucts.MODID)
+public class ThermaDucts {
 
-  public static final String MODID = "dynamiducts";
+  public static final String MODID = "thermaducts";
   public static final Logger LOG = LogUtils.getLogger();
 
-  public DynamiDucts(IEventBus modEventBus, ModContainer modContainer) {
+  public ThermaDucts(IEventBus modEventBus, ModContainer modContainer) {
     DDAttachments.bootstrap();
 
     DDBlocks.BLOCKS.register(modEventBus);
@@ -67,7 +67,7 @@ public class DynamiDucts {
 
     modEventBus.addListener(this::registerPayloads);
 
-    modEventBus.addListener(com.mervyn.dynamiducts.datagen.DDDataGenerators::gatherDataClient);
+    modEventBus.addListener(com.mervyn.thermaducts.datagen.DDDataGenerators::gatherDataClient);
 
     modContainer.registerConfig(ModConfig.Type.COMMON, MNConfig.SPEC);
   }
@@ -160,7 +160,7 @@ public class DynamiDucts {
     public static void registerSpecialModelRenderers(net.neoforged.neoforge.client.event.RegisterSpecialModelRendererEvent event) {
       event.register(
           net.minecraft.resources.Identifier.fromNamespaceAndPath(MODID, "duct_block_item_renderer"),
-          com.mervyn.dynamiducts.client.renderer.DuctBlockItemRenderer.Unbaked.MAP_CODEC);
+          com.mervyn.thermaducts.client.renderer.DuctBlockItemRenderer.Unbaked.MAP_CODEC);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

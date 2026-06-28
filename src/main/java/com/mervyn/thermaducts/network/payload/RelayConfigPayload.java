@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.network.payload;
+package com.mervyn.thermaducts.network.payload;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;
@@ -21,7 +21,7 @@ public record RelayConfigPayload(BlockPos pos, int side, int action, int value)
   public static final int ACTION_SET_THRESHOLD = 3;
 
   public static final Type<RelayConfigPayload> TYPE =
-      new Type<>(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "relay_config"));
+      new Type<>(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "relay_config"));
 
   public static final StreamCodec<FriendlyByteBuf, RelayConfigPayload> STREAM_CODEC =
       StreamCodec.of(RelayConfigPayload::write, RelayConfigPayload::read);

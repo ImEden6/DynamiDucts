@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
-import com.mervyn.dynamiducts.ccl.util.Copyable;
-import com.mervyn.dynamiducts.ccl.vec.uv.UV;
-import com.mervyn.dynamiducts.ccl.vec.uv.UVTransformation;
+import com.mervyn.thermaducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.vec.uv.UV;
+import com.mervyn.thermaducts.ccl.vec.uv.UVTransformation;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;

@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.client.gui.widget.tab;
+package com.mervyn.thermaducts.client.gui.widget.tab;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -13,7 +13,7 @@ import net.minecraft.resources.Identifier;
 public abstract class SideTabWidget extends AbstractWidget {
 
   protected static final Identifier TAB_TEXTURE =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/tab_right.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/tab_right.png");
   protected static final int TAB_TEXTURE_SIZE = 256;
   protected static final int MIN_SIZE = 22;
   protected static final int EXPAND_SPEED = 8;

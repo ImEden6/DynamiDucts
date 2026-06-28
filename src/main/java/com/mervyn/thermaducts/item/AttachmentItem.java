@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.item;
+package com.mervyn.thermaducts.item;
 
-import com.mervyn.dynamiducts.block.DuctHitHelper;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.AttachmentPlacementHelper;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
+import com.mervyn.thermaducts.block.DuctHitHelper;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.AttachmentPlacementHelper;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.accessor.UseOnContextAccessor;
 import java.util.function.BiFunction;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
@@ -46,7 +46,7 @@ public class AttachmentItem extends Item {
   public InteractionResult useOn(UseOnContext context) {
     var level = context.getLevel();
     var pos = context.getClickedPos();
-    var hitResult = ((UseOnContextAccessor) context).dynamiducts$getHitResult();
+    var hitResult = ((UseOnContextAccessor) context).thermaducts$getHitResult();
 
     if (!level.isClientSide() && level.getBlockEntity(pos) instanceof DuctBlockEntity ductBE) {
       var hit = DuctHitHelper.resolve(ductBE.getBlockState(), ductBE, pos, hitResult);

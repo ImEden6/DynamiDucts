@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.math;
+package com.mervyn.thermaducts.ccl.math;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

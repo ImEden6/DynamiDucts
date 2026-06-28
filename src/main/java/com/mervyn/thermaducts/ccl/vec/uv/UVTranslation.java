@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.vec.uv;
+package com.mervyn.thermaducts.ccl.vec.uv;
 
-import com.mervyn.dynamiducts.ccl.math.MathHelper;
+import com.mervyn.thermaducts.ccl.math.MathHelper;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;

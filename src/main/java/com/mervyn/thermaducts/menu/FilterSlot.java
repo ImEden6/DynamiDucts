@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.menu;
+package com.mervyn.thermaducts.menu;
 
-import com.mervyn.dynamiducts.core.attachment.FilterLogic;
+import com.mervyn.thermaducts.core.attachment.FilterLogic;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;

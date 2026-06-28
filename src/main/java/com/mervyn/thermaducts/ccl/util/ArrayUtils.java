@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.util;
+package com.mervyn.thermaducts.ccl.util;
 
 import java.lang.reflect.Array;
 import java.util.*;

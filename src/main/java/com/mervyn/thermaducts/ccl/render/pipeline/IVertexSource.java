@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline;
+package com.mervyn.thermaducts.ccl.render.pipeline;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.AttributeKey;
-import com.mervyn.dynamiducts.ccl.vec.Vertex5;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.AttributeKey;
+import com.mervyn.thermaducts.ccl.vec.Vertex5;
 import org.jetbrains.annotations.Nullable;
 
 /** Created by covers1624 on 10/10/2016. */

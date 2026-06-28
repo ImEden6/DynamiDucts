@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.duct.transport;
+package com.mervyn.thermaducts.duct.transport;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.init.DDDataAttachments;
-import com.mervyn.dynamiducts.init.DDEntityTypes;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.init.DDDataAttachments;
+import com.mervyn.thermaducts.init.DDEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.syncher.EntityDataAccessor;

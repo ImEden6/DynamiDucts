@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.duct.fluid;
+package com.mervyn.thermaducts.duct.fluid;
 
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.network.NetworkGrid;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.network.NetworkGrid;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.Direction;

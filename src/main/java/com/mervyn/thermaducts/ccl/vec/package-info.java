@@ -1,4 +1,4 @@
 @NonNullApi
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
 import net.covers1624.quack.annotation.NonNullApi;

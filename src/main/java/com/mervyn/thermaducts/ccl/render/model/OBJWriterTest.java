@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.ccl.render.model;
+package com.mervyn.thermaducts.ccl.render.model;
 
-import com.mervyn.dynamiducts.ccl.render.CCModel;
-import com.mervyn.dynamiducts.ccl.vec.Vertex5;
+import com.mervyn.thermaducts.ccl.render.CCModel;
+import com.mervyn.thermaducts.ccl.vec.Vertex5;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import java.io.PrintWriter;
 import java.io.StringWriter;

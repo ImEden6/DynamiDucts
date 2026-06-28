@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.datagen;
+package com.mervyn.thermaducts.datagen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.init.DDItems;
-import com.mervyn.dynamiducts.init.DDTags;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.init.DDItems;
+import com.mervyn.thermaducts.init.DDTags;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -16,7 +16,7 @@ public class DDItemTagProvider extends BlockTagCopyingItemTagProvider {
       PackOutput output,
       CompletableFuture<HolderLookup.Provider> lookupProvider,
       CompletableFuture<TagLookup<Block>> blockTags) {
-    super(output, lookupProvider, blockTags, DynamiDucts.MODID);
+    super(output, lookupProvider, blockTags, ThermaDucts.MODID);
   }
 
   @Override

@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.gametest;
+package com.mervyn.thermaducts.gametest;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.EnergyDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.FluidDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.ItemDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.TransportDuctBlockEntity;
-import com.mervyn.dynamiducts.init.DDBlocks;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.EnergyDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.FluidDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.ItemDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.StructuralDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.TransportDuctBlockEntity;
+import com.mervyn.thermaducts.init.DDBlocks;
 import java.util.function.Consumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -17,7 +17,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class DDGameTestFunctions {
   public static final DeferredRegister<Consumer<GameTestHelper>> TEST_FUNCTIONS =
-      DeferredRegister.create(Registries.TEST_FUNCTION, DynamiDucts.MODID);
+      DeferredRegister.create(Registries.TEST_FUNCTION, ThermaDucts.MODID);
 
   private static Consumer<GameTestHelper> ductTest(Block block) {
     return helper -> {

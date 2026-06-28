@@ -1,14 +1,14 @@
-package com.mervyn.dynamiducts.duct.transport;
+package com.mervyn.thermaducts.duct.transport;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-import com.mervyn.dynamiducts.DuctUnitTestBase;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.network.ConnectionType;
-import com.mervyn.dynamiducts.stub.StubTransportGrid;
+import com.mervyn.thermaducts.DuctUnitTestBase;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.network.ConnectionType;
+import com.mervyn.thermaducts.stub.StubTransportGrid;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

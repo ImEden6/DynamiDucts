@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.vec.uv;
+package com.mervyn.thermaducts.ccl.vec.uv;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 
 public class IconTransformation extends UVTransformation {

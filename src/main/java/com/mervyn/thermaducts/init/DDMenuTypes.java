@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.menu.AttachmentMenu;
-import com.mervyn.dynamiducts.menu.RelayMenu;
-import com.mervyn.dynamiducts.menu.TransportConfigMenu;
-import com.mervyn.dynamiducts.menu.TransportMenu;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.menu.AttachmentMenu;
+import com.mervyn.thermaducts.menu.RelayMenu;
+import com.mervyn.thermaducts.menu.TransportConfigMenu;
+import com.mervyn.thermaducts.menu.TransportMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DDMenuTypes {
 
   public static final DeferredRegister<MenuType<?>> MENU_TYPES =
-      DeferredRegister.create(Registries.MENU, DynamiDucts.MODID);
+      DeferredRegister.create(Registries.MENU, ThermaDucts.MODID);
 
   public static final DeferredHolder<MenuType<?>, MenuType<AttachmentMenu>> ATTACHMENT_MENU =
       MENU_TYPES.register(

@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import java.math.BigDecimal;

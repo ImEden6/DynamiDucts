@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.duct.transport;
+package com.mervyn.thermaducts.duct.transport;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;

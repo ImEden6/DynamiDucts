@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.menu;
+package com.mervyn.thermaducts.menu;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
-import com.mervyn.dynamiducts.init.DDMenuTypes;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.init.DDMenuTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;

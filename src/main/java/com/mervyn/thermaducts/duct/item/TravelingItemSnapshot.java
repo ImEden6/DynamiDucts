@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.duct.item;
+package com.mervyn.thermaducts.duct.item;
 
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

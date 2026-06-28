@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.compat.jei;
+package com.mervyn.thermaducts.compat.jei;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.screen.AttachmentScreen;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.screen.AttachmentScreen;
 import java.util.ArrayList;
 import java.util.List;
 import mezz.jei.api.IModPlugin;
@@ -16,7 +16,7 @@ public class DDJeiPlugin implements IModPlugin {
 
   @Override
   public Identifier getPluginUid() {
-    return Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "jei_plugin");
+    return Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "jei_plugin");
   }
 
   @Override

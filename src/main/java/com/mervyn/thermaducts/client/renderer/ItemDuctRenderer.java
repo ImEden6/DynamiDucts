@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.client.renderer;
+package com.mervyn.thermaducts.client.renderer;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.ItemDuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.item.ItemDuctUnit;
-import com.mervyn.dynamiducts.duct.item.TravelingItemSnapshot;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.ItemDuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.item.ItemDuctUnit;
+import com.mervyn.thermaducts.duct.item.TravelingItemSnapshot;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;

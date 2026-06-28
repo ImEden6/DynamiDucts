@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.network.payload;
+package com.mervyn.thermaducts.network.payload;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -10,7 +10,7 @@ import net.minecraft.resources.Identifier;
 public record DuctSyncPayload(BlockPos pos, byte[] connectionData) implements CustomPacketPayload {
 
   public static final Type<DuctSyncPayload> TYPE =
-      new Type<>(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "duct_sync"));
+      new Type<>(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "duct_sync"));
 
   public static final StreamCodec<FriendlyByteBuf, DuctSyncPayload> STREAM_CODEC =
       StreamCodec.of(DuctSyncPayload::write, DuctSyncPayload::read);

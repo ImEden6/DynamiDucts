@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline.attribute;
+package com.mervyn.thermaducts.ccl.render.pipeline.attribute;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.lighting.LC;
-import com.mervyn.dynamiducts.ccl.render.pipeline.VertexAttribute;
-import com.mervyn.dynamiducts.ccl.vec.Transformation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.lighting.LC;
+import com.mervyn.thermaducts.ccl.render.pipeline.VertexAttribute;
+import com.mervyn.thermaducts.ccl.vec.Transformation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
 import org.jetbrains.annotations.Nullable;
 
 /** Uses the position of the lightmatrix to compute LC if not provided */

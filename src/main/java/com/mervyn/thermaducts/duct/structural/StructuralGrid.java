@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.duct.structural;
+package com.mervyn.thermaducts.duct.structural;
 
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.network.NetworkGrid;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.network.NetworkGrid;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.server.level.ServerLevel;

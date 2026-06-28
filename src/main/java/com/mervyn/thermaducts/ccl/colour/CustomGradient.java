@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.ccl.colour;
+package com.mervyn.thermaducts.ccl.colour;
 
-import com.mervyn.dynamiducts.ccl.math.MathHelper;
-import com.mervyn.dynamiducts.ccl.texture.TextureUtils;
+import com.mervyn.thermaducts.ccl.math.MathHelper;
+import com.mervyn.thermaducts.ccl.texture.TextureUtils;
 import java.awt.image.BufferedImage;
 import net.minecraft.resources.Identifier;
 

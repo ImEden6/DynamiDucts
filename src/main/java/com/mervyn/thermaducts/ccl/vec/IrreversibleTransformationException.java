@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
 public class IrreversibleTransformationException extends RuntimeException {
 

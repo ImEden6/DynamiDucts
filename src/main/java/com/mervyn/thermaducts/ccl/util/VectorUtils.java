@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.util;
+package com.mervyn.thermaducts.ccl.util;
 
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
 import net.minecraft.core.Direction;
 import org.jetbrains.annotations.Nullable;
 

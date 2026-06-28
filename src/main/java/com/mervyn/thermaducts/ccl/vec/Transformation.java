@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
 
 /** Abstract supertype for any 3D vector transformation */
 public abstract class Transformation extends ITransformation<Vector3, Transformation>

@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
-import com.mervyn.dynamiducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.util.Copyable;
 
 public class Line3 implements Copyable<Line3> {
 

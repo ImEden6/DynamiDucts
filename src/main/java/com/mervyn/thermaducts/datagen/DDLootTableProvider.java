@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.datagen;
+package com.mervyn.thermaducts.datagen;
 
-import com.mervyn.dynamiducts.init.DDBlocks;
+import com.mervyn.thermaducts.init.DDBlocks;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

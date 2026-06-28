@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.datagen;
+package com.mervyn.thermaducts.datagen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.init.DDBlocks;
-import com.mervyn.dynamiducts.init.DDItems;
-import com.mervyn.dynamiducts.init.DDTags;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.init.DDBlocks;
+import com.mervyn.thermaducts.init.DDItems;
+import com.mervyn.thermaducts.init.DDTags;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -545,12 +545,12 @@ public class DDRecipeProvider extends RecipeProvider {
   }
 
   private String key(ItemLike item) {
-    return DynamiDucts.MODID
+    return ThermaDucts.MODID
         + ":"
         + net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item.asItem()).getPath();
   }
 
   private String id(String name) {
-    return DynamiDucts.MODID + ":" + name;
+    return ThermaDucts.MODID + ":" + name;
   }
 }

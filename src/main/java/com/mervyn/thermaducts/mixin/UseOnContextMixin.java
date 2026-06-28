@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.mixin;
+package com.mervyn.thermaducts.mixin;
 
-import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
+import com.mervyn.thermaducts.accessor.UseOnContextAccessor;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,5 +11,5 @@ public interface UseOnContextMixin extends UseOnContextAccessor {
 
   @Override
   @Accessor("hitResult")
-  BlockHitResult dynamiducts$getHitResult();
+  BlockHitResult thermaducts$getHitResult();
 }

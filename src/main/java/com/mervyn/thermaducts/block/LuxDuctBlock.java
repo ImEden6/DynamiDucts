@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.block;
+package com.mervyn.thermaducts.block;
 
-import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.init.DDBlockEntities;
+import com.mervyn.thermaducts.blockentity.StructuralDuctBlockEntity;
+import com.mervyn.thermaducts.init.DDBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;

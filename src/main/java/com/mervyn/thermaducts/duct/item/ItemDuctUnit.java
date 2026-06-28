@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.duct.item;
+package com.mervyn.thermaducts.duct.item;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.duct.DuctUnit;
-import com.mervyn.dynamiducts.core.network.Route;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.duct.DuctUnit;
+import com.mervyn.thermaducts.core.network.Route;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

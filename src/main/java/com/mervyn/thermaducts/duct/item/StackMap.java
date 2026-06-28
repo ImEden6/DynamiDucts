@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.duct.item;
+package com.mervyn.thermaducts.duct.item;
 
 import java.util.HashMap;
 import java.util.Map;

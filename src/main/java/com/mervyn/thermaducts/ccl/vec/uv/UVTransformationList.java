@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.vec.uv;
+package com.mervyn.thermaducts.ccl.vec.uv;
 
-import com.mervyn.dynamiducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.util.Copyable;
 import java.util.ArrayList;
 import net.covers1624.quack.collection.FastStream;
 

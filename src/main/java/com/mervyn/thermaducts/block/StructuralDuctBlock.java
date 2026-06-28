@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.block;
+package com.mervyn.thermaducts.block;
 
-import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.init.DDBlockEntities;
+import com.mervyn.thermaducts.blockentity.StructuralDuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.init.DDBlockEntities;
 import com.mojang.serialization.MapCodec;
 import java.util.function.Supplier;
 import net.minecraft.core.BlockPos;

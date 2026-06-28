@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.accessor;
+package com.mervyn.thermaducts.accessor;
 
 import net.minecraft.world.phys.BlockHitResult;
 
 public interface UseOnContextAccessor {
 
-  BlockHitResult dynamiducts$getHitResult();
+  BlockHitResult thermaducts$getHitResult();
 }

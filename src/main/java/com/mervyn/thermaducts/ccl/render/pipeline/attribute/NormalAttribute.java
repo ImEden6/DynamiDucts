@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline.attribute;
+package com.mervyn.thermaducts.ccl.render.pipeline.attribute;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.VertexAttribute;
-import com.mervyn.dynamiducts.ccl.vec.Rotation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.VertexAttribute;
+import com.mervyn.thermaducts.ccl.vec.Rotation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
 import org.jetbrains.annotations.Nullable;
 
 /** Apples normals to the render operation. If the model is a planar model it uses known normals. */

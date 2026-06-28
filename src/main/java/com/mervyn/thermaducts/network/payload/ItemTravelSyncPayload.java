@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.network.payload;
+package com.mervyn.thermaducts.network.payload;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.item.ItemDuctUnit;
-import com.mervyn.dynamiducts.duct.item.TravelingItemSnapshot;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.item.ItemDuctUnit;
+import com.mervyn.thermaducts.duct.item.TravelingItemSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;
@@ -20,7 +20,7 @@ public record ItemTravelSyncPayload(BlockPos pos, List<TravelingItemSnapshot> it
     implements CustomPacketPayload {
 
   public static final Type<ItemTravelSyncPayload> TYPE =
-      new Type<>(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "item_travel_sync"));
+      new Type<>(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "item_travel_sync"));
 
   public static final StreamCodec<RegistryFriendlyByteBuf, ItemTravelSyncPayload> STREAM_CODEC =
       StreamCodec.of(ItemTravelSyncPayload::write, ItemTravelSyncPayload::read);

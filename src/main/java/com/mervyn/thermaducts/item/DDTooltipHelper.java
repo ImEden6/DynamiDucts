@@ -1,17 +1,17 @@
-package com.mervyn.dynamiducts.item;
+package com.mervyn.thermaducts.item;
 
-import com.mervyn.dynamiducts.MNConfig;
-import com.mervyn.dynamiducts.block.EnergyDuctBlock;
-import com.mervyn.dynamiducts.block.FluidDuctBlock;
-import com.mervyn.dynamiducts.block.ItemDuctBlock;
-import com.mervyn.dynamiducts.block.StructuralDuctBlock;
-import com.mervyn.dynamiducts.block.TransportDuctBlock;
-import com.mervyn.dynamiducts.blockentity.EnergyDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.FluidDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.ItemDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.TransportDuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.init.DDBlocks;
+import com.mervyn.thermaducts.MNConfig;
+import com.mervyn.thermaducts.block.EnergyDuctBlock;
+import com.mervyn.thermaducts.block.FluidDuctBlock;
+import com.mervyn.thermaducts.block.ItemDuctBlock;
+import com.mervyn.thermaducts.block.StructuralDuctBlock;
+import com.mervyn.thermaducts.block.TransportDuctBlock;
+import com.mervyn.thermaducts.blockentity.EnergyDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.FluidDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.ItemDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.TransportDuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.init.DDBlocks;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.ChatFormatting;
@@ -24,9 +24,9 @@ import net.minecraft.world.level.block.Block;
 public final class DDTooltipHelper {
 
   public enum AttachmentTooltipType {
-    SERVO("info.dynamiducts.servo.info"),
-    FILTER("info.dynamiducts.filter.info"),
-    RETRIEVER("info.dynamiducts.retriever.info");
+    SERVO("info.thermaducts.servo.info"),
+    FILTER("info.thermaducts.filter.info"),
+    RETRIEVER("info.thermaducts.retriever.info");
 
     private final String summaryKey;
 
@@ -38,11 +38,11 @@ public final class DDTooltipHelper {
   private static final int DEFAULT_ENERGY_BASE_TRANSFER = 1000;
   private static final int[] SERVO_FLUID_THROTTLE = {50, 75, 100, 150, 200};
   private static final String[] FILTER_FLAG_KEYS = {
-    "info.dynamiducts.filter.whiteList.off",
-    "info.dynamiducts.filter.metadata",
-    "info.dynamiducts.filter.nbt",
-    "info.dynamiducts.filter.oreDict",
-    "info.dynamiducts.filter.modSorting"
+    "info.thermaducts.filter.whiteList.off",
+    "info.thermaducts.filter.metadata",
+    "info.thermaducts.filter.nbt",
+    "info.thermaducts.filter.oreDict",
+    "info.thermaducts.filter.modSorting"
   };
   private static final int[] ITEM_FILTER_MAX_FLAG = {0, 1, 4, 4, 4};
 
@@ -83,85 +83,85 @@ public final class DDTooltipHelper {
     }
     int tierIndex = tier.index();
     if (type == AttachmentTooltipType.FILTER) {
-      tooltip.add(heading("info.dynamiducts.cofh.items"));
+      tooltip.add(heading("info.thermaducts.cofh.items"));
       addFilterOptions(tooltip, true, tierIndex);
-      tooltip.add(heading("info.dynamiducts.cofh.fluids"));
+      tooltip.add(heading("info.thermaducts.cofh.fluids"));
       addFilterOptions(tooltip, false, tierIndex);
       return;
     }
 
-    tooltip.add(info("info.dynamiducts.servo.redstoneInt"));
-    tooltip.add(heading("info.dynamiducts.cofh.items"));
-    tooltip.add(detail("info.dynamiducts.servo.extractRate", formatSeconds(tier.tickRate())));
-    tooltip.add(detail("info.dynamiducts.servo.maxStackSize", Integer.toString(tier.stackSize())));
+    tooltip.add(info("info.thermaducts.servo.redstoneInt"));
+    tooltip.add(heading("info.thermaducts.cofh.items"));
+    tooltip.add(detail("info.thermaducts.servo.extractRate", formatSeconds(tier.tickRate())));
+    tooltip.add(detail("info.thermaducts.servo.maxStackSize", Integer.toString(tier.stackSize())));
     addFilterOptions(tooltip, true, tierIndex);
     tooltip.add(
         info(
             tier.multiStack()
-                ? "info.dynamiducts.servo.slotMulti"
-                : "info.dynamiducts.servo.slotSingle"));
+                ? "info.thermaducts.servo.slotMulti"
+                : "info.thermaducts.servo.slotSingle"));
     if (tier.speedBoost() != 1) {
-      tooltip.add(detail("info.dynamiducts.servo.speedBoost", tier.speedBoost() + "x"));
+      tooltip.add(detail("info.thermaducts.servo.speedBoost", tier.speedBoost() + "x"));
     }
-    tooltip.add(heading("info.dynamiducts.cofh.fluids"));
+    tooltip.add(heading("info.thermaducts.cofh.fluids"));
     tooltip.add(
-        detail("info.dynamiducts.servo.extractRate", SERVO_FLUID_THROTTLE[tierIndex] + "%"));
+        detail("info.thermaducts.servo.extractRate", SERVO_FLUID_THROTTLE[tierIndex] + "%"));
     addFilterOptions(tooltip, false, tierIndex);
   }
 
   public static void appendRelayTooltip(List<Component> tooltip) {
-    tooltip.add(info("info.dynamiducts.relay.info"));
-    tooltip.add(notice("info.dynamiducts.toggle"));
+    tooltip.add(info("info.thermaducts.relay.info"));
+    tooltip.add(notice("info.thermaducts.toggle"));
   }
 
   private static void addEnergyDuctTooltip(
       EnergyDuctBlockEntity.Tier tier, List<Component> tooltip) {
     if (tier.isCraftingItem()) {
-      tooltip.add(info("info.dynamiducts.duct.crafting"));
+      tooltip.add(info("info.thermaducts.duct.crafting"));
       return;
     }
-    tooltip.add(info("info.dynamiducts.duct.energy"));
+    tooltip.add(info("info.thermaducts.duct.energy"));
     if (tier == EnergyDuctBlockEntity.Tier.SUPERCONDUCTOR) {
       tooltip.add(
           transferLine(
-              Component.translatable("info.dynamiducts.cofh.infinite")
+              Component.translatable("info.thermaducts.cofh.infinite")
                   .withStyle(ChatFormatting.AQUA)));
-      tooltip.add(info("info.dynamiducts.duct.energySuper"));
+      tooltip.add(info("info.thermaducts.duct.energySuper"));
     } else {
       tooltip.add(
           transferLine(
               Component.literal(Integer.toString(getEnergyRate(tier.index)))
                   .withStyle(ChatFormatting.YELLOW)));
     }
-    tooltip.add(notice("info.dynamiducts.transferConnection"));
+    tooltip.add(notice("info.thermaducts.transferConnection"));
   }
 
   private static void addFluidDuctTooltip(
       FluidDuctBlock block, List<Component> tooltip, FluidDuctBlockEntity.Tier tier) {
     switch (tier) {
       case BASIC -> {
-        tooltip.add(info("info.dynamiducts.duct.fluid"));
-        tooltip.add(info("info.dynamiducts.duct.fluidBasic"));
+        tooltip.add(info("info.thermaducts.duct.fluid"));
+        tooltip.add(info("info.thermaducts.duct.fluidBasic"));
       }
       case HARDENED -> {
-        tooltip.add(info("info.dynamiducts.duct.fluid"));
-        tooltip.add(info("info.dynamiducts.duct.fluidHardened"));
+        tooltip.add(info("info.thermaducts.duct.fluid"));
+        tooltip.add(info("info.thermaducts.duct.fluidHardened"));
       }
       case ENERGY -> {
-        tooltip.add(info("info.dynamiducts.duct.fluidEnergy"));
+        tooltip.add(info("info.thermaducts.duct.fluidEnergy"));
         tooltip.add(
             transferLine(
                 Component.literal(Integer.toString(getHybridEnergyRate()))
                     .withStyle(ChatFormatting.YELLOW)));
-        tooltip.add(info("info.dynamiducts.duct.fluidHardened"));
+        tooltip.add(info("info.thermaducts.duct.fluidHardened"));
       }
       case SUPER -> {
-        tooltip.add(info("info.dynamiducts.duct.fluid"));
-        tooltip.add(info("info.dynamiducts.duct.fluidSuper"));
+        tooltip.add(info("info.thermaducts.duct.fluid"));
+        tooltip.add(info("info.thermaducts.duct.fluidSuper"));
       }
     }
     if (tier != FluidDuctBlockEntity.Tier.SUPER) {
-      tooltip.add(notice("info.dynamiducts.transferFluid"));
+      tooltip.add(notice("info.thermaducts.transferFluid"));
     }
   }
 
@@ -169,33 +169,33 @@ public final class DDTooltipHelper {
       ItemStack stack, ItemDuctBlock block, List<Component> tooltip) {
     ItemDuctBlockEntity.Tier tier = block.getTier();
     switch (tier) {
-      case BASIC -> tooltip.add(info("info.dynamiducts.duct.item"));
+      case BASIC -> tooltip.add(info("info.thermaducts.duct.item"));
       case DENSE -> {
-        tooltip.add(info("info.dynamiducts.duct.item"));
-        tooltip.add(info("info.dynamiducts.duct.dense"));
+        tooltip.add(info("info.thermaducts.duct.item"));
+        tooltip.add(info("info.thermaducts.duct.dense"));
       }
       case VACUUM -> {
-        tooltip.add(info("info.dynamiducts.duct.item"));
-        tooltip.add(info("info.dynamiducts.duct.vacuum"));
+        tooltip.add(info("info.thermaducts.duct.item"));
+        tooltip.add(info("info.thermaducts.duct.vacuum"));
       }
       case FAST -> {
-        tooltip.add(info("info.dynamiducts.duct.item"));
-        tooltip.add(info("info.dynamiducts.duct.itemFast"));
+        tooltip.add(info("info.thermaducts.duct.item"));
+        tooltip.add(info("info.thermaducts.duct.itemFast"));
       }
       case ENERGY -> {
-        tooltip.add(info("info.dynamiducts.duct.itemEnergy"));
+        tooltip.add(info("info.thermaducts.duct.itemEnergy"));
         tooltip.add(
             transferLine(
                 Component.literal(Integer.toString(getHybridEnergyRate()))
                     .withStyle(ChatFormatting.YELLOW)));
       }
       case ENERGY_FAST -> {
-        tooltip.add(info("info.dynamiducts.duct.itemEnergy"));
+        tooltip.add(info("info.thermaducts.duct.itemEnergy"));
         tooltip.add(
             transferLine(
                 Component.literal(Integer.toString(getHybridEnergyRate()))
                     .withStyle(ChatFormatting.YELLOW)));
-        tooltip.add(info("info.dynamiducts.duct.itemFast"));
+        tooltip.add(info("info.thermaducts.duct.itemFast"));
       }
     }
   }
@@ -203,21 +203,21 @@ public final class DDTooltipHelper {
   private static void addTransportDuctTooltip(TransportDuctBlock block, List<Component> tooltip) {
     TransportDuctBlockEntity.Tier tier = block.getTier();
     if (tier == TransportDuctBlockEntity.Tier.FRAME) {
-      tooltip.add(info("info.dynamiducts.duct.crafting"));
+      tooltip.add(info("info.thermaducts.duct.crafting"));
       return;
     }
-    tooltip.add(info("info.dynamiducts.duct.transport"));
+    tooltip.add(info("info.thermaducts.duct.transport"));
     if (tier == TransportDuctBlockEntity.Tier.LONG_RANGE) {
-      tooltip.add(info("info.dynamiducts.duct.transportLongRange"));
+      tooltip.add(info("info.thermaducts.duct.transportLongRange"));
     } else if (tier == TransportDuctBlockEntity.Tier.LINKING) {
-      tooltip.add(info("info.dynamiducts.duct.transportCrossover"));
+      tooltip.add(info("info.thermaducts.duct.transportCrossover"));
     }
   }
 
   private static void addStructuralDuctTooltip(Block block, List<Component> tooltip) {
-    tooltip.add(info("info.dynamiducts.duct.structure"));
+    tooltip.add(info("info.thermaducts.duct.structure"));
     if (block == DDBlocks.LUX_DUCT.get()) {
-      tooltip.add(info("info.dynamiducts.duct.light"));
+      tooltip.add(info("info.thermaducts.duct.light"));
     }
   }
 
@@ -244,7 +244,7 @@ public final class DDTooltipHelper {
       MutableComponent line = Component.literal("  ");
       if (i == 0) {
         line.append(
-            Component.translatable("info.dynamiducts.filter.options")
+            Component.translatable("info.thermaducts.filter.options")
                 .withStyle(ChatFormatting.GRAY));
         line.append(Component.literal(": ").withStyle(ChatFormatting.GRAY));
       }
@@ -281,7 +281,7 @@ public final class DDTooltipHelper {
   }
 
   private static MutableComponent transferLine(Component amount) {
-    return Component.translatable("info.dynamiducts.transfer")
+    return Component.translatable("info.thermaducts.transfer")
         .withStyle(ChatFormatting.GRAY)
         .append(Component.literal(": ").withStyle(ChatFormatting.GRAY))
         .append(amount)

@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.stub;
+package com.mervyn.thermaducts.stub;
 
-import com.mervyn.dynamiducts.duct.item.ItemDuctUnit;
-import com.mervyn.dynamiducts.duct.item.ItemGrid;
+import com.mervyn.thermaducts.duct.item.ItemDuctUnit;
+import com.mervyn.thermaducts.duct.item.ItemGrid;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.item.ItemStack;

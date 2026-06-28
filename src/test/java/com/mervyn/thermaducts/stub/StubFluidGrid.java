@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.stub;
+package com.mervyn.thermaducts.stub;
 
-import com.mervyn.dynamiducts.duct.fluid.FluidGrid;
+import com.mervyn.thermaducts.duct.fluid.FluidGrid;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;

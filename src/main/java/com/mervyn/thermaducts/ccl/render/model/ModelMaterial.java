@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.ccl.render.model;
+package com.mervyn.thermaducts.ccl.render.model;
 
-import com.mervyn.dynamiducts.ccl.colour.Colour;
-import com.mervyn.dynamiducts.ccl.colour.ColourRGBA;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.AttributeKey;
-import com.mervyn.dynamiducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.colour.Colour;
+import com.mervyn.thermaducts.ccl.colour.ColourRGBA;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.AttributeKey;
+import com.mervyn.thermaducts.ccl.util.Copyable;
 import org.jetbrains.annotations.Nullable;
 
 /** Created by covers1624 on 11/4/22. */

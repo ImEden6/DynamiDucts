@@ -1,16 +1,16 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.block.EnergyDuctBlock;
-import com.mervyn.dynamiducts.block.FluidDuctBlock;
-import com.mervyn.dynamiducts.block.ItemDuctBlock;
-import com.mervyn.dynamiducts.block.LuxDuctBlock;
-import com.mervyn.dynamiducts.block.StructuralDuctBlock;
-import com.mervyn.dynamiducts.block.TransportDuctBlock;
-import com.mervyn.dynamiducts.blockentity.EnergyDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.FluidDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.ItemDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.TransportDuctBlockEntity;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.block.EnergyDuctBlock;
+import com.mervyn.thermaducts.block.FluidDuctBlock;
+import com.mervyn.thermaducts.block.ItemDuctBlock;
+import com.mervyn.thermaducts.block.LuxDuctBlock;
+import com.mervyn.thermaducts.block.StructuralDuctBlock;
+import com.mervyn.thermaducts.block.TransportDuctBlock;
+import com.mervyn.thermaducts.blockentity.EnergyDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.FluidDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.ItemDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.TransportDuctBlockEntity;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -19,7 +19,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DDBlocks {
 
   public static final DeferredRegister.Blocks BLOCKS =
-      DeferredRegister.createBlocks(DynamiDucts.MODID);
+      DeferredRegister.createBlocks(ThermaDucts.MODID);
 
   private static BlockBehaviour.Properties ductProps() {
     return BlockBehaviour.Properties.of()

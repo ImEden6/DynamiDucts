@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.mixin;
+package com.mervyn.thermaducts.mixin;
 
-import com.mervyn.dynamiducts.duct.transport.TransportEntity;
+import com.mervyn.thermaducts.duct.transport.TransportEntity;
 import net.minecraft.client.Camera;
 import net.minecraft.world.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.block;
+package com.mervyn.thermaducts.block;
 
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.menu.AttachmentMenu;
-import com.mervyn.dynamiducts.menu.RelayMenu;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.menu.AttachmentMenu;
+import com.mervyn.thermaducts.menu.RelayMenu;
 import com.mojang.serialization.MapCodec;
 import java.util.Map;
 import net.minecraft.core.BlockPos;

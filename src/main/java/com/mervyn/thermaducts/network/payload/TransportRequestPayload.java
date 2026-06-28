@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.network.payload;
+package com.mervyn.thermaducts.network.payload;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -15,7 +15,7 @@ public record TransportRequestPayload(BlockPos origin, BlockPos destination)
     implements CustomPacketPayload {
 
   public static final Type<TransportRequestPayload> TYPE =
-      new Type<>(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "transport_request"));
+      new Type<>(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "transport_request"));
 
   public static final StreamCodec<FriendlyByteBuf, TransportRequestPayload> STREAM_CODEC =
       StreamCodec.of(TransportRequestPayload::write, TransportRequestPayload::read);

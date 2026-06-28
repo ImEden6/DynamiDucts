@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;

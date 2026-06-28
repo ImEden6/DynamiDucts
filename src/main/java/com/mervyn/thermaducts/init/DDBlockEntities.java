@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.EnergyDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.FluidDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.ItemDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.TransportDuctBlockEntity;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.EnergyDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.FluidDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.ItemDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.StructuralDuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.TransportDuctBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DDBlockEntities {
 
   public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-      DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, DynamiDucts.MODID);
+      DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ThermaDucts.MODID);
 
   public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<EnergyDuctBlockEntity>>
       ENERGY_DUCT_BASIC =

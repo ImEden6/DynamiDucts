@@ -1,13 +1,13 @@
-package com.mervyn.dynamiducts.client.renderer;
+package com.mervyn.thermaducts.client.renderer;
 
-import com.mervyn.dynamiducts.ccl.render.BlockRenderer;
-import com.mervyn.dynamiducts.ccl.render.CCModel;
-import com.mervyn.dynamiducts.ccl.vec.Cuboid6;
-import com.mervyn.dynamiducts.ccl.vec.Rotation;
-import com.mervyn.dynamiducts.ccl.vec.Scale;
-import com.mervyn.dynamiducts.ccl.vec.Translation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
-import com.mervyn.dynamiducts.ccl.vec.Vertex5;
+import com.mervyn.thermaducts.ccl.render.BlockRenderer;
+import com.mervyn.thermaducts.ccl.render.CCModel;
+import com.mervyn.thermaducts.ccl.vec.Cuboid6;
+import com.mervyn.thermaducts.ccl.vec.Rotation;
+import com.mervyn.thermaducts.ccl.vec.Scale;
+import com.mervyn.thermaducts.ccl.vec.Translation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.vec.Vertex5;
 import java.util.LinkedList;
 
 public class DuctModels {
@@ -69,7 +69,7 @@ public class DuctModels {
             .computeNormals();
 
     CCModel.generateBackface(modelConnection[0][1], 0, modelConnection[0][1], 24, 24);
-    modelConnection[0][1].apply(new com.mervyn.dynamiducts.ccl.vec.Translation(-0.5, -0.5, -0.5));
+    modelConnection[0][1].apply(new com.mervyn.thermaducts.ccl.vec.Translation(-0.5, -0.5, -0.5));
 
     for (CCModel[] sideModels : modelConnection) {
       CCModel.generateSidedModels(sideModels, 1, Vector3.ZERO);

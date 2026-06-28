@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.duct.item;
+package com.mervyn.thermaducts.duct.item;
 
-import com.mervyn.dynamiducts.core.network.Route;
+import com.mervyn.thermaducts.core.network.Route;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.core.BlockPos;

@@ -1,19 +1,19 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.attachment.filter.FilterFluid;
-import com.mervyn.dynamiducts.attachment.filter.FilterItem;
-import com.mervyn.dynamiducts.attachment.retriever.RetrieverFluid;
-import com.mervyn.dynamiducts.attachment.retriever.RetrieverItem;
-import com.mervyn.dynamiducts.attachment.servo.ServoFluid;
-import com.mervyn.dynamiducts.attachment.servo.ServoItem;
-import com.mervyn.dynamiducts.core.attachment.AttachmentPlacementHelper;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.item.AttachmentItem;
-import com.mervyn.dynamiducts.item.DDTooltipHelper;
-import com.mervyn.dynamiducts.item.DuctBlockItem;
-import com.mervyn.dynamiducts.item.RelayItem;
-import com.mervyn.dynamiducts.item.WrenchItem;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.attachment.filter.FilterFluid;
+import com.mervyn.thermaducts.attachment.filter.FilterItem;
+import com.mervyn.thermaducts.attachment.retriever.RetrieverFluid;
+import com.mervyn.thermaducts.attachment.retriever.RetrieverItem;
+import com.mervyn.thermaducts.attachment.servo.ServoFluid;
+import com.mervyn.thermaducts.attachment.servo.ServoItem;
+import com.mervyn.thermaducts.core.attachment.AttachmentPlacementHelper;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.item.AttachmentItem;
+import com.mervyn.thermaducts.item.DDTooltipHelper;
+import com.mervyn.thermaducts.item.DuctBlockItem;
+import com.mervyn.thermaducts.item.RelayItem;
+import com.mervyn.thermaducts.item.WrenchItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -22,20 +22,20 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class DDItems {
 
   public static final DeferredRegister.Items ITEMS =
-      DeferredRegister.createItems(DynamiDucts.MODID);
+      DeferredRegister.createItems(ThermaDucts.MODID);
 
-  private static final String TIP_ENERGY = "info.dynamiducts.duct.energy";
-  private static final String TIP_FLUID = "info.dynamiducts.duct.fluid";
-  private static final String TIP_FLUID_ENERGY = "info.dynamiducts.duct.fluidEnergy";
-  private static final String TIP_ITEM = "info.dynamiducts.duct.item";
-  private static final String TIP_ITEM_ENERGY = "info.dynamiducts.duct.itemEnergy";
-  private static final String TIP_ITEM_FAST = "info.dynamiducts.duct.itemFast";
-  private static final String TIP_STRUCTURE = "info.dynamiducts.duct.structure";
-  private static final String TIP_CRAFTING = "info.dynamiducts.duct.crafting";
-  private static final String TIP_FLUID_BASIC = "info.dynamiducts.duct.fluidBasic";
-  private static final String TIP_FLUID_HARDENED = "info.dynamiducts.duct.fluidHardened";
-  private static final String TIP_FLUID_SUPER = "info.dynamiducts.duct.fluidSuper";
-  private static final String TIP_ENERGY_SUPER = "info.dynamiducts.duct.energySuper";
+  private static final String TIP_ENERGY = "info.thermaducts.duct.energy";
+  private static final String TIP_FLUID = "info.thermaducts.duct.fluid";
+  private static final String TIP_FLUID_ENERGY = "info.thermaducts.duct.fluidEnergy";
+  private static final String TIP_ITEM = "info.thermaducts.duct.item";
+  private static final String TIP_ITEM_ENERGY = "info.thermaducts.duct.itemEnergy";
+  private static final String TIP_ITEM_FAST = "info.thermaducts.duct.itemFast";
+  private static final String TIP_STRUCTURE = "info.thermaducts.duct.structure";
+  private static final String TIP_CRAFTING = "info.thermaducts.duct.crafting";
+  private static final String TIP_FLUID_BASIC = "info.thermaducts.duct.fluidBasic";
+  private static final String TIP_FLUID_HARDENED = "info.thermaducts.duct.fluidHardened";
+  private static final String TIP_FLUID_SUPER = "info.thermaducts.duct.fluidSuper";
+  private static final String TIP_ENERGY_SUPER = "info.thermaducts.duct.energySuper";
 
   public static final DeferredItem<DuctBlockItem> ENERGY_DUCT_BASIC =
       ITEMS.registerItem(
@@ -282,7 +282,7 @@ public class DDItems {
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_BASIC.get(),
                   props.rarity(Rarity.UNCOMMON),
-                  "info.dynamiducts.duct.transport"),
+                  "info.thermaducts.duct.transport"),
           () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_LONG_RANGE =
       ITEMS.registerItem(
@@ -291,7 +291,7 @@ public class DDItems {
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_LONG_RANGE.get(),
                   props.rarity(Rarity.UNCOMMON),
-                  "info.dynamiducts.duct.transportLongRange"),
+                  "info.thermaducts.duct.transportLongRange"),
           () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_LINKING =
       ITEMS.registerItem(
@@ -300,7 +300,7 @@ public class DDItems {
               new DuctBlockItem(
                   DDBlocks.TRANSPORT_DUCT_LINKING.get(),
                   props.rarity(Rarity.UNCOMMON),
-                  "info.dynamiducts.duct.transportCrossover"),
+                  "info.thermaducts.duct.transportCrossover"),
           () -> new Item.Properties());
   public static final DeferredItem<DuctBlockItem> TRANSPORT_DUCT_FRAME =
       ITEMS.registerItem(
@@ -318,7 +318,7 @@ public class DDItems {
   public static final DeferredItem<DuctBlockItem> LUX_DUCT =
       ITEMS.registerItem(
           "lux_duct",
-          props -> new DuctBlockItem(DDBlocks.LUX_DUCT.get(), props, "info.dynamiducts.duct.light"),
+          props -> new DuctBlockItem(DDBlocks.LUX_DUCT.get(), props, "info.thermaducts.duct.light"),
           () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> SERVO_BASIC =
@@ -335,7 +335,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.BASIC),
                           (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.BASIC)),
-                  "info.dynamiducts.servo.info"),
+                  "info.thermaducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_HARDENED =
       ITEMS.registerItem(
@@ -351,7 +351,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.HARDENED),
                           (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.HARDENED)),
-                  "info.dynamiducts.servo.info"),
+                  "info.thermaducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_REINFORCED =
       ITEMS.registerItem(
@@ -367,7 +367,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.REINFORCED),
                           (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.REINFORCED)),
-                  "info.dynamiducts.servo.info"),
+                  "info.thermaducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_SIGNALUM =
       ITEMS.registerItem(
@@ -383,7 +383,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.SIGNALUM),
                           (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.SIGNALUM)),
-                  "info.dynamiducts.servo.info"),
+                  "info.thermaducts.servo.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> SERVO_RESONANT =
       ITEMS.registerItem(
@@ -399,7 +399,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new ServoFluid(duct, dir, AttachmentTier.RESONANT),
                           (duct, dir) -> new ServoItem(duct, dir, AttachmentTier.RESONANT)),
-                  "info.dynamiducts.servo.info"),
+                  "info.thermaducts.servo.info"),
           () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> FILTER_BASIC =
@@ -417,7 +417,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.BASIC),
                           (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.BASIC)),
-                  "info.dynamiducts.filter.info"),
+                  "info.thermaducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_HARDENED =
       ITEMS.registerItem(
@@ -434,7 +434,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.HARDENED),
                           (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.HARDENED)),
-                  "info.dynamiducts.filter.info"),
+                  "info.thermaducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_REINFORCED =
       ITEMS.registerItem(
@@ -451,7 +451,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.REINFORCED),
                           (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.REINFORCED)),
-                  "info.dynamiducts.filter.info"),
+                  "info.thermaducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_SIGNALUM =
       ITEMS.registerItem(
@@ -468,7 +468,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.SIGNALUM),
                           (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.SIGNALUM)),
-                  "info.dynamiducts.filter.info"),
+                  "info.thermaducts.filter.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> FILTER_RESONANT =
       ITEMS.registerItem(
@@ -485,7 +485,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new FilterFluid(duct, dir, AttachmentTier.RESONANT),
                           (duct, dir) -> new FilterItem(duct, dir, AttachmentTier.RESONANT)),
-                  "info.dynamiducts.filter.info"),
+                  "info.thermaducts.filter.info"),
           () -> new Item.Properties());
 
   public static final DeferredItem<AttachmentItem> RETRIEVER_BASIC =
@@ -502,7 +502,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.BASIC),
                           (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.BASIC)),
-                  "info.dynamiducts.retriever.info"),
+                  "info.thermaducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_HARDENED =
       ITEMS.registerItem(
@@ -518,7 +518,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.HARDENED),
                           (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.HARDENED)),
-                  "info.dynamiducts.retriever.info"),
+                  "info.thermaducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_REINFORCED =
       ITEMS.registerItem(
@@ -534,7 +534,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.REINFORCED),
                           (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.REINFORCED)),
-                  "info.dynamiducts.retriever.info"),
+                  "info.thermaducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_SIGNALUM =
       ITEMS.registerItem(
@@ -550,7 +550,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.SIGNALUM),
                           (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.SIGNALUM)),
-                  "info.dynamiducts.retriever.info"),
+                  "info.thermaducts.retriever.info"),
           () -> new Item.Properties());
   public static final DeferredItem<AttachmentItem> RETRIEVER_RESONANT =
       ITEMS.registerItem(
@@ -566,7 +566,7 @@ public class DDItems {
                           side,
                           (duct, dir) -> new RetrieverFluid(duct, dir, AttachmentTier.RESONANT),
                           (duct, dir) -> new RetrieverItem(duct, dir, AttachmentTier.RESONANT)),
-                  "info.dynamiducts.retriever.info"),
+                  "info.thermaducts.retriever.info"),
           () -> new Item.Properties());
 
   public static final DeferredItem<RelayItem> RELAY =

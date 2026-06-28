@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.network.payload;
+package com.mervyn.thermaducts.network.payload;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.attachment.RedstoneMode;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.attachment.RedstoneMode;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;
@@ -24,7 +24,7 @@ public record AttachmentConfigPayload(BlockPos pos, int side, int action, int va
   public static final int ACTION_SET_ROUTE_TYPE = 5;
 
   public static final Type<AttachmentConfigPayload> TYPE =
-      new Type<>(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "attachment_config"));
+      new Type<>(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "attachment_config"));
 
   public static final StreamCodec<FriendlyByteBuf, AttachmentConfigPayload> STREAM_CODEC =
       StreamCodec.of(AttachmentConfigPayload::write, AttachmentConfigPayload::read);

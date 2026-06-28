@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.core.attachment;
+package com.mervyn.thermaducts.core.attachment;
 
 public record AttachmentTier(
     int index,

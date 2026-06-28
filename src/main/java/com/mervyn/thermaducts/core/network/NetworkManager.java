@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.core.network;
+package com.mervyn.thermaducts.core.network;
 
-import com.mervyn.dynamiducts.core.duct.DuctUnit;
+import com.mervyn.thermaducts.core.duct.DuctUnit;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.util.ArrayList;
 import java.util.List;

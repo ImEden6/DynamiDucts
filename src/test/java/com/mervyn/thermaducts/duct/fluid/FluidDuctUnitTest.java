@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.duct.fluid;
+package com.mervyn.thermaducts.duct.fluid;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.mervyn.dynamiducts.DuctUnitTestBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.network.ConnectionType;
-import com.mervyn.dynamiducts.stub.StubFluidGrid;
+import com.mervyn.thermaducts.DuctUnitTestBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.network.ConnectionType;
+import com.mervyn.thermaducts.stub.StubFluidGrid;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.neoforged.neoforge.fluids.FluidStack;

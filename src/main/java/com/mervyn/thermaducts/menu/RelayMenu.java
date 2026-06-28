@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.menu;
+package com.mervyn.thermaducts.menu;
 
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.structural.StructuralDuctUnit;
-import com.mervyn.dynamiducts.init.DDMenuTypes;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.blockentity.StructuralDuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.structural.StructuralDuctUnit;
+import com.mervyn.thermaducts.init.DDMenuTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;

@@ -1,13 +1,13 @@
-package com.mervyn.dynamiducts.attachment.servo;
+package com.mervyn.thermaducts.attachment.servo;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.network.Route;
-import com.mervyn.dynamiducts.duct.item.ItemDuctUnit;
-import com.mervyn.dynamiducts.duct.item.ItemGrid;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.network.Route;
+import com.mervyn.thermaducts.duct.item.ItemDuctUnit;
+import com.mervyn.thermaducts.duct.item.ItemGrid;
 import java.util.List;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
@@ -20,7 +20,7 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 public class ServoItem extends ConnectionBase {
 
   public static final Identifier ID =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "servo_item");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "servo_item");
 
   public ServoItem(DuctBlockEntity parent, Direction side, AttachmentTier tier) {
     super(parent, side, tier);

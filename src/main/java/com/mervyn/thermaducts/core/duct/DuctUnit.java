@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.core.duct;
+package com.mervyn.thermaducts.core.duct;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.network.ConnectionType;
-import com.mervyn.dynamiducts.core.network.NetworkGrid;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.network.ConnectionType;
+import com.mervyn.thermaducts.core.network.NetworkGrid;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

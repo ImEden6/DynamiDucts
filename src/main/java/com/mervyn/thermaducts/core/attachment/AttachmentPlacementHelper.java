@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.core.attachment;
+package com.mervyn.thermaducts.core.attachment;
 
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
 import java.util.function.BiFunction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.render.model;
+package com.mervyn.thermaducts.ccl.render.model;
 
-import com.mervyn.dynamiducts.ccl.util.ResourceUtils;
+import com.mervyn.thermaducts.ccl.util.ResourceUtils;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.resources.Identifier;

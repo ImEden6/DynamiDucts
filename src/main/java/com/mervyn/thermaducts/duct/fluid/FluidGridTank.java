@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.duct.fluid;
+package com.mervyn.thermaducts.duct.fluid;
 
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.transfer.ResourceHandler;

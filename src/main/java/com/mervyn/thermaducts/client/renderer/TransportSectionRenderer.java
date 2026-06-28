@@ -1,13 +1,13 @@
-package com.mervyn.dynamiducts.client.renderer;
+package com.mervyn.thermaducts.client.renderer;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.block.TransportDuctBlock;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.TransportDuctBlockEntity;
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.vec.Translation;
-import com.mervyn.dynamiducts.ccl.vec.uv.IconTransformation;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.block.TransportDuctBlock;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.TransportDuctBlockEntity;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.vec.Translation;
+import com.mervyn.thermaducts.ccl.vec.uv.IconTransformation;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.AddSectionGeometryEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ThermaDucts.MODID, value = Dist.CLIENT)
 public class TransportSectionRenderer {
 
   private static final Map<String, TextureAtlasSprite> SPRITE_CACHE = new ConcurrentHashMap<>();
@@ -174,7 +174,7 @@ public class TransportSectionRenderer {
             Minecraft.getInstance()
                 .getAtlasManager()
                 .getAtlasOrThrow(net.minecraft.data.AtlasIds.BLOCKS)
-                .getSprite(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, p)));
+                .getSprite(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, p)));
   }
 
   public static void clearSpriteCache() {

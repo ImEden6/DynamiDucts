@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts;
+package com.mervyn.thermaducts;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID)
+@EventBusSubscriber(modid = ThermaDucts.MODID)
 public class MNConfig {
 
   private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();

@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.core.attachment;
+package com.mervyn.thermaducts.core.attachment;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.vec.uv;
+package com.mervyn.thermaducts.ccl.vec.uv;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline;
+package com.mervyn.thermaducts.ccl.render.pipeline;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

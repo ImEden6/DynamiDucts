@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.ccl.vec.uv;
+package com.mervyn.thermaducts.ccl.vec.uv;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
-import com.mervyn.dynamiducts.ccl.vec.ITransformation;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.vec.ITransformation;
 
 /** Abstract supertype for any UV transformation */
 public abstract class UVTransformation extends ITransformation<UV, UVTransformation>

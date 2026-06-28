@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.block;
+package com.mervyn.thermaducts.block;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.blockentity.TransportDuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
-import com.mervyn.dynamiducts.menu.TransportMenu;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.TransportDuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.menu.TransportMenu;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -66,7 +66,7 @@ public class TransportDuctBlock extends DuctBlock {
       net.minecraft.core.Direction direction) {
     if (level.getBlockEntity(pos) instanceof DuctBlockEntity ductBE) {
       if (ductBE.getConnectionType(direction)
-          == com.mervyn.dynamiducts.core.network.ConnectionType.FORCED) {
+          == com.mervyn.thermaducts.core.network.ConnectionType.FORCED) {
         return true;
       }
     }
@@ -83,7 +83,7 @@ public class TransportDuctBlock extends DuctBlock {
           serverPlayer.openMenu(
               new SimpleMenuProvider(
                   (id, inv, p) -> new TransportMenu(id, inv, ductBE, unit, pos),
-                  Component.translatable("gui.dynamiducts.transport.title")),
+                  Component.translatable("gui.thermaducts.transport.title")),
               buf -> TransportMenu.writeScreenData(buf, unit, pos));
           return InteractionResult.SUCCESS;
         }

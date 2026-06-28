@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.duct.fluid;
+package com.mervyn.thermaducts.duct.fluid;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleTypes;

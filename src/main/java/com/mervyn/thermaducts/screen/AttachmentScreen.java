@@ -1,16 +1,16 @@
-package com.mervyn.dynamiducts.screen;
+package com.mervyn.thermaducts.screen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.attachment.retriever.RetrieverItem;
-import com.mervyn.dynamiducts.attachment.servo.ServoItem;
-import com.mervyn.dynamiducts.client.gui.widget.SheetButton;
-import com.mervyn.dynamiducts.client.gui.widget.tab.InfoSideTabWidget;
-import com.mervyn.dynamiducts.client.gui.widget.tab.RedstoneControlTabWidget;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.attachment.FilterLogic;
-import com.mervyn.dynamiducts.core.attachment.RedstoneMode;
-import com.mervyn.dynamiducts.menu.AttachmentMenu;
-import com.mervyn.dynamiducts.network.payload.AttachmentConfigPayload;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.attachment.retriever.RetrieverItem;
+import com.mervyn.thermaducts.attachment.servo.ServoItem;
+import com.mervyn.thermaducts.client.gui.widget.SheetButton;
+import com.mervyn.thermaducts.client.gui.widget.tab.InfoSideTabWidget;
+import com.mervyn.thermaducts.client.gui.widget.tab.RedstoneControlTabWidget;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.attachment.FilterLogic;
+import com.mervyn.thermaducts.core.attachment.RedstoneMode;
+import com.mervyn.thermaducts.menu.AttachmentMenu;
+import com.mervyn.thermaducts.network.payload.AttachmentConfigPayload;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -24,7 +24,7 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 public class AttachmentScreen extends AbstractContainerScreen<AttachmentMenu> {
 
   private static final Identifier TEXTURE =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/connection.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/connection.png");
 
   private static final int BUTTON_SIZE = 20;
   private static final int BUTTON_SPACING = 26;
@@ -229,7 +229,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentMenu> {
         xQty -= 9;
         graphics.text(
             font,
-            Component.translatable("info.dynamiducts.filter.zeroRetainSize"),
+            Component.translatable("info.thermaducts.filter.zeroRetainSize"),
             xQty,
             18,
             0x404040,
@@ -387,38 +387,38 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentMenu> {
     return switch (flagIndex) {
       case 0 ->
           Component.translatable(
-              "info.dynamiducts.filter.whiteList." + (menu.isWhitelist() ? "off" : "on"));
+              "info.thermaducts.filter.whiteList." + (menu.isWhitelist() ? "off" : "on"));
       case 1 ->
           Component.translatable(
-              "info.dynamiducts.filter.components." + (menu.isMatchComponents() ? "off" : "on"));
+              "info.thermaducts.filter.components." + (menu.isMatchComponents() ? "off" : "on"));
       case 2 ->
           Component.translatable(
-              "info.dynamiducts.filter.modSorting." + (menu.isMatchModId() ? "off" : "on"));
+              "info.thermaducts.filter.modSorting." + (menu.isMatchModId() ? "off" : "on"));
       default -> Component.empty();
     };
   }
 
   private Component getLevelTooltip(int levelIndex) {
     if (levelIndex == 0) {
-      return Component.translatable("info.dynamiducts.filter.routeType." + menu.getRouteType());
+      return Component.translatable("info.thermaducts.filter.routeType." + menu.getRouteType());
     }
     return Component.empty();
   }
 
   private Component getDecStackTooltip() {
-    return Component.translatable("info.dynamiducts.servo.decStackSize", getStackDeltaLabel());
+    return Component.translatable("info.thermaducts.servo.decStackSize", getStackDeltaLabel());
   }
 
   private Component getIncStackTooltip() {
-    return Component.translatable("info.dynamiducts.servo.incStackSize", getStackDeltaLabel());
+    return Component.translatable("info.thermaducts.servo.incStackSize", getStackDeltaLabel());
   }
 
   private Component getDecRetainTooltip() {
-    return Component.translatable("info.dynamiducts.filter.decRetainSize");
+    return Component.translatable("info.thermaducts.filter.decRetainSize");
   }
 
   private Component getIncRetainTooltip() {
-    return Component.translatable("info.dynamiducts.filter.incRetainSize");
+    return Component.translatable("info.thermaducts.filter.incRetainSize");
   }
 
   private int getDisplayedStackSize() {
@@ -500,14 +500,14 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentMenu> {
     List<Component> lines = new ArrayList<>();
     ConnectionBase attachment = menu.getAttachment();
     if (attachment.isServo()) {
-      lines.add(Component.translatable("info.dynamiducts.servo.info"));
+      lines.add(Component.translatable("info.thermaducts.servo.info"));
     } else if (attachment.isRetriever()) {
-      lines.add(Component.translatable("info.dynamiducts.retriever.info"));
+      lines.add(Component.translatable("info.thermaducts.retriever.info"));
     } else if (attachment.isFilter()) {
-      lines.add(Component.translatable("info.dynamiducts.filter.info"));
+      lines.add(Component.translatable("info.thermaducts.filter.info"));
     }
-    lines.add(Component.translatable("info.dynamiducts.servo.redstoneInt"));
-    lines.add(Component.translatable("tab.dynamiducts.conChange"));
+    lines.add(Component.translatable("info.thermaducts.servo.redstoneInt"));
+    lines.add(Component.translatable("tab.thermaducts.conChange"));
     return lines;
   }
 

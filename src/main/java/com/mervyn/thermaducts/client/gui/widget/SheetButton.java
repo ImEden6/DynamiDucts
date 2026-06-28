@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.client.gui.widget;
+package com.mervyn.thermaducts.client.gui.widget;
 
 import java.util.function.Supplier;
 import net.minecraft.client.Minecraft;

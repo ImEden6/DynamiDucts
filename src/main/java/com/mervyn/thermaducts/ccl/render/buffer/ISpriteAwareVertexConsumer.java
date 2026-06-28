@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.render.buffer;
+package com.mervyn.thermaducts.ccl.render.buffer;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;

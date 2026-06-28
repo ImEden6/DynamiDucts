@@ -1,13 +1,13 @@
-package com.mervyn.dynamiducts.client.renderer;
+package com.mervyn.thermaducts.client.renderer;
 
-import com.mervyn.dynamiducts.ccl.render.BlockRenderer;
-import com.mervyn.dynamiducts.ccl.render.CCModel;
-import com.mervyn.dynamiducts.ccl.vec.Cuboid6;
-import com.mervyn.dynamiducts.ccl.vec.Rotation;
-import com.mervyn.dynamiducts.ccl.vec.Transformation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
-import com.mervyn.dynamiducts.ccl.vec.Vertex5;
-import com.mervyn.dynamiducts.ccl.vec.uv.UV;
+import com.mervyn.thermaducts.ccl.render.BlockRenderer;
+import com.mervyn.thermaducts.ccl.render.CCModel;
+import com.mervyn.thermaducts.ccl.vec.Cuboid6;
+import com.mervyn.thermaducts.ccl.vec.Rotation;
+import com.mervyn.thermaducts.ccl.vec.Transformation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.vec.Vertex5;
+import com.mervyn.thermaducts.ccl.vec.uv.UV;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import java.util.Collections;
 import java.util.Iterator;

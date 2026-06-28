@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.attachment.servo;
+package com.mervyn.thermaducts.attachment.servo;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnit;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.fluid.FluidDuctUnit;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -16,7 +16,7 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 public class ServoFluid extends ConnectionBase {
 
   public static final Identifier ID =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "servo_fluid");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "servo_fluid");
 
   public ServoFluid(DuctBlockEntity parent, Direction side, AttachmentTier tier) {
     super(parent, side, tier);

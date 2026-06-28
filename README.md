@@ -1,8 +1,8 @@
-# DynamiDucts
+# ThermaDucts
 
 A Minecraft NeoForge mod for 26.1.2 (forked from the 1.21.1 version of [Leclowndu93150/DynamiDucts](https://github.com/Leclowndu93150/DynamiDucts)) that brings back the Thermal Dynamics legacy duct system. Build pipe networks to transport items, fluids, energy, and even players.
 
-CurseForge: [https://www.curseforge.com/minecraft/mc-mods/dynamiducts](https://www.curseforge.com/minecraft/mc-mods/dynamiducts)
+CurseForge: [https://www.curseforge.com/minecraft/mc-mods/thermaducts](https://www.curseforge.com/minecraft/mc-mods/thermaducts)
 
 ## Features
 

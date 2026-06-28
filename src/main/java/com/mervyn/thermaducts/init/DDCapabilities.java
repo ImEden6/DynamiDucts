@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID)
+@EventBusSubscriber(modid = ThermaDucts.MODID)
 public class DDCapabilities {
 
   @SubscribeEvent

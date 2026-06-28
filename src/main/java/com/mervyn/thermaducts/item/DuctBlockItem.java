@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.item;
+package com.mervyn.thermaducts.item;
 
-import com.mervyn.dynamiducts.block.DuctBlock;
+import com.mervyn.thermaducts.block.DuctBlock;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;

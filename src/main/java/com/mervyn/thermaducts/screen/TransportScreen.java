@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.screen;
+package com.mervyn.thermaducts.screen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.client.gui.widget.TransportDirectoryButton;
-import com.mervyn.dynamiducts.duct.transport.TransportDirectoryEntry;
-import com.mervyn.dynamiducts.menu.TransportMenu;
-import com.mervyn.dynamiducts.network.payload.TransportRequestPayload;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.client.gui.widget.TransportDirectoryButton;
+import com.mervyn.thermaducts.duct.transport.TransportDirectoryEntry;
+import com.mervyn.thermaducts.menu.TransportMenu;
+import com.mervyn.thermaducts.network.payload.TransportRequestPayload;
 import java.util.List;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
@@ -20,7 +20,7 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 public class TransportScreen extends AbstractContainerScreen<TransportMenu> {
 
   private static final Identifier TEXTURE =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/transport.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/transport.png");
 
   private static final int NUM_ENTRIES = 7;
   private static final int BUTTON_WIDTH = 155;
@@ -64,7 +64,7 @@ public class TransportScreen extends AbstractContainerScreen<TransportMenu> {
       directoryButtons[i] = addRenderableWidget(button);
     }
 
-    Component configText = Component.translatable("gui.dynamiducts.transport.config");
+    Component configText = Component.translatable("gui.thermaducts.transport.config");
     int configWidth = Math.min(font.width(configText) + 8, 72);
     configButton =
         addRenderableWidget(
@@ -168,7 +168,7 @@ public class TransportScreen extends AbstractContainerScreen<TransportMenu> {
     }
 
     if (menu.getDestinations().isEmpty()) {
-      Component emptyText = Component.translatable("gui.dynamiducts.transport.noDestinations");
+      Component emptyText = Component.translatable("gui.thermaducts.transport.noDestinations");
       graphics.text(font, emptyText, getCenteredTextX(emptyText), imageHeight / 2, 0x404040, false);
     }
   }
@@ -238,7 +238,7 @@ public class TransportScreen extends AbstractContainerScreen<TransportMenu> {
 
   private String getDisplayName(TransportDirectoryEntry entry) {
     return entry.name().isEmpty()
-        ? Component.translatable("gui.dynamiducts.transport.unnamed").getString()
+        ? Component.translatable("gui.thermaducts.transport.unnamed").getString()
         : entry.name();
   }
 }

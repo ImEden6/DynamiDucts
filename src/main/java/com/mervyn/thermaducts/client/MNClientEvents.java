@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.client;
+package com.mervyn.thermaducts.client;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import net.minecraft.resources.Identifier;
 
 public class MNClientEvents {
@@ -31,7 +31,7 @@ public class MNClientEvents {
 
   public static Identifier attachmentTexture(String type, int tier) {
     return Identifier.fromNamespaceAndPath(
-        DynamiDucts.MODID,
+        ThermaDucts.MODID,
         switch (type) {
           case "servo" -> SERVO_TEXTURES[tier];
           case "filter" -> FILTER_TEXTURES[tier];

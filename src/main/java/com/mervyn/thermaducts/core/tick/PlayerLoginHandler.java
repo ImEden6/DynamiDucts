@@ -1,13 +1,13 @@
-package com.mervyn.dynamiducts.core.tick;
+package com.mervyn.thermaducts.core.tick;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
-import com.mervyn.dynamiducts.duct.transport.TransportEntity;
-import com.mervyn.dynamiducts.duct.transport.TransportRoute;
-import com.mervyn.dynamiducts.init.DDDataAttachments;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.duct.transport.TransportEntity;
+import com.mervyn.thermaducts.duct.transport.TransportRoute;
+import com.mervyn.thermaducts.init.DDDataAttachments;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +22,7 @@ import net.neoforged.neoforge.event.entity.EntityMountEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID)
+@EventBusSubscriber(modid = ThermaDucts.MODID)
 public class PlayerLoginHandler {
 
   private static final List<PendingResume> pendingResumes = new ArrayList<>();

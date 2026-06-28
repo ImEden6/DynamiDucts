@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.ccl.render;
+package com.mervyn.thermaducts.ccl.render;
 
-import com.mervyn.dynamiducts.ccl.render.lighting.LC;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexSource;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.AttributeKey;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.LightCoordAttribute;
-import com.mervyn.dynamiducts.ccl.render.pipeline.attribute.SideAttribute;
-import com.mervyn.dynamiducts.ccl.vec.Cuboid6;
-import com.mervyn.dynamiducts.ccl.vec.Vertex5;
+import com.mervyn.thermaducts.ccl.render.lighting.LC;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexSource;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.AttributeKey;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.LightCoordAttribute;
+import com.mervyn.thermaducts.ccl.render.pipeline.attribute.SideAttribute;
+import com.mervyn.thermaducts.ccl.vec.Cuboid6;
+import com.mervyn.thermaducts.ccl.vec.Vertex5;
 
 public class BlockRenderer {
 

@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.client.gui.widget.tab;
+package com.mervyn.thermaducts.client.gui.widget.tab;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.core.attachment.RedstoneMode;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.core.attachment.RedstoneMode;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import net.minecraft.client.Minecraft;
@@ -14,20 +14,20 @@ import net.minecraft.resources.Identifier;
 public class RedstoneControlTabWidget extends SideTabWidget {
 
   private static final Identifier ICON_REDSTONE_TAB =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/icons/icon_redstone_on.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/icons/icon_redstone_on.png");
   private static final Identifier ICON_BUTTON =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/icons/icon_button.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/icons/icon_button.png");
   private static final Identifier ICON_BUTTON_HIGHLIGHT =
       Identifier.fromNamespaceAndPath(
-          DynamiDucts.MODID, "textures/gui/icons/icon_button_highlight.png");
+          ThermaDucts.MODID, "textures/gui/icons/icon_button_highlight.png");
   private static final Identifier ICON_REDSTONE_OFF =
       Identifier.fromNamespaceAndPath(
-          DynamiDucts.MODID, "textures/gui/icons/icon_redstone_off.png");
+          ThermaDucts.MODID, "textures/gui/icons/icon_redstone_off.png");
   private static final Identifier ICON_RS_TORCH_OFF =
       Identifier.fromNamespaceAndPath(
-          DynamiDucts.MODID, "textures/gui/icons/icon_rs_torch_off.png");
+          ThermaDucts.MODID, "textures/gui/icons/icon_rs_torch_off.png");
   private static final Identifier ICON_RS_TORCH_ON =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/icons/icon_rs_torch_on.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/icons/icon_rs_torch_on.png");
 
   private final Supplier<RedstoneMode> modeSupplier;
   private final Consumer<RedstoneMode> modeSetter;
@@ -39,7 +39,7 @@ public class RedstoneControlTabWidget extends SideTabWidget {
         y,
         112,
         92,
-        Component.translatable("info.dynamiducts.redstoneControl"),
+        Component.translatable("info.thermaducts.redstoneControl"),
         ICON_REDSTONE_TAB,
         0xE1C92F,
         0xAAAFB8,
@@ -77,30 +77,30 @@ public class RedstoneControlTabWidget extends SideTabWidget {
 
     drawBodyText(
         graphics,
-        Component.translatable("info.dynamiducts.controlStatus").append(":"),
+        Component.translatable("info.thermaducts.controlStatus").append(":"),
         6,
         42,
         true);
     drawBodyText(
         graphics,
         mode.isDisabled()
-            ? Component.translatable("info.dynamiducts.disabled")
-            : Component.translatable("info.dynamiducts.enabled"),
+            ? Component.translatable("info.thermaducts.disabled")
+            : Component.translatable("info.thermaducts.enabled"),
         14,
         54,
         false);
 
     drawBodyText(
         graphics,
-        Component.translatable("info.dynamiducts.signalRequired").append(":"),
+        Component.translatable("info.thermaducts.signalRequired").append(":"),
         6,
         66,
         true);
     Component signalText =
         switch (mode) {
-          case LOW -> Component.translatable("info.dynamiducts.low");
-          case HIGH -> Component.translatable("info.dynamiducts.high");
-          default -> Component.translatable("info.dynamiducts.ignored");
+          case LOW -> Component.translatable("info.thermaducts.low");
+          case HIGH -> Component.translatable("info.thermaducts.high");
+          default -> Component.translatable("info.thermaducts.ignored");
         };
     drawBodyText(graphics, signalText, 14, 78, false);
 
@@ -145,13 +145,13 @@ public class RedstoneControlTabWidget extends SideTabWidget {
       return null;
     }
     if (insideButton(mouseX, mouseY, 28)) {
-      return Component.translatable("info.dynamiducts.ignored");
+      return Component.translatable("info.thermaducts.ignored");
     }
     if (insideButton(mouseX, mouseY, 48)) {
-      return Component.translatable("info.dynamiducts.low");
+      return Component.translatable("info.thermaducts.low");
     }
     if (insideButton(mouseX, mouseY, 68)) {
-      return Component.translatable("info.dynamiducts.high");
+      return Component.translatable("info.thermaducts.high");
     }
     return null;
   }

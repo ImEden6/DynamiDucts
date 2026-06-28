@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.duct.structural;
+package com.mervyn.thermaducts.duct.structural;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.core.duct.DuctUnit;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.core.duct.DuctUnit;
 import net.minecraft.server.level.ServerLevel;
 
 public class StructuralDuctUnit extends DuctUnit<StructuralDuctUnit, StructuralGrid, Void> {

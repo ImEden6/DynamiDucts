@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.core.network;
+package com.mervyn.thermaducts.core.network;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,7 +16,7 @@
  * along with CodeChickenLib. If not, see <http://www.gnu.org/licenses/lgpl>.
  */
 
-package com.mervyn.dynamiducts.ccl.model;
+package com.mervyn.thermaducts.ccl.model;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;

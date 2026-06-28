@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.duct.fluid;
+package com.mervyn.thermaducts.duct.fluid;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
-import com.mervyn.dynamiducts.DuctUnitTestBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.DuctUnitTestBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;

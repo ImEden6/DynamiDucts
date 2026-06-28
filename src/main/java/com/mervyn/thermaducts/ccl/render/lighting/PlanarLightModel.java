@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.ccl.render.lighting;
+package com.mervyn.thermaducts.ccl.render.lighting;
 
-import com.mervyn.dynamiducts.ccl.colour.ColourRGBA;
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.colour.ColourRGBA;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
 
 /** Faster precomputed version of LightModel that only works for axis planar sides */
 public class PlanarLightModel implements IVertexOperation {

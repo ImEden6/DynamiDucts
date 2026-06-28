@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline;
+package com.mervyn.thermaducts.ccl.render.pipeline;
 
-import com.mervyn.dynamiducts.ccl.colour.ColourRGBA;
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.colour.ColourRGBA;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
 
 public class ColourMultiplier implements IVertexOperation {
 

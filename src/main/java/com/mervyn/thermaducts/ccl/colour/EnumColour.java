@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.colour;
+package com.mervyn.thermaducts.ccl.colour;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableTable;

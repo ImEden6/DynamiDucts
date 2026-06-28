@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.attachment.relay;
+package com.mervyn.thermaducts.attachment.relay;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.attachment.Attachment;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 
 public class Relay extends Attachment {
 
-  public static final Identifier ID = Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "relay");
+  public static final Identifier ID = Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "relay");
 
   public static final int TYPE_REDSTONE_INPUT = 0;
   public static final int TYPE_REDSTONE_OUTPUT = 1;

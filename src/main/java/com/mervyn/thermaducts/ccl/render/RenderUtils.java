@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.ccl.render;
+package com.mervyn.thermaducts.ccl.render;
 
-import com.mervyn.dynamiducts.ccl.render.buffer.TransformingVertexConsumer;
-import com.mervyn.dynamiducts.ccl.vec.*;
+import com.mervyn.thermaducts.ccl.render.buffer.TransformingVertexConsumer;
+import com.mervyn.thermaducts.ccl.vec.*;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import java.util.ArrayList;

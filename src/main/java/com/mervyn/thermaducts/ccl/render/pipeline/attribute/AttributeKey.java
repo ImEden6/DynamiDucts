@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.ccl.render.pipeline.attribute;
+package com.mervyn.thermaducts.ccl.render.pipeline.attribute;
 
 import static net.covers1624.quack.util.SneakyUtils.unsafeCast;
 
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexSource;
-import com.mervyn.dynamiducts.ccl.render.pipeline.VertexAttribute;
-import com.mervyn.dynamiducts.ccl.util.ArrayUtils;
-import com.mervyn.dynamiducts.ccl.util.Copyable;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexSource;
+import com.mervyn.thermaducts.ccl.render.pipeline.VertexAttribute;
+import com.mervyn.thermaducts.ccl.util.ArrayUtils;
+import com.mervyn.thermaducts.ccl.util.Copyable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;

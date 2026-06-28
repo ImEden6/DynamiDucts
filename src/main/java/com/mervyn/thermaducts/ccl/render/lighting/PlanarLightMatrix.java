@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.ccl.render.lighting;
+package com.mervyn.thermaducts.ccl.render.lighting;
 
 import static java.util.Objects.requireNonNull;
 
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.render.pipeline.IVertexOperation;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.render.pipeline.IVertexOperation;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
 import net.minecraft.core.BlockPos;

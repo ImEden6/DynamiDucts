@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.duct.energy;
+package com.mervyn.thermaducts.duct.energy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.mervyn.dynamiducts.DuctUnitTestBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.DuctUnitTestBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

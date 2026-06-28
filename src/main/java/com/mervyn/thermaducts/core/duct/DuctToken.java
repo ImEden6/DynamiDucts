@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.core.duct;
+package com.mervyn.thermaducts.core.duct;
 
 public enum DuctToken {
   ENERGY,

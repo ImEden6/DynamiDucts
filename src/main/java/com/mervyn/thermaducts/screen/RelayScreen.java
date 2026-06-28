@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.screen;
+package com.mervyn.thermaducts.screen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.client.gui.widget.DiscreteSlider;
-import com.mervyn.dynamiducts.client.gui.widget.SheetButton;
-import com.mervyn.dynamiducts.menu.RelayMenu;
-import com.mervyn.dynamiducts.network.payload.RelayConfigPayload;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.client.gui.widget.DiscreteSlider;
+import com.mervyn.thermaducts.client.gui.widget.SheetButton;
+import com.mervyn.thermaducts.menu.RelayMenu;
+import com.mervyn.thermaducts.network.payload.RelayConfigPayload;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -16,7 +16,7 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 public class RelayScreen extends AbstractContainerScreen<RelayMenu> {
 
   private static final Identifier TEXTURE =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/relay.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/relay.png");
 
   private SheetButton typeButton;
   private SheetButton invertButton;
@@ -46,7 +46,7 @@ public class RelayScreen extends AbstractContainerScreen<RelayMenu> {
                         menu.getRelayType() * 20, 204 + (isButtonHovered(typeButton) ? 20 : 0)),
                 (button, mouseButton) -> cycleType(mouseButton == 0 ? 1 : -1),
                 () ->
-                    Component.translatable("info.dynamiducts.relay.type." + menu.getRelayType())));
+                    Component.translatable("info.thermaducts.relay.type." + menu.getRelayType())));
 
     invertButton =
         addRenderableWidget(
@@ -65,7 +65,7 @@ public class RelayScreen extends AbstractContainerScreen<RelayMenu> {
                 (button, mouseButton) -> cycleInvert(mouseButton == 0 ? 1 : -1),
                 () ->
                     Component.translatable(
-                        "info.dynamiducts.relay.invert." + menu.getInvertMode())));
+                        "info.thermaducts.relay.invert." + menu.getInvertMode())));
 
     colorButton =
         addRenderableWidget(
@@ -81,7 +81,7 @@ public class RelayScreen extends AbstractContainerScreen<RelayMenu> {
                 (button, mouseButton) -> cycleColor(mouseButton == 0 ? 1 : -1),
                 () ->
                     Component.translatable(
-                        "info.dynamiducts.relay.color." + menu.getRelayColor())));
+                        "info.thermaducts.relay.color." + menu.getRelayColor())));
 
     thresholdSlider =
         addRenderableWidget(
@@ -95,7 +95,7 @@ public class RelayScreen extends AbstractContainerScreen<RelayMenu> {
                 menu.getThreshold(),
                 this::setThreshold,
                 this::setThreshold,
-                value -> Component.translatable("info.dynamiducts.relay.threshold", value),
+                value -> Component.translatable("info.thermaducts.relay.threshold", value),
                 null));
 
     updateThresholdVisibility();
@@ -133,21 +133,21 @@ public class RelayScreen extends AbstractContainerScreen<RelayMenu> {
 
     graphics.text(
         font,
-        Component.translatable("info.dynamiducts.relay.type." + menu.getRelayType()),
+        Component.translatable("info.thermaducts.relay.type." + menu.getRelayType()),
         8,
         4,
         0x404040,
         false);
     graphics.text(
         font,
-        Component.translatable("info.dynamiducts.relay.relayRS", menu.getRelayPower()),
+        Component.translatable("info.thermaducts.relay.relayRS", menu.getRelayPower()),
         8,
         relayY,
         0x404040,
         false);
     graphics.text(
         font,
-        Component.translatable("info.dynamiducts.relay.gridRS", menu.getGridPower()),
+        Component.translatable("info.thermaducts.relay.gridRS", menu.getGridPower()),
         8,
         gridY,
         0x404040,

@@ -1,7 +1,7 @@
-package com.mervyn.dynamiducts.client;
+package com.mervyn.thermaducts.client;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.duct.transport.TransportEntity;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.duct.transport.TransportEntity;
 import com.mojang.math.Axis;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
@@ -16,7 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = ThermaDucts.MODID, value = Dist.CLIENT)
 public class TransportClientHandler {
 
   private static CameraType previousCameraType;

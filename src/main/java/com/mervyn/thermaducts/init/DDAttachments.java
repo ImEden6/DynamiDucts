@@ -1,14 +1,14 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.attachment.filter.FilterFluid;
-import com.mervyn.dynamiducts.attachment.filter.FilterItem;
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.attachment.retriever.RetrieverFluid;
-import com.mervyn.dynamiducts.attachment.retriever.RetrieverItem;
-import com.mervyn.dynamiducts.attachment.servo.ServoFluid;
-import com.mervyn.dynamiducts.attachment.servo.ServoItem;
-import com.mervyn.dynamiducts.core.attachment.AttachmentRegistry;
-import com.mervyn.dynamiducts.core.attachment.AttachmentTier;
+import com.mervyn.thermaducts.attachment.filter.FilterFluid;
+import com.mervyn.thermaducts.attachment.filter.FilterItem;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.attachment.retriever.RetrieverFluid;
+import com.mervyn.thermaducts.attachment.retriever.RetrieverItem;
+import com.mervyn.thermaducts.attachment.servo.ServoFluid;
+import com.mervyn.thermaducts.attachment.servo.ServoItem;
+import com.mervyn.thermaducts.core.attachment.AttachmentRegistry;
+import com.mervyn.thermaducts.core.attachment.AttachmentTier;
 import net.minecraft.nbt.CompoundTag;
 
 public final class DDAttachments {

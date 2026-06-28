@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.screen;
+package com.mervyn.thermaducts.screen;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.menu.TransportConfigMenu;
-import com.mervyn.dynamiducts.network.payload.TransportRenamePayload;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.menu.TransportConfigMenu;
+import com.mervyn.thermaducts.network.payload.TransportRenamePayload;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.EditBox;
@@ -16,7 +16,7 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 public class TransportConfigScreen extends AbstractContainerScreen<TransportConfigMenu> {
 
   private static final Identifier TEXTURE =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/transport_config.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/transport_config.png");
 
   private EditBox nameField;
 

@@ -1,4 +1,4 @@
 @NonNullApi
-package com.mervyn.dynamiducts.ccl.colour;
+package com.mervyn.thermaducts.ccl.colour;
 
 import net.covers1624.quack.annotation.NonNullApi;

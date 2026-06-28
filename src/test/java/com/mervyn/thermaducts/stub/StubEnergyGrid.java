@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.stub;
+package com.mervyn.thermaducts.stub;
 
-import com.mervyn.dynamiducts.duct.energy.EnergyGrid;
+import com.mervyn.thermaducts.duct.energy.EnergyGrid;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 

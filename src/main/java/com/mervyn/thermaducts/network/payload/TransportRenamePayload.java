@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.network.payload;
+package com.mervyn.thermaducts.network.payload;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 public record TransportRenamePayload(BlockPos pos, String name) implements CustomPacketPayload {
 
   public static final Type<TransportRenamePayload> TYPE =
-      new Type<>(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "transport_rename"));
+      new Type<>(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "transport_rename"));
 
   public static final StreamCodec<FriendlyByteBuf, TransportRenamePayload> STREAM_CODEC =
       StreamCodec.of(TransportRenamePayload::write, TransportRenamePayload::read);

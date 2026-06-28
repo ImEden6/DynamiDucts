@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.init;
+package com.mervyn.thermaducts.init;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 public class DDDataAttachments {
 
   public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
-      DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, DynamiDucts.MODID);
+      DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, ThermaDucts.MODID);
 
   public static final Supplier<AttachmentType<Optional<TransportTarget>>> TRANSPORT_TARGET =
       ATTACHMENT_TYPES.register(

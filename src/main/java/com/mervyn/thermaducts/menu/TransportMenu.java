@@ -1,12 +1,12 @@
-package com.mervyn.dynamiducts.menu;
+package com.mervyn.thermaducts.menu;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.transport.TransportDirectoryEntry;
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
-import com.mervyn.dynamiducts.duct.transport.TransportGrid;
-import com.mervyn.dynamiducts.duct.transport.TransportRoute;
-import com.mervyn.dynamiducts.init.DDMenuTypes;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.transport.TransportDirectoryEntry;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.duct.transport.TransportGrid;
+import com.mervyn.thermaducts.duct.transport.TransportRoute;
+import com.mervyn.thermaducts.init.DDMenuTypes;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -111,7 +111,7 @@ public class TransportMenu extends AbstractContainerMenu {
     serverPlayer.openMenu(
         new SimpleMenuProvider(
             (id, inv, p) -> new TransportConfigMenu(id, inv, blockEntity, transportUnit, ductPos),
-            Component.translatable("gui.dynamiducts.transport.config")),
+            Component.translatable("gui.thermaducts.transport.config")),
         buf -> buf.writeBlockPos(ductPos));
     return true;
   }

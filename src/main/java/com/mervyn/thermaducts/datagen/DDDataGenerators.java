@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.datagen;
+package com.mervyn.thermaducts.datagen;
 
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 

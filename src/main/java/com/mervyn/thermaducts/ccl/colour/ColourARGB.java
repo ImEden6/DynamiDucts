@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.colour;
+package com.mervyn.thermaducts.ccl.colour;
 
 public class ColourARGB extends Colour {
 

@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.ccl.texture;
+package com.mervyn.thermaducts.ccl.texture;
 
-import com.mervyn.dynamiducts.ccl.colour.Colour;
-import com.mervyn.dynamiducts.ccl.colour.ColourARGB;
-import com.mervyn.dynamiducts.ccl.util.ResourceUtils;
+import com.mervyn.thermaducts.ccl.colour.Colour;
+import com.mervyn.thermaducts.ccl.colour.ColourARGB;
+import com.mervyn.thermaducts.ccl.util.ResourceUtils;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;

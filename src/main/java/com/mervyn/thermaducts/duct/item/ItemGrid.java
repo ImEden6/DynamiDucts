@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.duct.item;
+package com.mervyn.thermaducts.duct.item;
 
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.network.NetworkGrid;
-import com.mervyn.dynamiducts.core.network.Route;
-import com.mervyn.dynamiducts.core.network.RouteCache;
-import com.mervyn.dynamiducts.network.payload.ItemTravelSyncPayload;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.network.NetworkGrid;
+import com.mervyn.thermaducts.core.network.Route;
+import com.mervyn.thermaducts.core.network.RouteCache;
+import com.mervyn.thermaducts.network.payload.ItemTravelSyncPayload;
 import java.util.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

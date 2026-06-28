@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.duct.energy;
+package com.mervyn.thermaducts.duct.energy;
 
 import net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler;
 

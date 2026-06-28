@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.duct.energy;
+package com.mervyn.thermaducts.duct.energy;
 
-import com.mervyn.dynamiducts.core.network.NetworkGrid;
+import com.mervyn.thermaducts.core.network.NetworkGrid;
 import java.util.List;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

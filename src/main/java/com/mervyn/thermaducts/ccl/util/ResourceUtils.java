@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.util;
+package com.mervyn.thermaducts.ccl.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

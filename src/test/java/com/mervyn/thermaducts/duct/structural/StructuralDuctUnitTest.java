@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts.duct.structural;
+package com.mervyn.thermaducts.duct.structural;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import com.mervyn.dynamiducts.DuctUnitTestBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.DuctUnitTestBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -106,7 +106,7 @@ class StructuralDuctUnitTest extends DuctUnitTestBase {
   @Test
   void canConnectToTile_withBlocked_returnsFalse() {
     when(parent.getConnectionType(net.minecraft.core.Direction.UP))
-        .thenReturn(com.mervyn.dynamiducts.core.network.ConnectionType.BLOCKED);
+        .thenReturn(com.mervyn.thermaducts.core.network.ConnectionType.BLOCKED);
     assertFalse(unit.canConnectToTile(net.minecraft.core.Direction.UP));
   }
 
@@ -118,14 +118,14 @@ class StructuralDuctUnitTest extends DuctUnitTestBase {
   @Test
   void canConnectToTile_withForced_returnsTrue() {
     when(parent.getConnectionType(net.minecraft.core.Direction.UP))
-        .thenReturn(com.mervyn.dynamiducts.core.network.ConnectionType.FORCED);
+        .thenReturn(com.mervyn.thermaducts.core.network.ConnectionType.FORCED);
     assertTrue(unit.canConnectToTile(net.minecraft.core.Direction.UP));
   }
 
   @Test
   void canConnectToTile_withEnergy_returnsFalse() {
     when(parent.getConnectionType(net.minecraft.core.Direction.UP))
-        .thenReturn(com.mervyn.dynamiducts.core.network.ConnectionType.ENERGY);
+        .thenReturn(com.mervyn.thermaducts.core.network.ConnectionType.ENERGY);
     assertFalse(unit.canConnectToTile(net.minecraft.core.Direction.UP));
   }
 }

@@ -1,17 +1,17 @@
-package com.mervyn.dynamiducts.client.renderer;
+package com.mervyn.thermaducts.client.renderer;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.ccl.render.CCModel;
-import com.mervyn.dynamiducts.ccl.render.CCRenderState;
-import com.mervyn.dynamiducts.ccl.vec.Translation;
-import com.mervyn.dynamiducts.ccl.vec.uv.IconTransformation;
-import com.mervyn.dynamiducts.core.attachment.Attachment;
-import com.mervyn.dynamiducts.core.attachment.ConnectionBase;
-import com.mervyn.dynamiducts.core.duct.DuctToken;
-import com.mervyn.dynamiducts.duct.fluid.FluidDuctUnit;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.ccl.render.CCModel;
+import com.mervyn.thermaducts.ccl.render.CCRenderState;
+import com.mervyn.thermaducts.ccl.vec.Translation;
+import com.mervyn.thermaducts.ccl.vec.uv.IconTransformation;
+import com.mervyn.thermaducts.core.attachment.Attachment;
+import com.mervyn.thermaducts.core.attachment.ConnectionBase;
+import com.mervyn.thermaducts.core.duct.DuctToken;
+import com.mervyn.thermaducts.duct.fluid.FluidDuctUnit;
 import com.mojang.blaze3d.vertex.PoseStack;
 import java.util.HashMap;
 import java.util.Map;
@@ -291,7 +291,7 @@ public class DuctBlockEntityRenderer
       }
       renderAttachments(be, ccrs, collector, poseStack, trans, state.lightCoords);
     } catch (Exception e) {
-      DynamiDucts.LOG.error("[DuctBESR] Exception during render at {}", state.blockPos, e);
+      ThermaDucts.LOG.error("[DuctBESR] Exception during render at {}", state.blockPos, e);
     }
   }
 
@@ -310,8 +310,8 @@ public class DuctBlockEntityRenderer
         (pose, consumer) -> {
           ccrs.reset();
           ccrs.bind(
-              new com.mervyn.dynamiducts.ccl.render.buffer.TransformingVertexConsumer(
-                  consumer, new com.mervyn.dynamiducts.ccl.vec.Matrix4(pose.pose())),
+              new com.mervyn.thermaducts.ccl.render.buffer.TransformingVertexConsumer(
+                  consumer, new com.mervyn.thermaducts.ccl.vec.Matrix4(pose.pose())),
               renderType.format());
           ccrs.brightness = brightness;
           ccrs.overlay = overlay;
@@ -899,7 +899,7 @@ public class DuctBlockEntityRenderer
             Minecraft.getInstance()
                 .getAtlasManager()
                 .getAtlasOrThrow(AtlasIds.BLOCKS)
-                .getSprite(Identifier.fromNamespaceAndPath(DynamiDucts.MODID, p)));
+                .getSprite(Identifier.fromNamespaceAndPath(ThermaDucts.MODID, p)));
   }
 
   private static String resolveSpritePath(String path) {

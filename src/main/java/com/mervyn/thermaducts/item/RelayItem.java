@@ -1,9 +1,9 @@
-package com.mervyn.dynamiducts.item;
+package com.mervyn.thermaducts.item;
 
-import com.mervyn.dynamiducts.attachment.relay.Relay;
-import com.mervyn.dynamiducts.block.DuctHitHelper;
-import com.mervyn.dynamiducts.blockentity.StructuralDuctBlockEntity;
-import com.mervyn.dynamiducts.accessor.UseOnContextAccessor;
+import com.mervyn.thermaducts.attachment.relay.Relay;
+import com.mervyn.thermaducts.block.DuctHitHelper;
+import com.mervyn.thermaducts.blockentity.StructuralDuctBlockEntity;
+import com.mervyn.thermaducts.accessor.UseOnContextAccessor;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
@@ -18,7 +18,7 @@ public class RelayItem extends Item {
   public InteractionResult useOn(UseOnContext context) {
     var level = context.getLevel();
     var pos = context.getClickedPos();
-    var hitResult = ((UseOnContextAccessor) context).dynamiducts$getHitResult();
+    var hitResult = ((UseOnContextAccessor) context).thermaducts$getHitResult();
 
     if (!level.isClientSide()
         && level.getBlockEntity(pos) instanceof StructuralDuctBlockEntity ductBE) {

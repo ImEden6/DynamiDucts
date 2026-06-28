@@ -1,6 +1,6 @@
-package com.mervyn.dynamiducts.client.gui.widget.tab;
+package com.mervyn.thermaducts.client.gui.widget.tab;
 
-import com.mervyn.dynamiducts.DynamiDucts;
+import com.mervyn.thermaducts.ThermaDucts;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -14,17 +14,17 @@ import net.minecraft.util.FormattedCharSequence;
 public class InfoSideTabWidget extends SideTabWidget {
 
   private static final Identifier ICON_INFORMATION =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/icons/icon_information.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/icons/icon_information.png");
   private static final Identifier ICON_ARROW_UP =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/icons/icon_arrow_up.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/icons/icon_arrow_up.png");
   private static final Identifier ICON_ARROW_UP_INACTIVE =
       Identifier.fromNamespaceAndPath(
-          DynamiDucts.MODID, "textures/gui/icons/icon_arrow_up_inactive.png");
+          ThermaDucts.MODID, "textures/gui/icons/icon_arrow_up_inactive.png");
   private static final Identifier ICON_ARROW_DOWN =
-      Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "textures/gui/icons/icon_arrow_down.png");
+      Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "textures/gui/icons/icon_arrow_down.png");
   private static final Identifier ICON_ARROW_DOWN_INACTIVE =
       Identifier.fromNamespaceAndPath(
-          DynamiDucts.MODID, "textures/gui/icons/icon_arrow_down_inactive.png");
+          ThermaDucts.MODID, "textures/gui/icons/icon_arrow_down_inactive.png");
 
   private final Supplier<List<Component>> linesSupplier;
   private int firstLine;
@@ -35,7 +35,7 @@ public class InfoSideTabWidget extends SideTabWidget {
         y,
         124,
         92,
-        Component.translatable("info.dynamiducts.information"),
+        Component.translatable("info.thermaducts.information"),
         ICON_INFORMATION,
         0xE1C92F,
         0xAAAFB8,

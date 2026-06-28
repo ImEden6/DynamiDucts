@@ -1,11 +1,11 @@
-package com.mervyn.dynamiducts.datagen;
+package com.mervyn.thermaducts.datagen;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.block.DuctBlock;
-import com.mervyn.dynamiducts.init.DDBlocks;
-import com.mervyn.dynamiducts.init.DDItems;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.block.DuctBlock;
+import com.mervyn.thermaducts.init.DDBlocks;
+import com.mervyn.thermaducts.init.DDItems;
 import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -73,7 +73,7 @@ public class DDModelProvider extends ModelProvider {
   }
 
   public DDModelProvider(PackOutput output) {
-    super(output, DynamiDucts.MODID);
+    super(output, ThermaDucts.MODID);
   }
 
   @Override
@@ -137,13 +137,13 @@ public class DDModelProvider extends ModelProvider {
     String name = entry.getId().getPath();
     String baseTex = DUCT_TEXTURES.getOrDefault(name, "structure");
     Identifier texture =
-        Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "block/duct/base/" + baseTex);
+        Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "block/duct/base/" + baseTex);
 
     boolean transparentSpecial = name.equals("item_duct_dense") || name.equals("item_duct_vacuum");
     String renderType = (baseTex.contains("trans") || transparentSpecial) ? "cutout" : "solid";
 
     Identifier centerModelLoc =
-        Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "block/" + name + "_center");
+        Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "block/" + name + "_center");
     blockModels.modelOutput.accept(
         centerModelLoc,
         () -> {
@@ -311,7 +311,7 @@ public class DDModelProvider extends ModelProvider {
         item,
         ItemModelUtils.specialModel(
             centerModelLoc,
-            new com.mervyn.dynamiducts.client.renderer.DuctBlockItemRenderer.Unbaked()));
+            new com.mervyn.thermaducts.client.renderer.DuctBlockItemRenderer.Unbaked()));
   }
 
   private Identifier armModel(
@@ -329,7 +329,7 @@ public class DDModelProvider extends ModelProvider {
       Direction outward,
       Direction inward) {
     Identifier loc =
-        Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "block/" + ductName + "_arm_" + dirName);
+        Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "block/" + ductName + "_arm_" + dirName);
     blockModels.modelOutput.accept(
         loc,
         () -> {
@@ -387,7 +387,7 @@ public class DDModelProvider extends ModelProvider {
   private void simpleItem(
       ItemModelGenerators itemModels, DeferredItem<?> item, String textureName) {
     Item realItem = item.get();
-    Identifier texture = Identifier.fromNamespaceAndPath(DynamiDucts.MODID, "item/" + textureName);
+    Identifier texture = Identifier.fromNamespaceAndPath(ThermaDucts.MODID, "item/" + textureName);
     Identifier modelLoc =
         ModelTemplates.FLAT_ITEM.create(
             ModelLocationUtils.getModelLocation(realItem),

@@ -1,4 +1,4 @@
-package com.mervyn.dynamiducts.ccl.vec;
+package com.mervyn.thermaducts.ccl.vec;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;

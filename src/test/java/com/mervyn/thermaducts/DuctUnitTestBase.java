@@ -1,10 +1,10 @@
-package com.mervyn.dynamiducts;
+package com.mervyn.thermaducts;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import com.mervyn.dynamiducts.blockentity.DuctBlockEntity;
-import com.mervyn.dynamiducts.core.network.ConnectionType;
+import com.mervyn.thermaducts.blockentity.DuctBlockEntity;
+import com.mervyn.thermaducts.core.network.ConnectionType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;

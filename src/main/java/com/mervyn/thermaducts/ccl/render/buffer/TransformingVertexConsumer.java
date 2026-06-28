@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.ccl.render.buffer;
+package com.mervyn.thermaducts.ccl.render.buffer;
 
-import com.mervyn.dynamiducts.ccl.vec.Matrix4;
-import com.mervyn.dynamiducts.ccl.vec.Transformation;
-import com.mervyn.dynamiducts.ccl.vec.Vector3;
+import com.mervyn.thermaducts.ccl.vec.Matrix4;
+import com.mervyn.thermaducts.ccl.vec.Transformation;
+import com.mervyn.thermaducts.ccl.vec.Vector3;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 

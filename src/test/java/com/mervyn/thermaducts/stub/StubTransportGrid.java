@@ -1,8 +1,8 @@
-package com.mervyn.dynamiducts.stub;
+package com.mervyn.thermaducts.stub;
 
-import com.mervyn.dynamiducts.duct.transport.TransportDuctUnit;
-import com.mervyn.dynamiducts.duct.transport.TransportGrid;
-import com.mervyn.dynamiducts.duct.transport.TransportRoute;
+import com.mervyn.thermaducts.duct.transport.TransportDuctUnit;
+import com.mervyn.thermaducts.duct.transport.TransportGrid;
+import com.mervyn.thermaducts.duct.transport.TransportRoute;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.server.level.ServerLevel;

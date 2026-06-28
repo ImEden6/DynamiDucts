@@ -1,14 +1,14 @@
-package com.mervyn.dynamiducts.core.tick;
+package com.mervyn.thermaducts.core.tick;
 
-import com.mervyn.dynamiducts.DynamiDucts;
-import com.mervyn.dynamiducts.core.network.NetworkManager;
+import com.mervyn.thermaducts.ThermaDucts;
+import com.mervyn.thermaducts.core.network.NetworkManager;
 import net.minecraft.server.level.ServerLevel;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
-@EventBusSubscriber(modid = DynamiDucts.MODID)
+@EventBusSubscriber(modid = ThermaDucts.MODID)
 public class GridTickHandler {
 
   @SubscribeEvent
